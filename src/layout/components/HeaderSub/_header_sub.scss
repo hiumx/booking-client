@@ -1,0 +1,35 @@
+.header__sub__wrapper {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    width: 100%;
+    padding: 0 14%;
+
+    h5 {
+        font-size: 17px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .header__sub__info {
+        display: flex;
+        align-items: center;
+
+        .header__sub__lang__img {
+            width: 24px;
+            border-radius: 50%;
+            margin-right: 22px;
+            cursor: pointer;
+        }
+        
+        .hs__wrapper__help__icon {
+            padding: 8px;
+            cursor: pointer;
+        }
+        
+    }
+
+}

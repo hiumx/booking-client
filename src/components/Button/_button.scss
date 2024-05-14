@@ -1,0 +1,23 @@
+.login__input__item {
+    margin-bottom: 18px;
+
+    .login__label {
+        font-size: 14px;
+        display: block;
+        margin-bottom: 3px;
+    }
+
+    .login__wrapper__input {
+        width: 100%;
+        height: 36px;
+
+        .login__input {
+            width: 100%;
+            height: 100%;
+            padding: 8px;
+            border: 1px solid;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    }
+}
