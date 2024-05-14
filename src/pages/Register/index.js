@@ -1,25 +1,25 @@
 import React from 'react'
 import AuthForm from '~/components/AuthForm';
 
-import Button from '~/components/Button';
+import Input from '~/components/Input';
 
 const Register = () => {
     return (
         <div className='register__wrapper'>
             <AuthForm title="Create an account" action="Register">
-                <Button
+                <Input
                     type="email"
                     htmlFor="email"
                     labelName="Email address or phone number"
                     placeholder="Enter your email address"
                 />
-                <Button
+                <Input
                     type="password"
                     htmlFor="password"
                     labelName="Password"
                     placeholder="Enter your password"
                 />
-                <Button
+                <Input
                     type="password"
                     htmlFor="confirm-password"
                     labelName="Confirm password"
