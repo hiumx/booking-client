@@ -5,7 +5,7 @@ const AuthLayout = ({ children }) => {
     return (
         <div>
             <HeaderSub />
-            <div className='auth__layout_content'>
+            <div className='auth__layout__content'>
                 {children}
             </div>
         </div>
