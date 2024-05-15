@@ -8,10 +8,10 @@ const Register = () => {
         <div className='register__wrapper'>
             <AuthForm title="Create an account" action="Register">
                 <Input
-                    type="email"
+                    type="text"
                     htmlFor="email"
                     labelName="Email address or phone number"
-                    placeholder="Enter your email address"
+                    placeholder="Enter your email address or phone number"
                 />
                 <Input
                     type="password"
