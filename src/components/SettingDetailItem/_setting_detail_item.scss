@@ -1,0 +1,56 @@
+.setting__detail__item__wrapper {
+    .setting__detail__head {
+        h3 {
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 15px;
+            margin: 10px 0;
+            color: #333;
+        }
+    }
+
+    .setting__detail__item__list {
+        .setting__detail__item__item {
+            display: flex;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding: 12px 0;
+
+            .setting__detail__item__title {
+                font-size: 15px;
+                min-width: 164px;
+            }
+
+            .setting__detail__item__info {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex: 1;
+
+                .setting__detail__item__current__info {
+                    font-size: 13px;
+                    color: #555;
+                }
+
+                .setting__detail__item__action {
+                    padding: 4px 6px;
+                    cursor: pointer;
+                    color: #006ce4;
+                    font-size: 15px;
+                    text-decoration: none;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+
+            &:last-child {
+                border-bottom: 1px solid var(--border-color);
+            }
+        }
+    }
+}

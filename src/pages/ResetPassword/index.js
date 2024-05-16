@@ -7,10 +7,10 @@ const ResetPassword = () => {
         <div>
             <AuthForm title="Reset Password" action="Confirm" isSocial={false}>
                 <Input
-                    type="email"
+                    type="text"
                     htmlFor="email"
-                    labelName="Email address"
-                    placeholder="Enter your email address"
+                    labelName="Email address or phone number"
+                    placeholder="Enter your email address or phone number"
                 />
                 <Input
                     type="password"
