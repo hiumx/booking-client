@@ -162,3 +162,29 @@ export const SignOutIcon = ({ width = "16px", height = "16px", className = "", f
     )
 }
 
+export const SecurityIcon = ({ width = "16px", height = "16px", className = "", fill = "" }) => {
+    return (
+        <svg
+            width={width}
+            height={height}
+            className={className}
+            fill={fill}
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0z" />
+        </svg>
+    )
+}
+
+export const PlaneDepartureIcon = ({ width = "16px", height = "16px", className = "", fill = "" }) => {
+    return (
+        <svg
+            width={width}
+            height={height}
+            className={className}
+            fill={fill}
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+            <path d="M381 114.9L186.1 41.8c-16.7-6.2-35.2-5.3-51.1 2.7L89.1 67.4C78 73 77.2 88.5 87.6 95.2l146.9 94.5L136 240 77.8 214.1c-8.7-3.9-18.8-3.7-27.3 .6L18.3 230.8c-9.3 4.7-11.8 16.8-5 24.7l73.1 85.3c6.1 7.1 15 11.2 24.3 11.2H248.4c5 0 9.9-1.2 14.3-3.4L535.6 212.2c46.5-23.3 82.5-63.3 100.8-112C645.9 75 627.2 48 600.2 48H542.8c-20.2 0-40.2 4.8-58.2 14L381 114.9zM0 480c0 17.7 14.3 32 32 32H608c17.7 0 32-14.3 32-32s-14.3-32-32-32H32c-17.7 0-32 14.3-32 32z" />
+        </svg>
+    )
+}
+

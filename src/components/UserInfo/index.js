@@ -18,7 +18,7 @@ const UserInfo = () => {
                     <li className='header__user__desc__item'>
                         <Link
                             className='header__user__item__link'
-                            to="/my-settings"
+                            to="/mysettings"
                         >
                             <UserIcon />
                             <span>Manage account</span>

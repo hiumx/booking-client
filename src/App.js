@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import Home from "./pages/Home";
 import MySetting from "./pages/MySetting";
+import MySettingDetail from "./pages/MySettingDetail";
 
 // const Login  = lazy(() => import('~/pages/Login'));
 // const Register  = lazy(() => import('~/pages/Register'));
@@ -21,14 +22,15 @@ import MySetting from "./pages/MySetting";
 
 function App() {
   return (
-    <>
+    <>  
     <Router>
       <Routes>
         <Route path="/sign-in" element={<Login />}/>
         <Route path="/register" element={<Register />}/>
         <Route path="/forgot-password" element={<ForgotPassword />}/>
         <Route path="/reset-password" element={<ResetPassword />}/>
-        <Route path="/my-settings" element={<MySetting />}/>
+        <Route path="/mysettings" exact element={<MySetting />} />
+        <Route path="/mysettings/:slug" element={<MySettingDetail />} />
         <Route path="/" element={<Home />}/>
       </Routes>
     </Router>
