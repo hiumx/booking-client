@@ -1,0 +1,62 @@
+.header__wrapper {
+    height: 124px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 0 14%;
+
+    .header__info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+
+        h5 {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .header__detail {
+            display: flex;
+            align-items: center;
+
+            .header__lang__help {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .header__lang__img {
+                    width: 24px;
+                    border-radius: 50%;
+                    margin-right: 22px;
+                    cursor: pointer;
+                    transform: translateY(1px);
+                }
+
+                .header__wrapper__help__icon {
+                    padding: 8px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .header__auth {
+        display: flex;
+        align-items: center;
+    }
+
+    .header__nav {
+        padding-top: 2px;
+        .header__nav__list {
+            list-style: none;
+            display: flex;
+            align-items: center;
+
+            .header__nav__item {
+                margin-right: 12px;
+            }
+        }
+    }
+
+
+}
