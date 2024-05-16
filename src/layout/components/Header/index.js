@@ -2,8 +2,10 @@ import React from 'react'
 import "./_header.scss";
 import ButtonIcon from '~/components/ButtonIcon';
 import { BedIcon, CarIcon, HelpIcon, PlaneIcon, StarIcon, TaxiIcon } from '~/components/Icons';
-import Button from '~/components/Button';
 import vnFlag from "~/assets/images/vn.png";
+import UserInfo from '~/components/UserInfo';
+
+import Button from '~/components/Button';
 
 const Header = () => {
   return (
@@ -17,10 +19,11 @@ const Header = () => {
               <HelpIcon width='22px' height='22px' className='help__icon' fill="#fff" />
             </div>
           </div>
-          <div className='header__auth'>
+          {/* <div className='header__auth'>
             <Button title="Register" to="/register"/>
             <Button title="Sign in" to="/sign-in"/>
-          </div>
+          </div> */}
+          <UserInfo />
         </div>
       </div>
       <div className='header__nav'>
