@@ -1,0 +1,15 @@
+.button__wrapper {
+    .button__link {
+        color: var(--primary-color);
+        text-decoration: none;
+        background-color: #fff;
+        padding: 6px 12px;
+        margin: 0px 8px;
+        border-radius: 2px;
+        font-size: 14px;
+
+        &:hover {
+            opacity: .85;
+        }
+    }
+}

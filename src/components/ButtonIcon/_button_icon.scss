@@ -1,0 +1,23 @@
+.button__icon__wrapper {
+    .button__icon__link {
+        border: 1px solid transparent;
+        padding: 8px 12px;
+        border-radius: 20px;
+        text-decoration: none;
+
+        .button__icon__title {
+            color: var(--white-color);
+            padding-left: 8px;
+            font-size: 14px;
+        }
+
+        &:hover {
+            background-color: #234e9e;
+        }
+    }
+
+    .button__is__border {
+        border-color: var(--white-color);
+        background-color: #234e9e;
+    }
+}
