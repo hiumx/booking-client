@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Hotel Booking App Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
+Welcome to the Hotel Booking App project! This document serves as an introduction and guide to understanding the scope, objectives, and structure of our project. The Hotel Booking App is designed to provide users with a seamless experience for searching, booking, and managing hotel reservations.
 
-## Available Scripts
+## Project Overview
+The Hotel Booking App is a comprehensive platform that allows users to:
+- Search for hotels based on location, date, and preferences.
+- View detailed information about each hotel, including room availability, amenities, and pricing.
+- Book rooms and manage their reservations.
+- Provide ratings and reviews for hotels they have stayed at.
 
-In the project directory, you can run:
+## Objectives
+The primary objectives of the Hotel Booking App project are:
+1. **User-Friendly Interface**: Design an intuitive and easy-to-use interface for both web and mobile platforms.
+2. **Comprehensive Search**: Implement robust search functionality that allows users to filter results based on various criteria.
+3. **Secure Booking System**: Ensure that the booking process is secure and protects user data.
+4. **Real-Time Availability**: Provide real-time updates on room availability and pricing.
+5. **Review System**: Allow users to leave feedback and read reviews from other customers.
+6. **Responsive Design**: Ensure that the app is fully responsive and works well on all devices.
 
-### `npm start`
+## Technology Stack
+The Hotel Booking App will be built using the following technologies:
+- **Frontend**: React for web.
+- **Backend**: Spring boot.
+- **Database**: MySQL for data storage.
+- **Authentication**: JWT for user authentication.
+- **Hosting**: AWS for backend services and deployment.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Structure
+The project will be organized into several modules:
+1. **User Management**: Handles user registration, login, and profile management.
+2. **Hotel Search**: Implements the search functionality and displays search results.
+3. **Booking System**: Manages the booking process, including payment integration.
+4. **Reviews and Ratings**: Allows users to leave reviews and view feedback.
+5. **Admin Panel**: Admin interface for managing hotel listings, bookings, and user accounts.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Milestones
+To ensure the project progresses smoothly, we have outlined the following milestones:
+1. **Phase 1: Planning and Design** (Weeks 1-2)
+   - Requirements gathering and project planning.
+   - Design UI/UX mockups and prototypes.
 
-### `npm test`
+2. **Phase 2: Frontend Development** (Weeks 3-4)
+   - Develop the user interface for web and mobile.
+   - Implement navigation and basic components.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. **Phase 3: Backend Development** (Weeks 5-7)
+   - Set up the server and database.
+   - Develop API endpoints for user management, search, and booking.
 
-### `npm run build`
+4. **Phase 4: Integration and Testing** (Weeks 8-9)
+   - Integrate frontend with backend services.
+   - Perform unit testing and integration testing.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. **Phase 5: Deployment and Launch** (Weeks 10)
+   - Deploy the application to AWS.
+   - Launch the beta version and gather user feedback.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Team Members
+- **Project Manager**: [Mai Xuan Hieu]
+- **Frontend Developers**: [Mai Xuan Hieu], [Hoang Hai Thanh]
+- **Backend Developers**: [Mai Xuan Hieu], [Le Tu Minh Huy]
+- **UI/UX Designer**: [Vuong Dinh Cuong]
+- **QA Engineer**: [Le Tu Minh Huy]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Communication
+We will use the following tools for communication and collaboration:
+- **Project Management**: Jira for task management and tracking.
+- **Version Control**: GitHub for code repository.
+- **Communication**: Slack for daily communication and updates.
+- **Documentation**: Confluence for maintaining project documentation.
 
-### `npm run eject`
+## Getting Started
+To get started with the project:
+1. Clone the repository from GitHub: `[https://github.com/hiumx/booking-client]`
+2. Follow the setup instructions in the `README.md` file.
+3. Review the project requirements and design documents.
+4. Join the Slack channel for daily stand-ups and updates.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+We look forward to collaborating with you on this exciting project and building a fantastic Hotel Booking App!
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+*Last Updated: [2024-05-16]*
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+© 2024 hiumx
