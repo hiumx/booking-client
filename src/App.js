@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import Home from "./pages/Home";
+import MySetting from "./pages/MySetting";
 
 // const Login  = lazy(() => import('~/pages/Login'));
 // const Register  = lazy(() => import('~/pages/Register'));
@@ -27,6 +28,7 @@ function App() {
         <Route path="/register" element={<Register />}/>
         <Route path="/forgot-password" element={<ForgotPassword />}/>
         <Route path="/reset-password" element={<ResetPassword />}/>
+        <Route path="/my-settings" element={<MySetting />}/>
         <Route path="/" element={<Home />}/>
       </Routes>
     </Router>

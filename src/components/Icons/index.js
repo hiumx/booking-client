@@ -37,7 +37,7 @@ export const GoogleIcon = ({ width = "28px", height = "28px", className = "", fi
     )
 }
 
-export const BedIcon = ({ width = "28px", height = "28px", className = "", fill = "" }) => {
+export const BedIcon = ({ width = "21px", height = "21px", className = "", fill = "" }) => {
     return (
         <svg width={width}
             height={height}
@@ -48,7 +48,7 @@ export const BedIcon = ({ width = "28px", height = "28px", className = "", fill 
     )
 }
 
-export const CarIcon = ({ width = "28px", height = "28px", className = "", fill = "" }) => {
+export const CarIcon = ({ width = "21px", height = "21px", className = "", fill = "" }) => {
     return (
         <svg
             width={width}
@@ -60,7 +60,7 @@ export const CarIcon = ({ width = "28px", height = "28px", className = "", fill 
     )
 }
 
-export const StarIcon = ({ width = "28px", height = "28px", className = "", fill = "" }) => {
+export const StarIcon = ({ width = "21px", height = "21px", className = "", fill = "" }) => {
     return (
         <svg
             width={width}
@@ -72,7 +72,7 @@ export const StarIcon = ({ width = "28px", height = "28px", className = "", fill
     )
 }
 
-export const TaxiIcon = ({ width = "28px", height = "28px", className = "", fill = "" }) => {
+export const TaxiIcon = ({ width = "21px", height = "21px", className = "", fill = "" }) => {
     return (
         <svg
             width={width}
@@ -84,7 +84,7 @@ export const TaxiIcon = ({ width = "28px", height = "28px", className = "", fill
     )
 }
 
-export const PlaneIcon = ({ width = "28px", height = "28px", className = "", fill = "" }) => {
+export const PlaneIcon = ({ width = "21px", height = "21px", className = "", fill = "" }) => {
     return (
         <svg
             width={width}
@@ -93,6 +93,71 @@ export const PlaneIcon = ({ width = "28px", height = "28px", className = "", fil
             fill={fill}
             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
             <path d="M482.3 192c34.2 0 93.7 29 93.7 64c0 36-59.5 64-93.7 64l-116.6 0L265.2 495.9c-5.7 10-16.3 16.1-27.8 16.1l-56.2 0c-10.6 0-18.3-10.2-15.4-20.4l49-171.6L112 320 68.8 377.6c-3 4-7.8 6.4-12.8 6.4l-42 0c-7.8 0-14-6.3-14-14c0-1.3 .2-2.6 .5-3.9L32 256 .5 145.9c-.4-1.3-.5-2.6-.5-3.9c0-7.8 6.3-14 14-14l42 0c5 0 9.8 2.4 12.8 6.4L112 192l102.9 0-49-171.6C162.9 10.2 170.6 0 181.2 0l56.2 0c11.5 0 22.1 6.2 27.8 16.1L365.7 192l116.6 0z" />
+        </svg>
+    )
+}
+
+export const UserIcon = ({ width = "16px", height = "16px", className = "", fill = "" }) => {
+    return (
+        <svg
+            width={width}
+            height={height}
+            className={className}
+            fill={fill}
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z" />
+        </svg>
+    )
+}
+
+export const TripIcon = ({ width = "16px", height = "16px", className = "", fill = "" }) => {
+    return (
+        <svg
+            width={width}
+            height={height}
+            className={className}
+            fill={fill}
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+            <path d="M144 56c0-4.4 3.6-8 8-8h80c4.4 0 8 3.6 8 8v72H144V56zm176 72H288V56c0-30.9-25.1-56-56-56H152C121.1 0 96 25.1 96 56v72H64c-35.3 0-64 28.7-64 64V416c0 35.3 28.7 64 64 64c0 17.7 14.3 32 32 32s32-14.3 32-32H256c0 17.7 14.3 32 32 32s32-14.3 32-32c35.3 0 64-28.7 64-64V192c0-35.3-28.7-64-64-64zM112 224H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 128H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
+        </svg>
+    )
+}
+
+export const WalletIcon = ({ width = "16px", height = "16px", className = "", fill = "" }) => {
+    return (
+        <svg
+            width={width}
+            height={height}
+            className={className}
+            fill={fill}
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V192c0-35.3-28.7-64-64-64H80c-8.8 0-16-7.2-16-16s7.2-16 16-16H448c17.7 0 32-14.3 32-32s-14.3-32-32-32H64zM416 272a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
+        </svg>
+    )
+}
+
+export const HeartIcon = ({ width = "16px", height = "16px", className = "", fill = "" }) => {
+    return (
+        <svg
+            width={width}
+            height={height}
+            className={className}
+            fill={fill}
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z" />
+        </svg>
+    )
+}
+
+export const SignOutIcon = ({ width = "16px", height = "16px", className = "", fill = "" }) => {
+    return (
+        <svg
+            width={width}
+            height={height}
+            className={className}
+            fill={fill}
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z" />
         </svg>
     )
 }
