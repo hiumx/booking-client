@@ -41,19 +41,19 @@ To ensure the project progresses smoothly, we have outlined the following milest
    - Requirements gathering and project planning.
    - Design UI/UX mockups and prototypes.
 
-2. **Phase 2: Frontend Development** (Weeks 3-6)
+2. **Phase 2: Frontend Development** (Weeks 3-4)
    - Develop the user interface for web and mobile.
    - Implement navigation and basic components.
 
-3. **Phase 3: Backend Development** (Weeks 7-10)
+3. **Phase 3: Backend Development** (Weeks 5-7)
    - Set up the server and database.
    - Develop API endpoints for user management, search, and booking.
 
-4. **Phase 4: Integration and Testing** (Weeks 11-14)
+4. **Phase 4: Integration and Testing** (Weeks 8-9)
    - Integrate frontend with backend services.
    - Perform unit testing and integration testing.
 
-5. **Phase 5: Deployment and Launch** (Weeks 15-16)
+5. **Phase 5: Deployment and Launch** (Weeks 10)
    - Deploy the application to AWS.
    - Launch the beta version and gather user feedback.
 
