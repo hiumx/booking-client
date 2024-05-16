@@ -1,0 +1,29 @@
+.my__setting__wrapper {
+    padding: 0 14%;
+
+    .my__setting__title {
+        margin: 24px 0;
+
+        h2 {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        p {
+            font-size: 15px;
+        }
+    }
+
+    .my__setting__list {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .my__setting__item {
+            margin: 10px 0;
+            width: 49%;
+        }
+    }
+}
