@@ -10,9 +10,11 @@
         justify-content: space-between;
         padding: 14px 0;
 
-        h5 {
+        .header__logo {
             font-size: 22px;
             font-weight: 700;
+            padding-right: 10px;
+            cursor: pointer;
         }
 
         .header__detail {

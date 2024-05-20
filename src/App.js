@@ -26,7 +26,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/sign-in" element={<Login />}/>
-        <Route path="/register" element={<Register />}/>
+        <Route path="/sign-up" element={<Register />}/>
         <Route path="/forgot-password" element={<ForgotPassword />}/>
         <Route path="/reset-password" element={<ResetPassword />}/>
         <Route path="/mysettings" exact element={<MySetting />} />

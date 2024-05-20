@@ -57,6 +57,7 @@ const MySettingDetail = () => {
                             && <SettingDetailItem
                                 title="Personal details"
                                 description="Update your information and find out how it's used."
+                                image
                                 items={[
                                     {
                                         title: "Name",
@@ -75,7 +76,7 @@ const MySettingDetail = () => {
                                     },
                                     {
                                         title: "Date of birth",
-                                        content: "25-01-2003",
+                                        content: "2003-01-25",
                                         action: "Edit"
                                     },
                                     {
@@ -112,7 +113,8 @@ const MySettingDetail = () => {
                                     {
                                         title: "Active sessions",
                                         content: "Selecting ‘Sign out’ will sign you out from all devices except this one. The process can take up to 10 minutes.",
-                                        action: "Sign out"
+                                        action: "Sign out",
+                                        link: "/"
                                     },
                                 ]}
                             />

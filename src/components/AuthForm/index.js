@@ -4,7 +4,7 @@ import "./_auth_form.scss";
 import AuthLayout from '~/layout/AuthLayout';
 import { FacebookIcon, GoogleIcon } from '~/components/Icons';
 
-const AuthForm = ({ title, action, children, isSocial = true }) => {
+const AuthForm = ({ title, action, children, isSocial = true, onClick, errorMsg }) => {
     return (
         <div>
             <AuthLayout>
@@ -12,7 +12,8 @@ const AuthForm = ({ title, action, children, isSocial = true }) => {
                     <h6>{title}</h6>
                     <div>
                         {children}
-                        <button className='auth__btn'>{action}</button>
+                        <button className='auth__btn' onClick={onClick}>{action}</button>
+                        {errorMsg && <p className='auth__error__msg'>{errorMsg}</p>}
                         {isSocial &&
                             <>
                                 <div className='auth__title__others__wrapper'>

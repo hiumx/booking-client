@@ -6,12 +6,15 @@ import vnFlag from "~/assets/images/vn.png";
 import UserInfo from '~/components/UserInfo';
 
 import Button from '~/components/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigator = useNavigate();
+
   return (
     <div className='header__wrapper'>
       <div className='header__info'>
-        <h5>Booking</h5>
+        <h5 className='header__logo' onClick={() => navigator("/")}>Booking</h5>
         <div className='header__detail'>
           <div className='header__lang__help'>
             <img src={vnFlag} alt='uk-image' className='header__lang__img' />
@@ -19,11 +22,11 @@ const Header = () => {
               <HelpIcon width='22px' height='22px' className='help__icon' fill="#fff" />
             </div>
           </div>
-          {/* <div className='header__auth'>
-            <Button title="Register" to="/register"/>
+          <div className='header__auth'>
+            <Button title="Register" to="/sign-up"/>
             <Button title="Sign in" to="/sign-in"/>
-          </div> */}
-          <UserInfo />
+          </div>
+          {/* <UserInfo /> */}
         </div>
       </div>
       <div className='header__nav'>
