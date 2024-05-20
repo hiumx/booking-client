@@ -48,6 +48,13 @@
         }
     }
 
+    .auth__error__msg {
+        text-align: center;
+        font-size: 14px;
+        color: #a43838;
+        margin-bottom: 4px;
+    }
+
     .auth__title__others__wrapper {
         display: flex;
         align-items: center;
