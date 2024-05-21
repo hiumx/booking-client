@@ -4,8 +4,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import './_login.scss';
 import AuthForm from '~/components/AuthForm';
 import Input from '~/components/Input';
-import { checkInputEmpty, validateTypeInput } from '~/utils';
+import { checkInputEmpty, checkObjEmpty, validateTypeInput } from '~/utils';
 import { signIn } from '~/services/access.service';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMyInfo } from '~/store/actions/user.action';
 
 const Login = () => {
   const [emailOrPhone, setEmailOrPhone] = useState("");
@@ -13,6 +15,10 @@ const Login = () => {
   const [errorMsg, setErrorMsg] = useState("");
 
   const navigator = useNavigate();
+  const user = useSelector(state => state.user.userMyInfo);
+
+  if(!checkObjEmpty(user))
+        navigator("/");
 
   const handleSubmitLogin = () => {
     const typeInput = validateTypeInput(emailOrPhone);

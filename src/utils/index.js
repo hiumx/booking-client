@@ -18,3 +18,5 @@ export const checkInputEmpty = inputs => {
     }
     return true;
 }
+
+export const checkObjEmpty = obj => _.isEmpty(obj);

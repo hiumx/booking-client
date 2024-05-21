@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 
+
 import "~/styles/index.scss";
 import { lazy } from "react";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -21,6 +22,7 @@ import MySettingDetail from "./pages/MySettingDetail";
 // const Home = lazy(() => import("~/pages/Home"));
 
 function App() {
+  
   return (
     <>  
     <Router>
@@ -30,7 +32,8 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />}/>
         <Route path="/reset-password" element={<ResetPassword />}/>
         <Route path="/mysettings" exact element={<MySetting />} />
-        <Route path="/mysettings/:slug" element={<MySettingDetail />} />
+        <Route path="/mysettings/:slug" element={<MySetting />} />
+        <Route path="/mysettings/:slug/:id" element={<MySettingDetail />} />
         <Route path="/" element={<Home />}/>
       </Routes>
     </Router>

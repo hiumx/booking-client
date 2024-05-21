@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./_header.scss";
 import ButtonIcon from '~/components/ButtonIcon';
 import { BedIcon, CarIcon, HelpIcon, PlaneIcon, StarIcon, TaxiIcon } from '~/components/Icons';
@@ -7,9 +7,16 @@ import UserInfo from '~/components/UserInfo';
 
 import Button from '~/components/Button';
 import { useNavigate } from 'react-router-dom';
+import { checkObjEmpty } from '~/utils';
+import { getMyInfo } from '~/store/actions/user.action';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const Header = () => {
   const navigator = useNavigate();
+
+  const user = useSelector(state => state.user.userMyInfo);
+  console.log(user);
 
   return (
     <div className='header__wrapper'>
@@ -22,11 +29,15 @@ const Header = () => {
               <HelpIcon width='22px' height='22px' className='help__icon' fill="#fff" />
             </div>
           </div>
-          <div className='header__auth'>
-            <Button title="Register" to="/sign-up"/>
-            <Button title="Sign in" to="/sign-in"/>
-          </div>
-          {/* <UserInfo /> */}
+          {
+            checkObjEmpty(user)
+              ?
+              <div className='header__auth'>
+                <Button title="Register" to="/sign-up" />
+                <Button title="Sign in" to="/sign-in" />
+              </div>
+              : <UserInfo userData={user}/>
+          }
         </div>
       </div>
       <div className='header__nav'>
