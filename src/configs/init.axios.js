@@ -7,7 +7,21 @@ const instance = axios.create({
     // headers: {'X-Custom-Header': 'foobar'}
 });
 
-// instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+instance.interceptors.request.use(
+    config => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`;
+      }
+      return config;
+    },
+    error => {
+      return Promise.reject(error);
+    }
+  );
+
+// instance.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
+
 
 instance.interceptors.response.use(
     function(response) {

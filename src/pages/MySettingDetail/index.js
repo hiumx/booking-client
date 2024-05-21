@@ -1,14 +1,18 @@
 import React from 'react'
 import "./_my_setting_detail.scss";
 import HeaderSub from '~/layout/components/HeaderSub';
-import { Link, Route, Routes, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import IconRadius from '~/components/IconRadius';
 import { PlaneDepartureIcon, SecurityIcon, UserIcon, WalletIcon } from '~/components/Icons';
 import SettingDetailItem from '~/components/SettingDetailItem';
+import { useSelector } from 'react-redux';
 
 const MySettingDetail = () => {
-    const { slug } = useParams();
-    console.log(slug);
+    const { slug, id } = useParams();
+
+    const user = useSelector(state => state.user.userMyInfo);
+    const {name, email, phone, dob, gender, address, image} = user;
+
     return (
         <>
             <HeaderSub />
@@ -17,7 +21,7 @@ const MySettingDetail = () => {
                     <div className='col-lg-4'>
                         <ul className='setting__detail__list'>
                             <li className={slug === "personal" ? "setting__detail__item setting__detail__item__active" : "setting__detail__item"}>
-                                <Link to="/mysettings/personal" className='setting__detail__item__link'>
+                                <Link to={`/mysettings/personal/${id}`} className='setting__detail__item__link'>
                                     <IconRadius width="50px" height="50px">
                                         <UserIcon width='20px' height='20px' fill="#57c1cd" />
                                     </IconRadius>
@@ -25,7 +29,7 @@ const MySettingDetail = () => {
                                 </Link>
                             </li>
                             <li className={slug === "security" ? "setting__detail__item setting__detail__item__active" : "setting__detail__item"}>
-                                <Link to="/mysettings/security" className='setting__detail__item__link'>
+                                <Link to={`/mysettings/security/${id}`} className='setting__detail__item__link'>
                                     <IconRadius width="50px" height="50px">
                                         <SecurityIcon width='20px' height='20px' fill="#57c1cd" />
                                     </IconRadius>
@@ -33,7 +37,7 @@ const MySettingDetail = () => {
                                 </Link>
                             </li>
                             <li className={slug === "payment-details" ? "setting__detail__item setting__detail__item__active" : "setting__detail__item"}>
-                                <Link to="/mysettings/payment-details" className='setting__detail__item__link'>
+                                <Link to={`/mysettings/payment-details/${id}`} className='setting__detail__item__link'>
                                     <IconRadius width="50px" height="50px">
                                         <WalletIcon width='20px' height='20px' fill="#57c1cd" />
                                     </IconRadius>
@@ -41,7 +45,7 @@ const MySettingDetail = () => {
                                 </Link>
                             </li>
                             <li className={slug ==="other-travellers" ? "setting__detail__item setting__detail__item__active" : "setting__detail__item"}>
-                                <Link to="/mysettings/other-travellers" className='setting__detail__item__link'>
+                                <Link to={`/mysettings/other-travellers/${id}`} className='setting__detail__item__link'>
                                     <IconRadius width="50px" height="50px">
                                         <PlaneDepartureIcon width='20px' height='20px' fill="#57c1cd" />
                                     </IconRadius>
@@ -61,22 +65,22 @@ const MySettingDetail = () => {
                                 items={[
                                     {
                                         title: "Name",
-                                        content: "Mai Xuan Hieu",
+                                        content: name,
                                         action: "Edit"
                                     },
                                     {
                                         title: "Email address",
-                                        content: "maixuanhieu250103@gmail.com",
+                                        content: email,
                                         action: "Edit"
                                     },
                                     {
                                         title: "Phone number",
-                                        content: "0896210393",
+                                        content: phone,
                                         action: "Edit"
                                     },
                                     {
                                         title: "Date of birth",
-                                        content: "2003-01-25",
+                                        content: dob,
                                         action: "Edit"
                                     },
                                     {
@@ -86,12 +90,12 @@ const MySettingDetail = () => {
                                     },
                                     {
                                         title: "Gender",
-                                        content: "Male",
+                                        content: gender?.name,
                                         action: "Edit"
                                     },
                                     {
                                         title: "Address",
-                                        content: "62 Le Thien Thi, Hoa Hai, Ngu Hanh Son, Da Nang",
+                                        content: address,
                                         action: "Edit"
                                     },
                                 ]}
@@ -113,8 +117,7 @@ const MySettingDetail = () => {
                                     {
                                         title: "Active sessions",
                                         content: "Selecting ‘Sign out’ will sign you out from all devices except this one. The process can take up to 10 minutes.",
-                                        action: "Sign out",
-                                        link: "/"
+                                        action: "Sign out"
                                     },
                                 ]}
                             />

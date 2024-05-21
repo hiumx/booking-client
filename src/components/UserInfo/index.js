@@ -2,15 +2,29 @@ import React from 'react';
 import "./_user_info.scss";
 
 import userImg from "~/assets/images/user.png";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { HeartIcon, SignOutIcon, TripIcon, UserIcon, WalletIcon } from '../Icons';
+import { useDispatch } from 'react-redux';
+import { getMyInfo } from '~/store/actions/user.action';
 
-const UserInfo = () => {
+const UserInfo = ({ userData }) => {
+
+    const dispatch = useDispatch();
+    const navigator = useNavigate("");
+
+    const name = userData?.email ? userData.email.split("@")[0] : "Your account";
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        dispatch(getMyInfo());
+        navigator("/");
+    }
+
     return (
         <div className='header__user__info'>
             <img className='header__user__img' src={userImg} alt='user-image' />
             <div className='header__user__name'>
-                <h6>Your account</h6>
+                <h6>{name}</h6>
                 <p>Genius Level 1</p>
             </div>
             <div className='header__user__desc'>
@@ -52,13 +66,13 @@ const UserInfo = () => {
                         </Link>
                     </li>
                     <li className='header__user__desc__item'>
-                        <Link
+                        <div
                             className='header__user__item__link'
-                            to=""
+                            onClick={handleLogout}
                         >
                             <SignOutIcon />
                             <span>Sign out</span>
-                        </Link>
+                        </div>
                     </li>
                 </ul>
             </div>
