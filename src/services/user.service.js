@@ -1,4 +1,5 @@
-'use strict';
 import axios from "~/configs/init.axios";
 
-export const signUp = (data) => axios.post('/users', data);
+export const getUserMyInfo = () => axios.get("/users/my-info");
+
+export const updateUserByField = (id, dataUpdate) => axios.patch(`/users/${id}`, dataUpdate);

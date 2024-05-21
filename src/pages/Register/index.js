@@ -1,14 +1,22 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import AuthForm from '~/components/AuthForm';
 import Input from '~/components/Input';
 import { signUp } from '~/services/access.service';
-import { checkConfirmPassword, checkInputEmpty, validateTypeInput } from '~/utils';
+import { checkConfirmPassword, checkInputEmpty, checkObjEmpty, validateTypeInput } from '~/utils';
 
 const Register = () => {
     const [emailOrPhone, setEmailOrPhone] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
+
+    const navigator = useNavigate();
+
+    const user = useSelector(state => state.user.userMyInfo);
+    if(!checkObjEmpty(user))
+        navigator("/");
 
     const handleConfirmSignUp = () => {
         const typeInput = validateTypeInput(emailOrPhone);
@@ -26,7 +34,14 @@ const Register = () => {
                     console.log(payload);
         
                     signUp(payload)
-                        .then(response => console.log(response))
+                        .then(res => {
+                            console.log(res);
+                            if(res.code !== 1000) {
+                                setErrorMsg(res.message)
+                            } else {
+                                navigator("/sign-in");
+                            }
+                        })
                         .catch(error => {
                             console.error(error);
                         })
