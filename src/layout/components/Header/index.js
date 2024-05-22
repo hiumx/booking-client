@@ -33,8 +33,8 @@ const Header = () => {
             checkObjEmpty(user)
               ?
               <div className='header__auth'>
-                <Button title="Register" to="/sign-up" />
-                <Button title="Sign in" to="/sign-in" />
+                <Button title="Sign up" to="/auth/sign-up" />
+                <Button title="Sign in" to="/auth/sign-in" />
               </div>
               : <UserInfo userData={user}/>
           }

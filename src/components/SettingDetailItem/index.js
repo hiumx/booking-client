@@ -15,7 +15,6 @@ const SettingDetailItem = ({ title, description, items = [], image = false }) =>
 
     const handleClickAction = ({ title, content }) => {
         setTypeCustom(title);
-        console.log({ title, content });
 
         if (title === "Active sessions") {
             localStorage.removeItem("token");
@@ -57,7 +56,7 @@ const SettingDetailItem = ({ title, description, items = [], image = false }) =>
                         setTypeCustom("");
                     }
                 }).catch(err => {
-                    console.log(err);
+                    console.error(err);
                 })
 
         }
