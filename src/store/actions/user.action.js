@@ -19,6 +19,6 @@ export const getMyInfo = () => async (dispatch) => {
         dispatch({
             type: actionTypes.GET_INFO_USER_FAIL
         })
-        console.log(error);
+        console.error(error);
     }
 }
