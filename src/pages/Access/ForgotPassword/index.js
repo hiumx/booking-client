@@ -28,7 +28,6 @@ const ForgotPassword = () => {
     if(message === undefined) {
         setMessage("Please check your email to reset password");
     }
-    console.log(message);
 
     return (
         <div className='forgot__password__wrapper'>
