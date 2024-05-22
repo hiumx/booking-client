@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 
 import './_login.scss';
 import AuthForm from '~/components/AuthForm';
 import Input from '~/components/Input';
-import { checkInputEmpty, checkObjEmpty, validateTypeInput } from '~/utils';
+import { checkInputEmpty, checkObjEmpty, isRoleExist, validateTypeInput } from '~/utils';
 import { signIn } from '~/services/access.service';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMyInfo } from '~/store/actions/user.action';
@@ -15,10 +15,24 @@ const Login = () => {
   const [errorMsg, setErrorMsg] = useState("");
 
   const navigator = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector(state => state.user.userMyInfo);
 
-  if(!checkObjEmpty(user))
-        navigator("/");
+  console.log(user);
+
+  useEffect(() => {
+    if(!checkObjEmpty(user)) {
+      const isAdmin = isRoleExist(user?.roles, "Admin");
+      const isHotelManager = isRoleExist(user?.roles, "Hotel manager");
+      if(isAdmin) {
+        navigator('/system');
+      } else if(isHotelManager) {
+        navigator('/hotel-manager');
+      } else {
+        navigator('/');
+      }
+    }
+  }, [user])
 
   const handleSubmitLogin = () => {
     const typeInput = validateTypeInput(emailOrPhone);
@@ -41,7 +55,8 @@ const Login = () => {
               setErrorMsg(res?.message);
             else {
               localStorage.setItem("token", res?.metadata?.token);
-              navigator("/");
+              dispatch(getMyInfo());
+              // navigator("/");
             }
               
           })
@@ -71,7 +86,7 @@ const Login = () => {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <Link className='login__forgot__password' to="/forgot-password">Forgot password?</Link>
+        <Link className='login__forgot__password' to="/auth/forgot-password">Forgot password?</Link>
       </AuthForm>
     </div>
   )

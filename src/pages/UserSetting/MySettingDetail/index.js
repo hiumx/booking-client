@@ -83,11 +83,11 @@ const MySettingDetail = () => {
                                         content: dob,
                                         action: "Edit"
                                     },
-                                    {
-                                        title: "Nationality",
-                                        content: "Viet Nam",
-                                        action: "Edit"
-                                    },
+                                    // {
+                                    //     title: "Nationality",
+                                    //     content: "Viet Nam",
+                                    //     action: "Edit"
+                                    // },
                                     {
                                         title: "Gender",
                                         content: gender?.name,
@@ -112,7 +112,7 @@ const MySettingDetail = () => {
                                         title: "Password",
                                         content: "Reset your password regularly to keep your account secure",
                                         action: "Reset",
-                                        link: "/reset-password"
+                                        link: "/auth/reset-password"
                                     },
                                     {
                                         title: "Active sessions",
