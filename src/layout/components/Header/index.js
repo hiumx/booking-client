@@ -16,7 +16,6 @@ const Header = () => {
   const navigator = useNavigate();
 
   const user = useSelector(state => state.user.userMyInfo);
-  console.log(user);
 
   return (
     <div className='header__wrapper'>

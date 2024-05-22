@@ -18,7 +18,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user.userMyInfo);
 
-  console.log(user);
 
   useEffect(() => {
     if(!checkObjEmpty(user)) {
@@ -50,7 +49,6 @@ const Login = () => {
 
         signIn(payload)
           .then(res => {
-            console.log(res);
             if(res.code !== 1000)
               setErrorMsg(res?.message);
             else {

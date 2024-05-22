@@ -9,7 +9,6 @@ const HotelManagement = () => {
 
     const isAdmin = isRoleExist(user.roles, "Admin");
     const isHotelManager = isRoleExist(user.roles, "Hotel manager");
-    console.log(user);
 
     useEffect(() => {
       if(!isHotelManager) {

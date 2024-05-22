@@ -16,7 +16,6 @@ const Register = () => {
 
     const user = useSelector(state => state.user.userMyInfo);
     if(!checkObjEmpty(user)) {
-        console.log("redirect");
         navigator("/mysettings");
     }
 
@@ -33,11 +32,9 @@ const Register = () => {
                         [typeInput]: emailOrPhone,
                         password
                     }
-                    console.log(payload);
         
                     signUp(payload)
                         .then(res => {
-                            console.log(res);
                             if(res.code !== 1000) {
                                 setErrorMsg(res.message)
                             } else {
