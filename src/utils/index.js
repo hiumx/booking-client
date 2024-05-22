@@ -20,3 +20,5 @@ export const checkInputEmpty = inputs => {
 }
 
 export const checkObjEmpty = obj => _.isEmpty(obj);
+
+export const isRoleExist = (arr, e) => arr?.some(a => a.name === e);

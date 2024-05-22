@@ -15,8 +15,10 @@ const Register = () => {
     const navigator = useNavigate();
 
     const user = useSelector(state => state.user.userMyInfo);
-    if(!checkObjEmpty(user))
-        navigator("/");
+    if(!checkObjEmpty(user)) {
+        console.log("redirect");
+        navigator("/mysettings");
+    }
 
     const handleConfirmSignUp = () => {
         const typeInput = validateTypeInput(emailOrPhone);
@@ -39,7 +41,7 @@ const Register = () => {
                             if(res.code !== 1000) {
                                 setErrorMsg(res.message)
                             } else {
-                                navigator("/sign-in");
+                                navigator("/auth/sign-in");
                             }
                         })
                         .catch(error => {
