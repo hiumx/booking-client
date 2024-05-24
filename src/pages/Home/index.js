@@ -1,3 +1,4 @@
+import Banner from '~/components/Banner'
 import DefaultLayout from '~/layout/DefaultLayout'
 
 const Home = () => {
@@ -5,7 +6,6 @@ const Home = () => {
   return (
     <div>
       <DefaultLayout>
-        <div>Body</div>
       </DefaultLayout>
     </div>
   )

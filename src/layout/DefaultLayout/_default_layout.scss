@@ -1,3 +1,7 @@
 .default__layout__wrapper {
-    padding: 0 14%;
+    .default__layout__hb {
+        padding: 0 14%;
+        background-color: var(--primary-color);
+        color: var(--white-color);
+    }
 }
