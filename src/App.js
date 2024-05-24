@@ -36,6 +36,7 @@ function App() {
         <Route path="/mysettings" exact element={<MySetting />} />
         <Route path="/mysettings/:slug" element={<MySetting />} />
         <Route path="/mysettings/:slug/:id" element={<MySettingDetail />} />
+        <Route path="/mysettings/:slug/:id" element={<MySettingDetail />} />
 
         <Route path="/system" element={<UserManagement />} />
 
