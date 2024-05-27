@@ -1,5 +1,6 @@
 import React from 'react'
 import "./_auth_form.scss";
+import PropTypes from 'prop-types'
 
 import AuthLayout from '~/layout/AuthLayout';
 import { FacebookIcon, GoogleIcon } from '~/components/Icons';
@@ -42,6 +43,15 @@ const AuthForm = ({ title, action, children, isSocial = true, onClick, errorMsg 
             </AuthLayout>
         </div>
     )
+}
+
+AuthForm.propTypes = {
+    title: PropTypes.string.isRequired,
+    action: PropTypes.string.isRequired,
+    children: PropTypes.node,
+    isSocial: PropTypes.bool,
+    onClick: PropTypes.func,
+    errorMsg: PropTypes.string
 }
 
 export default AuthForm

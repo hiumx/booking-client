@@ -1,7 +1,7 @@
 
 import React from 'react'
 import "./_setting_item.scss";
-import { UserIcon } from '../Icons';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const SettingItem = ({title = "", description = "", ext = "", children, to = "#" }) => {
@@ -19,6 +19,14 @@ const SettingItem = ({title = "", description = "", ext = "", children, to = "#"
             <p className='setting__item__ext'>{ext}</p>
         </Link>
     )
+}
+
+SettingItem.propTypes = {
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    ext: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
+    to: PropTypes.string
 }
 
 export default SettingItem

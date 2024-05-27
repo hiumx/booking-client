@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
+import PropTypes from 'prop-types';
+
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import "./_default_layout.scss";
-
 import Banner from '~/components/Banner'
 
 const DefaultLayout = ({ children }) => {
@@ -17,6 +18,10 @@ const DefaultLayout = ({ children }) => {
       <Footer />
     </div>
   )
+}
+
+DefaultLayout.propTypes = {
+  children: PropTypes.node
 }
 
 export default DefaultLayout

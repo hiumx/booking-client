@@ -5,6 +5,7 @@ import { updateUserByField } from '~/services/user.service';
 import { useDispatch } from 'react-redux';
 import { getMyInfo } from '~/store/actions/user.action';
 import { signOut } from '~/services/access.service';
+import PropTypes from 'prop-types';
 
 const SettingDetailItem = ({ title, description, items = [], image = false }) => {
 
@@ -136,6 +137,13 @@ const SettingDetailItem = ({ title, description, items = [], image = false }) =>
             </ul>
         </div>
     )
+}
+
+SettingDetailItem.propTypes = {
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    items: PropTypes.array.isRequired,
+    image: PropTypes.bool 
 }
 
 export default SettingDetailItem
