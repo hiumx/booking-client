@@ -15,6 +15,7 @@ import MySetting from "~/pages/UserSetting/MySetting";
 import MySettingDetail from "~/pages/UserSetting/MySettingDetail";
 import UserManagement from "~/pages/System/UserManagement";
 import HotelManagement from "~/pages/HotelManager/HotelManagement";
+import SearchResult from '~/pages/SearchResult';
 
 const Routers = () => {
   return (
@@ -29,6 +30,7 @@ const Routers = () => {
         <Route path="/mysettings/:slug" element={<MySetting />} />
         <Route path="/mysettings/:slug/:id" element={<MySettingDetail />} />
         <Route path="/mysettings/:slug/:id" element={<MySettingDetail />} />
+        <Route path="/search-result" element={<SearchResult />} />
 
         <Route path="/system" element={<UserManagement />} />
 
