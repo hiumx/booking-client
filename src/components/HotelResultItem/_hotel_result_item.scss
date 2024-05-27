@@ -1,0 +1,206 @@
+.hotel__result__item__wrapper {
+    padding: 16px;
+    margin: 16px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+
+    .hri__img__wrapper {
+        position: relative;
+
+        .hri__img {
+            width: 240px;
+            height: 240px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .hri__img__icon {
+            padding: 6px;
+            background: #fff;
+            width: 36px;
+            height: 36px;
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #f2f2f2;
+            }
+        }
+    }
+
+    .hri__overview {
+        display: flex;
+        justify-content: space-between;
+
+        .hri__title {
+            font-size: 19px;
+            color: var(--text-hover-color);
+            font-weight: 700;
+            cursor: pointer;
+
+            &:hover {
+                color: var(--text-color);
+            }
+        }
+
+        .hri__location {
+            font-size: 12px;
+            margin-top: 6px;
+
+            .hri__location__link {
+                color: var(--text-hover-color);
+                font-size: 13px;
+                font-weight: 500;
+            }
+        }
+
+        .hri__evaluate {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+
+            .hri__evaluate__review {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                .hri__evaluate__exceptional {
+                    font-size: 16px;
+                    color: var(--text-color);
+                    font-weight: 500;
+                }
+
+                .hri__evaluate__num__review {
+                    font-size: 12px;
+                    color: #595959;
+                    float: inline-end;
+                }
+
+                .hri__evaluate__point__btn {
+                    border: none;
+                    outline: none;
+                    background-color: var(--primary-color);
+                    color: #fff;
+                    padding: 4px 8px;
+                    border-radius: 7px;
+                    border-bottom-left-radius: 0;
+                    margin-left: 8px;
+                }
+            }
+
+            .hri__evaluate__comfort {
+                float: right;
+                font-size: 14px;
+                color: var(--text-hover-color);
+                font-weight: 600;
+                margin: 4px 0;
+                cursor: pointer;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            .hri__evaluate__link {
+                border: none;
+                outline: none;
+                font-size: 12px;
+                color: #242424;
+                background-color: #ffb700;
+                padding: 2px 6px;
+                border-radius: 4px;
+            }
+        }
+    }
+
+    .hri__free__taxi {
+        border: none;
+        outline: none;
+        font-size: 12px;
+        padding: 2px 6px;
+        color: #fff;
+        background-color: #008234;
+        border-radius: 4px;
+        margin: 10px 0;
+    }
+
+    .hri__detail {
+        display: flex;
+        justify-content: space-between;
+
+        .hri__detail__convenient {
+            flex: 1;
+
+            .hri__convenient__room {
+                font-size: 12px;
+                color: var(--text-color);
+                font-weight: 600;
+            }
+
+            .hri__convenient__beds {
+                font-size: 12px;
+                color: var(--text-color);
+            }
+
+            .hri__detail__benefit {
+                font-size: 12px;
+                color: #008234;
+                display: flex;
+                align-items: center;
+
+                .hri__detail__benefit__bold {
+                    font-weight: 600;
+                    margin-left: 8px;
+                }
+            }
+
+            .hri__detail__room__left {
+                color: #d4111e;
+                font-size: 12px;
+                font-weight: 600;
+            }
+        }
+
+        .hri__value {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+
+            .hri__value__desc {
+                color: #595959;
+                font-size: 12px;
+            }
+
+            .hri__value__money {
+                font-size: 20px;
+            }
+
+            .hri__see__availability {
+                display: flex;
+                align-items: center;
+                margin: 8px 0;
+                background-color: #006ce4;
+                color: #fff;
+                padding: 6px 8px;
+                font-size: 14px;
+                font-weight: 400;
+                border-radius: 4px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #0057b8;
+                }
+
+                p {
+                    margin-right: 4px;
+                }
+            }
+        }
+    }
+}

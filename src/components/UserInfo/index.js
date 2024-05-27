@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { HeartIcon, SignOutIcon, TripIcon, UserIcon, WalletIcon } from '../Icons';
 import { useDispatch } from 'react-redux';
 import { getMyInfo } from '~/store/actions/user.action';
+import { signOut } from '~/services/access.service';
 
 const UserInfo = ({ userData }) => {
 
@@ -15,9 +16,19 @@ const UserInfo = ({ userData }) => {
     const name = userData?.email ? userData.email.split("@")[0] : "Your account";
 
     const handleLogout = () => {
-        localStorage.removeItem("token");
-        dispatch(getMyInfo());
-        navigator("/");
+        const data = {
+            token: localStorage.getItem("token")
+        }
+        
+        signOut(data).then(res => {
+            if(res.code === 1000) {
+                localStorage.removeItem("token");
+                dispatch(getMyInfo());
+                navigator("/");
+            }
+        }).catch(error => {
+            console.error(error);
+        })
     }
 
     return (
