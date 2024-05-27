@@ -9,6 +9,7 @@ import Button from '~/components/Button';
 import { useNavigate } from 'react-router-dom';
 import { checkObjEmpty } from '~/utils';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 
 const Header = ({ style }) => {
@@ -69,6 +70,10 @@ const Header = ({ style }) => {
       </div>
     </div>
   )
+}
+
+Header.propTypes = {
+  style: PropTypes.object
 }
 
 export default Header

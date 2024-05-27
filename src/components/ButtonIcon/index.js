@@ -1,6 +1,7 @@
 import React from 'react'
 import "./_button_icon.scss";
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const ButtonIcon = ({ children, title, to = "#", isBorder = false }) => {
     return (
@@ -14,6 +15,13 @@ const ButtonIcon = ({ children, title, to = "#", isBorder = false }) => {
             </Link>
         </div>
     )
+}
+
+ButtonIcon.propTypes = {
+    title: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
+    to: PropTypes.string,
+    isBorder: PropTypes.bool
 }
 
 export default ButtonIcon
