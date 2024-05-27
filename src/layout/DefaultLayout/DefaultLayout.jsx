@@ -8,20 +8,20 @@ import Banner from '~/components/Banner'
 
 const DefaultLayout = ({ children }) => {
 
-  return (
-    <div className='default__layout__wrapper'>
-      <div className='default__layout__hb'>
-        <Header />
-        <Banner />
-      </div>
-      {children}
-      <Footer />
-    </div>
-  )
+    return (
+        <div className='default__layout__wrapper'>
+            <div className='default__layout__hb'>
+                <Header />
+                <Banner />
+            </div>
+            {children}
+            <Footer />
+        </div>
+    )
 }
 
 DefaultLayout.propTypes = {
-  children: PropTypes.node
+    children: PropTypes.node
 }
 
 export default DefaultLayout
