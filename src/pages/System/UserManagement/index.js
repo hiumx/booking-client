@@ -4,23 +4,23 @@ import { useNavigate } from 'react-router-dom';
 import { isRoleExist } from '~/utils';
 
 const UserManagement = () => {
-  
-  const user = useSelector(state => state.user.userMyInfo);
-  const navigator = useNavigate();
 
-  const isAdmin = isRoleExist(user.roles, "Admin");
+    const user = useSelector(state => state.user.userMyInfo);
+    const navigator = useNavigate();
 
-  useEffect(() => {
-    if(!isAdmin) {
-      navigator("/");
-    }
-  }, []);
+    const isAdmin = isRoleExist(user.roles, "Admin");
 
-  return (
-    <div>
-      Page of administrator
-    </div>
-  )
+    useEffect(() => {
+        if (!isAdmin) {
+            navigator("/");
+        }
+    }, []);
+
+    return (
+        <div>
+            Page of administrator
+        </div>
+    )
 }
 
 export default UserManagement

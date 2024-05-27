@@ -11,16 +11,16 @@ const HotelManagement = () => {
     const isHotelManager = isRoleExist(user.roles, "Hotel manager");
 
     useEffect(() => {
-      if(!isHotelManager) {
-        navigator("/");
-      }
+        if (!isHotelManager) {
+            navigator("/");
+        }
     }, [])
-  
-  return (
-    <div>
-      Page of hotel manager
-    </div>
-  )
+
+    return (
+        <div>
+            Page of hotel manager
+        </div>
+    )
 }
 
 export default HotelManagement
