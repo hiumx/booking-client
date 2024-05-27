@@ -1,5 +1,6 @@
 import React from 'react'
 import HeaderSub from "~/layout/components/HeaderSub";
+import PropTypes from 'prop-types';
 
 const AuthLayout = ({ children }) => {
     return (
@@ -10,6 +11,10 @@ const AuthLayout = ({ children }) => {
             </div>
         </div>
     )
+}
+
+AuthLayout.propTypes = {
+    children: PropTypes.node.isRequired
 }
 
 export default AuthLayout

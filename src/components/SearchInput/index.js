@@ -3,8 +3,9 @@ import "./_search_input.scss";
 
 import { BedIcon, CalendarIcon, UserIcon } from '../Icons';
 import { DateRange } from 'react-date-range';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { format } from "date-fns";
+import PropTypes from 'prop-types';
 
 const SearchInput = ({ style }) => {
     const [dates, setDates] = useState([
@@ -144,6 +145,10 @@ const SearchInput = ({ style }) => {
             </div>
         </div>
     )
+}
+
+SearchInput.propTypes = {
+    style: PropTypes.object
 }
 
 export default SearchInput

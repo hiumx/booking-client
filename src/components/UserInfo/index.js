@@ -4,16 +4,18 @@ import "./_user_info.scss";
 import userImg from "~/assets/images/user.png";
 import { Link, useNavigate } from 'react-router-dom';
 import { HeartIcon, SignOutIcon, TripIcon, UserIcon, WalletIcon } from '../Icons';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getMyInfo } from '~/store/actions/user.action';
 import { signOut } from '~/services/access.service';
 
-const UserInfo = ({ userData }) => {
+const UserInfo = () => {
 
     const dispatch = useDispatch();
     const navigator = useNavigate("");
 
-    const name = userData?.email ? userData.email.split("@")[0] : "Your account";
+    const user = useSelector(state => state.user.userMyInfo);
+
+    const name = user?.email ? user.email.split("@")[0] : "Your account";
 
     const handleLogout = () => {
         const data = {

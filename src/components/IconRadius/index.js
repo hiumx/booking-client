@@ -1,5 +1,6 @@
 import React from 'react'
 import "./_icon_radius.scss";
+import PropTypes from 'prop-types';
 
 const IconRadius = ({ children, width, height }) => {
     return (
@@ -7,6 +8,12 @@ const IconRadius = ({ children, width, height }) => {
             {children}
         </div>
     )
+}
+
+IconRadius.propTypes = {
+    width: PropTypes.string,
+    height: PropTypes.string,
+    children: PropTypes.node
 }
 
 export default IconRadius

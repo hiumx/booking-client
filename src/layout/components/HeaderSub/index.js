@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import {     useSelector } from 'react-redux';
 import { checkObjEmpty } from '~/utils';
 
-const HeaderSub = ({ userData }) => {
+const HeaderSub = () => {
     const navigator = useNavigate();
 
     const user = useSelector(state => state.user.userMyInfo);
