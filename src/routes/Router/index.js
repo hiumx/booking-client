@@ -4,7 +4,7 @@ import {
     Route,
     Routes,
     BrowserRouter as Router,
-  } from "react-router-dom";  
+} from "react-router-dom";
 
 import ForgotPassword from "~/pages/Access/ForgotPassword";
 import Login from "~/pages/Access/Login";
@@ -18,29 +18,29 @@ import HotelManagement from "~/pages/HotelManager/HotelManagement";
 import SearchResult from '~/pages/SearchResult';
 
 const Routers = () => {
-  return (
-    <div>
-      <Router>
-      <Routes>
-        <Route path="/auth/sign-in" element={<Login />}/>
-        <Route path="/auth/sign-up" element={<Register />}/>
-        <Route path="/auth/forgot-password" element={<ForgotPassword />}/>
-        <Route path="/auth/reset-password" element={<ResetPassword />}/>
-        <Route path="/mysettings" exact element={<MySetting />} />
-        <Route path="/mysettings/:slug" element={<MySetting />} />
-        <Route path="/mysettings/:slug/:id" element={<MySettingDetail />} />
-        <Route path="/mysettings/:slug/:id" element={<MySettingDetail />} />
-        <Route path="/search-result" element={<SearchResult />} />
+    return (
+        <div>
+            <Router>
+                <Routes>
+                    <Route path="/auth/sign-in" element={<Login />} />
+                    <Route path="/auth/sign-up" element={<Register />} />
+                    <Route path="/auth/forgot-password" element={<ForgotPassword />} />
+                    <Route path="/auth/reset-password" element={<ResetPassword />} />
+                    <Route path="/mysettings" exact element={<MySetting />} />
+                    <Route path="/mysettings/:slug" element={<MySetting />} />
+                    <Route path="/mysettings/:slug/:id" element={<MySettingDetail />} />
+                    <Route path="/mysettings/:slug/:id" element={<MySettingDetail />} />
+                    <Route path="/search-result" element={<SearchResult />} />
 
-        <Route path="/system" element={<UserManagement />} />
+                    <Route path="/system" element={<UserManagement />} />
 
-        <Route path="/hotel-manager" element={<HotelManagement />} />
+                    <Route path="/hotel-manager" element={<HotelManagement />} />
 
-        <Route path="/" element={<Home />}/>
-      </Routes>
-    </Router>
-    </div>
-  )
+                    <Route path="/" element={<Home />} />
+                </Routes>
+            </Router>
+        </div>
+    )
 }
 
 export default Routers
