@@ -1,0 +1,28 @@
+.search__result__wrapper {
+    .sr__search__input__wrapper {
+        height: 40px;
+        width: 100%;
+        background-color: var(--primary-color);
+        position: relative;
+    }
+
+    .sr__body {
+        margin: 36px 14% 0;
+
+        .sr__body__title {
+            font-size: 12px;
+            color: var(--text-color);
+        }
+
+        .sr__body__desc {
+            margin-top: 10px;
+            .sr__body__num__found {
+                font-size: 20px;
+                color: var(--text-color);
+                font-weight: 600;
+                margin-bottom: 16px;
+            }
+        }
+
+    }
+}

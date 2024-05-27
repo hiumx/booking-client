@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import "./_header.scss";
 import ButtonIcon from '~/components/ButtonIcon';
 import { BedIcon, CarIcon, HelpIcon, PlaneIcon, StarIcon, TaxiIcon } from '~/components/Icons';
@@ -8,17 +8,16 @@ import UserInfo from '~/components/UserInfo';
 import Button from '~/components/Button';
 import { useNavigate } from 'react-router-dom';
 import { checkObjEmpty } from '~/utils';
-import { getMyInfo } from '~/store/actions/user.action';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
-const Header = () => {
+const Header = ({ style }) => {
   const navigator = useNavigate();
 
   const user = useSelector(state => state.user.userMyInfo);
 
   return (
-    <div className='header__wrapper'>
+    <div className='header__wrapper' style={style}>
       <div className='header__info'>
         <h5 className='header__logo' onClick={() => navigator("/")}>Booking</h5>
         <div className='header__detail'>
@@ -35,7 +34,7 @@ const Header = () => {
                 <Button title="Sign up" to="/auth/sign-up" />
                 <Button title="Sign in" to="/auth/sign-in" />
               </div>
-              : <UserInfo userData={user}/>
+              : <UserInfo userData={user} />
           }
         </div>
       </div>

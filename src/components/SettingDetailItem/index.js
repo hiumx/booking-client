@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { updateUserByField } from '~/services/user.service';
 import { useDispatch } from 'react-redux';
 import { getMyInfo } from '~/store/actions/user.action';
+import { signOut } from '~/services/access.service';
 
 const SettingDetailItem = ({ title, description, items = [], image = false }) => {
 
@@ -17,9 +18,17 @@ const SettingDetailItem = ({ title, description, items = [], image = false }) =>
         setTypeCustom(title);
 
         if (title === "Active sessions") {
-            localStorage.removeItem("token");
-            dispatch(getMyInfo());
-            navigator("/");
+            signOut({
+                token: localStorage.getItem("token")
+            }).then(res => {
+                if(res?.code === 1000) {
+                    localStorage.removeItem("token");
+                    dispatch(getMyInfo());
+                    navigator("/");
+                }
+            }).catch(error => {
+                console.error(error);
+            })
         }
 
         if (field) {
