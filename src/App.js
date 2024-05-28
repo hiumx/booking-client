@@ -1,6 +1,7 @@
 
-import "~/styles/index.scss";
+import "~/assets/styles/index.scss";
 import Routers from "./routes/Router";
+import useAuth from "./hooks/useAuth";
 
 function App() {
   

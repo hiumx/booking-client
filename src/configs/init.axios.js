@@ -20,14 +20,17 @@ instance.interceptors.request.use(
     }
   );
 
-// instance.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
-
-
 instance.interceptors.response.use(
     function(response) {
         return response?.data;
     }, function (error) {
         const err = error?.response?.data;
+        console.log(err);
+        if(err.code === 1009) {
+          localStorage.removeItem("persist:user");
+          localStorage.removeItem("token");
+          window.location.href = "/auth/sign-in";
+        }
         return err;
       }
 );

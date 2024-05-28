@@ -1,5 +1,4 @@
-import Banner from '~/components/Banner'
-import DefaultLayout from '~/layout/DefaultLayout'
+import DefaultLayout from '~/layouts/DefaultLayout'
 
 const Home = () => {
 

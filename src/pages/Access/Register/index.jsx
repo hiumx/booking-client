@@ -16,7 +16,7 @@ const Register = () => {
 
     const user = useSelector(state => state.user.userMyInfo);
     if(!checkObjEmpty(user)) {
-        navigator("/mysettings");
+        navigator("/my-settings");
     }
 
     const handleConfirmSignUp = () => {

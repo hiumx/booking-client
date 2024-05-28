@@ -1,9 +1,11 @@
 
 import {combineReducers} from 'redux';
 import userReducer from './user.reducer';
+import typeHotelReducer from './typeHotel.reducer';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
+import convenientReducer from './convenient.reduce';
 
 const commonConfig = {
     storage,
@@ -17,8 +19,24 @@ const userConfig = {
     
 }
 
+const typeHotelConfig = {
+    ...commonConfig,
+    key: "typeHotel",
+    whitelist: ["typesHotel"]
+    
+}
+
+const convenientConfig = {
+    ...commonConfig,
+    key: "convenient",
+    whitelist: ["convenient"]
+    
+}
+
 const rootReducer = combineReducers({
-    user: persistReducer(userConfig, userReducer)
+    user: persistReducer(userConfig, userReducer),
+    typeHotel: persistReducer(typeHotelConfig, typeHotelReducer),
+    convenient: persistReducer(convenientConfig, convenientReducer),
 });
 
 export default rootReducer;

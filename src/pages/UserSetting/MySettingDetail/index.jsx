@@ -1,6 +1,6 @@
 import React from 'react'
 import "./_my_setting_detail.scss";
-import HeaderSub from '~/layout/components/HeaderSub';
+import HeaderSub from '~/layouts/components/HeaderSub';
 import { Link, useParams } from 'react-router-dom';
 import IconRadius from '~/components/IconRadius';
 import { PlaneDepartureIcon, SecurityIcon, UserIcon, WalletIcon } from '~/components/Icons';
@@ -11,7 +11,7 @@ const MySettingDetail = () => {
     const { slug, id } = useParams();
 
     const user = useSelector(state => state.user.userMyInfo);
-    const {name, email, phone, dob, gender, address, image} = user;
+    const {name, email, phone, dob, gender, address} = user;
 
     return (
         <>
@@ -21,7 +21,7 @@ const MySettingDetail = () => {
                     <div className='col-lg-4'>
                         <ul className='setting__detail__list'>
                             <li className={slug === "personal" ? "setting__detail__item setting__detail__item__active" : "setting__detail__item"}>
-                                <Link to={`/mysettings/personal/${id}`} className='setting__detail__item__link'>
+                                <Link to={`/my-settings/personal/${id}`} className='setting__detail__item__link'>
                                     <IconRadius width="50px" height="50px">
                                         <UserIcon width='20px' height='20px' fill="#57c1cd" />
                                     </IconRadius>
@@ -29,7 +29,7 @@ const MySettingDetail = () => {
                                 </Link>
                             </li>
                             <li className={slug === "security" ? "setting__detail__item setting__detail__item__active" : "setting__detail__item"}>
-                                <Link to={`/mysettings/security/${id}`} className='setting__detail__item__link'>
+                                <Link to={`/my-settings/security/${id}`} className='setting__detail__item__link'>
                                     <IconRadius width="50px" height="50px">
                                         <SecurityIcon width='20px' height='20px' fill="#57c1cd" />
                                     </IconRadius>
@@ -37,7 +37,7 @@ const MySettingDetail = () => {
                                 </Link>
                             </li>
                             <li className={slug === "payment-details" ? "setting__detail__item setting__detail__item__active" : "setting__detail__item"}>
-                                <Link to={`/mysettings/payment-details/${id}`} className='setting__detail__item__link'>
+                                <Link to={`/my-settings/payment-details/${id}`} className='setting__detail__item__link'>
                                     <IconRadius width="50px" height="50px">
                                         <WalletIcon width='20px' height='20px' fill="#57c1cd" />
                                     </IconRadius>
@@ -45,7 +45,7 @@ const MySettingDetail = () => {
                                 </Link>
                             </li>
                             <li className={slug ==="other-travellers" ? "setting__detail__item setting__detail__item__active" : "setting__detail__item"}>
-                                <Link to={`/mysettings/other-travellers/${id}`} className='setting__detail__item__link'>
+                                <Link to={`/my-settings/other-travellers/${id}`} className='setting__detail__item__link'>
                                     <IconRadius width="50px" height="50px">
                                         <PlaneDepartureIcon width='20px' height='20px' fill="#57c1cd" />
                                     </IconRadius>

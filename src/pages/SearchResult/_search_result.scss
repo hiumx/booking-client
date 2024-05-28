@@ -16,13 +16,43 @@
 
         .sr__body__desc {
             margin-top: 10px;
+
+            .sr__body__filter__wrapper {
+                border: 1px solid var(--border-color);
+                border-radius: 7px;
+
+                .sr__body__filter__by {
+                    font-size: 16px;
+                    color: var(--text-color);
+                    font-weight: 600;
+                    padding: 6px;
+                    border-bottom: 1px solid var(--border-color);
+                }
+            }
+
             .sr__body__num__found {
                 font-size: 20px;
                 color: var(--text-color);
                 font-weight: 600;
                 margin-bottom: 16px;
             }
-        }
 
+            .sr__body__sort {
+                border: 1px solid var(--border-color);
+                padding: 4xp 8px;
+                padding: 4px 8px;
+                border-radius: 20px;
+                display: inline-block;
+
+                .sr__body__sort__select {
+                    border: none;
+                    outline: none;
+                    font-size: 14px;
+                    color: var(--text-color);
+                    font-weight: 500;
+                    margin-left: 4px;
+                }
+            }
+        }
     }
 }

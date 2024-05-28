@@ -227,3 +227,55 @@ export const ChevronRightIcon = ({ width = "16px", height = "16px", className = 
     )
 }
 
+export const AngleDownIcon = ({ width = "16px", height = "16px", className = "", fill = "" }) => {
+    return (
+        <svg
+            width={width}
+            height={height}
+            className={className}
+            fill={fill}
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+        </svg>
+    )
+}
+
+export const AngleUpIcon = ({ width = "16px", height = "16px", className = "", fill = "" }) => {
+    return (
+        <svg
+            width={width}
+            height={height}
+            className={className}
+            fill={fill}
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z" />
+        </svg>
+    )
+}
+
+export const ArrowUpDownIcon = ({ width = "16px", height = "16px", className = "", fill = "" }) => {
+    return (
+        <svg
+            width={width}
+            height={height}
+            className={className}
+            fill={fill}
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <path d="M137.4 502.6c12.5 12.5 32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 402.7V288H544c17.7 0 32-14.3 32-32s-14.3-32-32-32H448V109.3l41.4 41.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L384 109.3V224H192 128 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96V402.7L86.6 361.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l96 96zM128 192h64V64c0-17.7-14.3-32-32-32s-32 14.3-32 32V192zM448 320H384V448c0 17.7 14.3 32 32 32s32-14.3 32-32V320z" />
+        </svg>
+    )
+}
+
+export const HeartSolidIcon = ({ width = "16px", height = "16px", className = "", fill = "" }) => {
+    return (
+        <svg
+            width={width}
+            height={height}
+            className={className}
+            fill={fill}
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+        </svg>
+    )
+}
+
