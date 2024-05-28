@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import "./_my_setting.scss";
-import HeaderSub from '~/layout/components/HeaderSub';
+import HeaderSub from '~/layouts/components/HeaderSub';
 import SettingItem from '~/components/SettingItem';
 import { PlaneDepartureIcon, SecurityIcon, UserIcon, WalletIcon } from '~/components/Icons';
 import IconRadius from '~/components/IconRadius';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { checkObjEmpty } from '~/utils';
 
 const MySetting = () => {
+
     const user = useSelector(state => state.user.userMyInfo);
     const navigator = useNavigate();
-    const {id} = user;
+    const { id } = user;
 
-    if(checkObjEmpty(user))
-        navigator("/");
+    useEffect(() => {
+        if (checkObjEmpty(user))
+            navigator("/");
+    }, []);
 
     return (
         <>
@@ -30,7 +34,7 @@ const MySetting = () => {
                             title='Personal details'
                             description="Update your information and find out how it's used."
                             ext='Manage personal details'
-                            to={`/mysettings/personal/${id}`}
+                            to={`/my-settings/personal/${id}`}
                         >
                             <IconRadius width="50px" height="50px">
                                 <UserIcon width='20px' height='20px' fill="#b99e9e" className='setting__icon' />
