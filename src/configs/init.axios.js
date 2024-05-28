@@ -29,7 +29,7 @@ instance.interceptors.response.use(
         if(err.code === 1009) {
           localStorage.removeItem("persist:user");
           localStorage.removeItem("token");
-          window.location.href = "/auth/sign-in";
+          window.location.href = "/";
         }
         return err;
       }
