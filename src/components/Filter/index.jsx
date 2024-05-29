@@ -26,11 +26,23 @@ const Filter = ({ title, items = [], isList = true }) => {
                 ?
                 <>
                     <ul className='filter__option__list'>
-                        {listItems?.map(item => (
-                            <li className='filter__option__item'>
+                        {listItems?.map((item, idx) => (
+                            <li key={idx} className='filter__option__item'>
                                 <div className='filter__item__input__name'>
-                                    <input type='checkbox' className='filter__item__input' name='filter-input' />
-                                    <p className='filter__item__name'>{item.name}</p>
+                                    <input
+                                        type='checkbox'
+                                        id={`filter-checkbox-${title.slice(0, 2)}-${idx}`}
+                                        className='filter__item__input'
+                                        name='filter-input'
+                                    />
+
+                                    <label
+                                        htmlFor={`filter-checkbox-${title.slice(0, 2)}-${idx}`}
+                                        className='filter__item__name'
+                                    >
+                                        {item.name}
+                                    </label>
+                                    
                                 </div>
                                 <p className='filter__item__number'>{item.quantity}</p>
                             </li>
@@ -54,7 +66,7 @@ const Filter = ({ title, items = [], isList = true }) => {
                 </>
                 :
                 <div className='filter__slider__wrapper'>
-                    <p className='filter__slider__value'>USD$ <b>{value[0]}</b> - USD$ <b>{value[1]}</b></p>
+                    <p className='filter__slider__value'>US$ <b>{value[0]}</b> - US$ <b>{value[1]}</b></p>
                     <Slider
                         range
                         min={0}
