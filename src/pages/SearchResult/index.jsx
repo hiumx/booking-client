@@ -8,12 +8,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTypesHotel } from '~/store/actions/typeHotel.action';
 import { getConvenient } from '~/store/actions/convenient.action';
 import { ArrowUpDownIcon } from '~/components/Icons';
+import { getDataSearchHotel } from '~/services/hotel.service';
+import HashLoader from "react-spinners/HashLoader";
 
 const SearchResult = () => {
+
+	const [hotelData, setHotelData] = useState([]);
+	// const [loading, setLoading] = useState(true);
 
 	const dispatch = useDispatch();
 	const typesHotel = useSelector(state => state.typeHotel.typesHotel);
 	const convenient = useSelector(state => state.convenient.convenient);
+
+
 
 	const items = {
 		previousFilter: [
@@ -52,7 +59,19 @@ const SearchResult = () => {
 
 	useEffect(() => {
 		dispatch(getTypesHotel());
-		dispatch(getConvenient())
+		dispatch(getConvenient());
+
+		getDataSearchHotel()
+			.then(res => {
+				if (res?.code === 1000) {
+					setTimeout(() => {
+						setHotelData(res?.metadata);
+					}, 850)
+				}
+			})
+			.catch(error => {
+				console.error(error);
+			});
 	}, []);
 
 	return (
@@ -77,22 +96,40 @@ const SearchResult = () => {
 					<div className='col-lg-9'>
 						<h5 className='sr__body__num__found'>Hoi An: 633 properties found</h5>
 						<div className='sr__body__sort'>
-							<ArrowUpDownIcon width='14px' height='14px' fill='#1a1a1a'/>
+							<ArrowUpDownIcon width='14px' height='14px' fill='#1a1a1a' />
 							<select className='sr__body__sort__select'>
 								<option>Our top picks</option>
 								<option>Price (lowest first)</option>
 								<option>Property rating (high to low)</option>
 							</select>
 						</div>
-						<HotelResultItem />
-						<HotelResultItem />
-						<HotelResultItem />
-						<HotelResultItem />
-						<HotelResultItem />
-						<HotelResultItem />
+						<ul className='sr__list__result'>
+							{hotelData.length > 0 ? hotelData?.map((hotel, idx) => (
+								<li key={idx}>
+									<HotelResultItem data={hotel} />
+
+								</li>
+							))
+								:
+								<HashLoader
+									color="#e89fe8"
+									loading={true}
+									className='sr__loader'
+									size={40}
+									aria-label="Loading Spinner"
+									data-testid="loader"
+									
+								/>
+							}
+
+						</ul>
+
 					</div>
 				</div>
 			</div>
+
+
+
 		</div>
 	)
 }

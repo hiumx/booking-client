@@ -53,6 +53,17 @@
                     margin-left: 4px;
                 }
             }
+
+            .sr__list__result {
+                position: relative;
+                height: 100%;
+                .sr__loader {
+                    position: absolute;
+                    top: 26%;
+                    left: 50%;
+                    transform: rotate(134deg) !important;
+                }
+            }
         }
     }
 }

@@ -2,15 +2,6 @@
     position: relative;
     display: inline-block;
 
-
-    &:hover {
-        .mdb__more__detail {
-            display: block;
-            transform: translateY(-20px);
-            opacity: 1;
-        }
-    }
-
     .mdb__title {
         font-size: 12px;
         padding: 2px 6px;
@@ -18,42 +9,66 @@
         background-color: #008234;
         border-radius: 4px;
         margin: 10px 0;
-    }
-
-    .mdb__more__detail {
-        position: absolute;
-        top: 60px;
-        left: -122%;
-        min-width: 370px;
-        max-width: 400px;
-        background-color: #fff;
-        z-index: 1;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        padding: 16px;
-        border-radius: 7px;
-        opacity: 0;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-
-        .mdb__more__detail__title {
-            font-size: 14px;
-            color: var(--text-color);
-            margin-bottom: 10px;
-        }
+        position: relative;
 
         .mdb__more__detail__description {
             font-size: 12px;
             color: var(--text-color);
         }
 
-        &::before {
+        .mdb__more__detail {
+            position: absolute;
+            top: 70px;
+            left: -122%;
+            min-width: 370px;
+            max-width: 400px;
+            background-color: #fff;
+            z-index: 1;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            padding: 16px;
+            border-radius: 7px;
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            visibility: hidden;
+    
+            .mdb__more__detail__title {
+                font-size: 14px;
+                color: var(--text-color);
+                margin-bottom: 10px;
+            }
+    
+            &::before {
+                content: "";
+                position: absolute;
+                top: -8px;
+                left: 48%;
+                border-top: 4px solid transparent;
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+                border-bottom: 4px solid #fff;
+            }
+    
+        }
+
+        &:hover {
+            .mdb__more__detail {
+                display: block;
+                transform: translateY(-40px);
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        &::after {
             content: "";
             position: absolute;
-            top: -10px;
-            left: 48%;
-            border-top: 5px solid transparent;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-bottom: 5px solid #fff;
+            top: 19px;
+            left: 0;
+            width: 100%;
+            height: 14px;
+            background-color: transparent;
         }
+
     }
+
 }

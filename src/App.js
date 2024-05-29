@@ -1,13 +1,14 @@
 
 import "~/assets/styles/index.scss";
 import Routers from "./routes/Router";
-import useAuth from "./hooks/useAuth";
-
+import { Scrollbars } from 'react-custom-scrollbars-2';
 function App() {
-  
+
   return (
-    <>  
-      <Routers />
+    <>
+      {/* <Scrollbars style={{width: '100%', height: "100vh" }}> */}
+        <Routers />
+      {/* </Scrollbars> */}
     </>
   );
 }

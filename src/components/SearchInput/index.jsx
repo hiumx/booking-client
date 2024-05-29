@@ -62,8 +62,12 @@ const SearchInput = ({ style }) => {
             </div>
             <div className='search__box__item'>
                 <UserIcon fill='#453030' />
-                <span className='search__label header__search__text' onClick={() => setIsOpenOptions(!isOpenOptions)}
-                >{`${options.adult} adult · ${options.children} children · ${options.room} room`}</span>
+                
+                <span className='search__label header__search__text'
+                    onClick={() => setIsOpenOptions(!isOpenOptions)}
+                >
+                    {`${options.adult} adult · ${options.children} children · ${options.room} room`}
+                </span>
                 {isOpenOptions && (
                     <div className="options">
                         <div className="option__item">
