@@ -1,0 +1,164 @@
+.search__result__detail__wrapper {
+
+    .srd__search__input__wrapper {
+        height: 40px;
+        width: 100%;
+        background-color: var(--primary-color);
+        position: relative;
+    }
+
+    .srd__content {
+        padding: 32px 14% 0;
+
+        .srd__overview {
+
+            .srd__overview__title__star {
+                display: flex;
+                align-items: center;
+
+                .srd__overview__title {
+                    font-size: 24px;
+                    color: var(--text-color);
+                    font-weight: 600;
+                    margin: 4px 0;
+                    margin-right: 8px;
+                }
+            }
+
+            .srd__overview__location,
+            .srd__overview__deliver {
+                display: flex;
+                align-items: center;
+                margin-bottom: 4px;
+
+                .srd__overview__location__detail {
+                    margin-left: 4px;
+                    font-size: 14px;
+                    color: var(--text-color);
+
+                    .srd__overview__location__link {
+                        text-decoration: none;
+                        font-weight: 600;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+
+            .srd__overview__deliver {
+                margin-bottom: 16px;
+
+                .srd__overview__deliver__detail {
+                    margin-left: 6px;
+                    color: #008234;
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .srd__images {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            .srd__primary__img__wrapper {
+                width: 50%;
+                border-right: 1px solid #ffff;
+
+                .srd__primary__img {
+                    width: 100%;
+                }
+            }
+
+            .srd__secondary__img__wrapper {
+                width: 50%;
+                display: flex;
+                flex-wrap: wrap;
+
+                .srd__img__wrapper {
+                    width: 50%;
+                    border: 1px solid #fff;
+
+                    .srd__secondary__img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        .srd__feedback__near {
+            margin-top: 16px;
+
+            .srd__reviews__wrapper {
+                margin-bottom: 8px;
+            }
+
+            .srd__amenities {
+
+                h4 {
+                    font-size: 18px;
+                    font-weight: 600;
+                    margin: 14px 0 8px;
+                }
+
+                .srd__amenities__list {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+
+                    .srd__amenities__item {
+                        width: 50%;
+                    }
+                }
+            }
+
+            .srd__near__location {
+                h4 {
+                    font-size: 18px;
+                    font-weight: 600;
+                    margin-bottom: 12px;
+                }
+
+                .srd__near__location__list {
+                    margin-top: 16px;
+                    .srd__near__location__item {
+                        display: flex;
+                        align-items: center;
+                        margin: 4px 0;
+    
+                        .srd__nl__name {
+                            display: flex;
+                            align-items: center;
+                            flex: 1;
+    
+                            p {
+                                margin-left: 4px;
+                                font-size: 14px;
+                                color: var(--text-color);
+                            }
+                        }
+    
+                        .srd__nl__time__drive {
+                            font-size: 12px;
+                            color: #666;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .srd__see__all {
+        font-size: 14px;
+        width: max-content;
+        color: #1568e3;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

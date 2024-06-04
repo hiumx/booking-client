@@ -3,18 +3,10 @@
 
 @import 'react-date-range/dist/styles.css'; // main style file
 @import 'react-date-range/dist/theme/default.css';
+@import 'react-toastify/dist/ReactToastify.css';
 
 // @import 'font-awesome/css/font-awesome.min.css';
 // @import 'bootstrap/dist/css/bootstrap.css';
-
-:root {
-  --primary-color: #013b94;
-  --black-color: #000;
-  --white-color: #fff;
-  --text-color: #1a1a1a;
-  --text-hover-color: #006ce4;
-  --border-color: #e7e7e7;
-}
 
 * {
   box-sizing: border-box;

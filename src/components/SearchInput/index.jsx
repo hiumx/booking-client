@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./_search_input.scss";
-
+import { getResultSearchHotel } from '~/store/actions/hotel.action';
+import { checkObjEmpty } from '~/utils';
 import { BedIcon, CalendarIcon, UserIcon } from '../Icons';
+
 import { DateRange } from 'react-date-range';
 import { useNavigate } from 'react-router-dom';
 import { format } from "date-fns";
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 
-const SearchInput = ({ style }) => {
+const SearchInput = ({ style, searchValue = {}, setIsNotFound = () => {} }) => {
     const [dates, setDates] = useState([
         {
             startDate: new Date(),
@@ -18,31 +22,76 @@ const SearchInput = ({ style }) => {
     const [isOpenDate, setIsOpenDate] = useState(false);
     const [isOpenOptions, setIsOpenOptions] = useState(false);
     const [options, setOptions] = useState({
-        adult: 1,
+        adult: 2,
         children: 0,
         room: 1,
     });
+    const [location, setLocation] = useState("");
 
     const navigator = useNavigate();
+    const dispatch = useDispatch();
 
     const handleOption = (name, operation) => {
         setOptions((prev) => {
             return {
                 ...prev,
-                [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
+                [name]: operation === "i" ? Number(options[name]) + 1 : Number(options[name]) - 1,
             };
         });
     };
 
     const handleClickSearch = () => {
-        navigator("/search-result");
+        const { startDate, endDate } = dates[0];
+        const payload = {
+            location,
+            startDate,
+            endDate,
+            options
+        }
+
+        if (location === "") {
+            toast.error("Please enter location!");
+        } else if (startDate?.getDate() === endDate?.getDate()) {
+            toast.error("Please choose range of date!");
+        } else {
+            setIsNotFound(false);
+            navigator(
+                `/search-result?location=${location}&startDate=${startDate}&endDate=${endDate}&adult=${options.adult}&children=${options.children}&room=${options.room}`
+            );
+            setIsOpenDate(false);
+            setIsOpenOptions(false);
+            dispatch(getResultSearchHotel(payload));
+        }
     }
+
+    useEffect(() => {
+        if (!checkObjEmpty(searchValue)) {
+            const { location, startDate, endDate, adult, children, room } = searchValue;
+
+            setLocation(location);
+            setDates([{
+                startDate: new Date(startDate),
+                endDate: new Date(endDate),
+                key: 'selection'
+            }]);
+            setOptions({
+                adult, children, room
+            });
+        }
+    }, [])
+
 
     return (
         <div className='banner__search__box' style={style}>
             <div className='search__box__item'>
                 <BedIcon fill='#453030' />
-                <input type='text' className='search__input__where' placeholder='Where are you going?' />
+                <input
+                    type='text'
+                    className='search__input__where'
+                    placeholder='Where are you going?'
+                    value={location}
+                    onChange={e => setLocation(e.target.value)}
+                />
             </div>
             <div className='search__box__item'>
                 <CalendarIcon fill='#453030' />
@@ -62,7 +111,7 @@ const SearchInput = ({ style }) => {
             </div>
             <div className='search__box__item'>
                 <UserIcon fill='#453030' />
-                
+
                 <span className='search__label header__search__text'
                     onClick={() => setIsOpenOptions(!isOpenOptions)}
                 >
@@ -147,12 +196,28 @@ const SearchInput = ({ style }) => {
             <div>
                 <button className='search__box__btn' onClick={handleClickSearch}>Search</button>
             </div>
+
+            <ToastContainer
+                position="bottom-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+                style={{fontSize: '14px'}}
+            />
         </div>
     )
 }
 
 SearchInput.propTypes = {
-    style: PropTypes.object
+    style: PropTypes.object,
+    searchValue: PropTypes.object,
+    setIsNotFound: PropTypes.func
 }
 
 export default SearchInput

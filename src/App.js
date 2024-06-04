@@ -1,5 +1,5 @@
 
-import "~/assets/styles/index.scss";
+import "~/styles/index.scss";
 import Routers from "./routes/Router";
 import { Scrollbars } from 'react-custom-scrollbars-2';
 function App() {
