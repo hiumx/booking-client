@@ -1,0 +1,11 @@
+.amenity__wrapper {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+
+    p {
+        font-size: 14px;
+        color: var(--text-color);
+        margin-left: 10px;
+    }
+}

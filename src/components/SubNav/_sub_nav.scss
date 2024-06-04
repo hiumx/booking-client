@@ -1,0 +1,61 @@
+.sub__nav__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+
+    .sub__nav__hotel__name {
+        display: flex;
+        align-items: center;
+
+        .sub__nav__back__btn {
+            border: none;
+            outline: none;
+            background-color: var(--white-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 2px .75rem rgba(12, 14, 28, .08);
+    
+            &:hover {
+                background-color: #ebf4fd;
+            }
+        }
+
+        h6 {
+            margin-left: 8px;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+    }
+
+    .sub__nav__share__save {
+        display: flex;
+        align-items: center;
+
+        .sub__nav__share {
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.85;
+            }
+        }
+        
+        .sub__nav__save__btn {
+            border: 1px solid #caccd2;
+            padding: 2px 7px;
+            border-radius: 16px;
+            margin-left: 12px;
+            cursor: pointer;
+            
+            .sub__nav__save__text {
+                margin-left: 4px;
+                font-size: 14px;
+            }
+
+            &:hover {
+                background-color: #ebf4fd;
+            }
+        }
+    }
+}
