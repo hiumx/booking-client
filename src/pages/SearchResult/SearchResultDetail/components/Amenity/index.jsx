@@ -2,7 +2,7 @@ import React from 'react'
 import "./_amenity.scss";
 import PropTypes from 'prop-types';
 import { capitalizeFirstLetter } from '~/utils';
-import { AirConditioningIcon, AirportTransferIcon, BarIcon, CarIcon, PoolIcon, SpaIcon, WifiIcon } from '~/components/Icons';
+import { AirConditioningIcon, AirportTransferIcon, BarIcon, BreakFastIcon, BreakfastIcon, CarIcon, ElevatorIcon, PoolIcon, SpaIcon, SportCenterIcon, WifiIcon } from '~/components/Icons';
 
 const iconMap = {
     WifiIcon,
@@ -11,10 +11,13 @@ const iconMap = {
     AirConditioningIcon,
     AirportTransferIcon,
     FreeParkingIcon: CarIcon,
-    BarIcon
+    BarIcon,
+    SportCenterIcon,
+    ElevatorIcon,
+    BreakfastIcon
 };
 
-const Amenity = ({ title }) => {
+const Amenity = ({ title, style = { padding: '4px 0' } }) => {
     const items = title.split(" ");
     let IconElement = "";
     items.forEach(item => {
@@ -24,7 +27,7 @@ const Amenity = ({ title }) => {
     const IconComponent = iconMap[IconElement];
     console.log(IconElement);
     return (
-        <div className='amenity__wrapper'>
+        <div className='amenity__wrapper' style={style}>
             <div>
                 {
                     IconComponent
@@ -38,7 +41,8 @@ const Amenity = ({ title }) => {
 }
 
 Amenity.propTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    style: PropTypes.object
 }
 
 export default Amenity
