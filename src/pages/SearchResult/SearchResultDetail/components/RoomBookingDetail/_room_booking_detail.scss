@@ -1,0 +1,133 @@
+.room__booking__detail__wrapper {
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    margin: 8px 0;
+
+    .rbd__img__wrapper {
+        .rbd__img {
+            width: 100%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            height: 186px;
+        }
+    }
+
+
+    .rbd__description {
+        padding: 12px;
+
+        .rbd__description__name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--secondary-text-color);
+        }
+
+        .rbd__description__refundable__deadline {
+            margin: 4px 0;
+
+            .rbd__description__refundable {
+                display: flex;
+                align-items: center;
+
+                .rbd__description__text {
+                    padding: 0;
+                    font-size: 14px;
+                    color: #227950;
+                    margin-right: 6px;
+                }
+
+                .rbd__exclamation__icon {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .rbd__description__deadline {
+            font-size: 12px;
+        }
+    }
+
+}
+
+.rdb__balance {
+    .rbd__extra {
+        border-top: 1px solid var(--border-color);
+        padding: 12px;
+
+        .rdb__extra__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .rdb__extra__title {
+                font-size: 14px;
+            }
+
+            .rdb__extra__price {
+                font-size: 12px;
+            }
+
+        }
+
+        .rbd__extra__list {
+            .rbd__extra__item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-size: 14px;
+
+                p {
+                    font-weight: 600;
+                }
+
+                .rbd__extra__radio {
+                    display: flex;
+                    align-items: center;
+
+                    label {
+                        margin-left: 6px;
+                    }
+                }
+            }
+        }
+    }
+
+    .rdb__checkout {
+        padding: 12px;
+
+        .rdb__checkout__price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #5458c1;
+        }
+
+        .rdb__checkout__detail {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .rdb__checkout__total__price {
+                p {
+                    font-size: 12px;
+                }
+            }
+
+            .rdb__checkout__reserve {
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+
+                p {
+                    font-size: 11px;
+                    color: #a7183c;
+                    margin-bottom: 4px;
+                }
+
+                .rdb__checkout__reserve__btn {
+                    font-size: 15px;
+                    border-radius: 17px;
+                }
+            }
+        }
+    }
+}

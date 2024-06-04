@@ -9,14 +9,29 @@ import ReviewFeedback from '~/components/ReviewFeedback';
 import Amenity from './components/Amenity';
 import { Link } from 'react-router-dom';
 import SimpleMap from '~/components/SimpleMap';
+import LazyLoad from 'react-lazyload';
+import RoomBookingDetail from './components/RoomBookingDetail';
+import SeeMore from '~/components/SeeMore';
+
+const reviewFake = [
+    {
+        point: 9.0
+    }
+];
+
+const imagesFake = [
+    "https://d8271hh5ynwda.cloudfront.net/1716947029239-450541293.jpg",
+    "https://d8271hh5ynwda.cloudfront.net/1716947028892-450541292.jpg",
+    "https://d8271hh5ynwda.cloudfront.net/1716947028264-450537385.jpg",
+    "https://d8271hh5ynwda.cloudfront.net/1716947026990-20964731.jpg"
+];
+
+const amenities = [
+    "Pool", "Spa", "Air conditioning", "Wifi", "Bar", "Free parking",
+    "Airport transfer", "Breakfast", "Elevator", "Sport center"
+];
 
 const SearchResultDetail = () => {
-    const reviewFake = [
-        {
-            point: 9.0
-        }
-    ]
-    const amenities = ["Pool", "Spa", "Air conditioning", "Wifi", "Bar", "Free parking", "Airport transfer"];
     return (
         <div className='search__result__detail__wrapper'>
             <Header style={{ padding: '0 14%' }} />
@@ -54,48 +69,33 @@ const SearchResultDetail = () => {
 
                 <div className='srd__images'>
                     <div className='srd__primary__img__wrapper'>
-                        <img
-                            src='https://d8271hh5ynwda.cloudfront.net/1716947029584-450541386.jpg'
-                            alt='hotel-img'
-                            className='srd__primary__img'
-                        />
+                        <LazyLoad height="362px">
+                            <img
+                                src='https://d8271hh5ynwda.cloudfront.net/1716947029584-450541386.jpg'
+                                alt='hotel-img'
+                                className='srd__primary__img'
+                            />
+                        </LazyLoad>
                     </div>
-                    <div className='srd__secondary__img__wrapper'>
-                        <div className='srd__img__wrapper'>
-                            <img
-                                src='https://d8271hh5ynwda.cloudfront.net/1716947029239-450541293.jpg'
-                                alt='hotel-img'
-                                className='srd__secondary__img'
-                            />
-                        </div>
-                        <div className='srd__img__wrapper'>
-                            <img
-                                src='https://d8271hh5ynwda.cloudfront.net/1716947028892-450541292.jpg'
-                                alt='hotel-img'
-                                className='srd__secondary__img'
-                            />
-                        </div>
-                        <div className='srd__img__wrapper'>
-                            <img
-                                src='https://d8271hh5ynwda.cloudfront.net/1716947028264-450537385.jpg'
-                                alt='hotel-img'
-                                className='srd__secondary__img'
-                            />
-                        </div>
-                        <div className='srd__img__wrapper'>
-                            <img
-                                src='https://d8271hh5ynwda.cloudfront.net/1716947026990-20964731.jpg'
-                                alt='hotel-img'
-                                className='srd__secondary__img'
-                            />
-                        </div>
-                    </div>
+                    <ul className='srd__secondary__img__wrapper'>
+                        {imagesFake?.map((image, idx) => (
+                            <div className='srd__img__wrapper'>
+                                <LazyLoad key={idx} height="180px">
+                                    <img
+                                        src={image}
+                                        alt='hotel-img'
+                                        className='srd__secondary__img'
+                                    />
+                                </LazyLoad>
+                            </div>
+                        ))}
+                    </ul>
                 </div>
                 <div className='srd__feedback__near row'>
                     <div className='col-lg-8'>
                         <div className='srd__reviews__wrapper'>
                             <ReviewFeedback reviews={reviewFake} />
-                            <p className='srd__see__all' to="#">See all 164 reviews</p>
+                            <SeeMore text="See all 164 reviews" />
                         </div>
                         <div className='srd__amenities'>
                             <h4>Popular amenities</h4>
@@ -134,8 +134,15 @@ const SearchResultDetail = () => {
                                 <p className='srd__nl__time__drive'>6 min drive</p>
                             </li>
                         </ul>
-                        <p className='srd__see__all' to="#">See all</p>
+                        <SeeMore text="See all" />
                     </div>
+                </div>
+                <div className='row'>
+                    {[1, 2, 3, 4, 5, 6].map((item, idx) => (
+                        <div key={idx} className='col-lg-4'>
+                            <RoomBookingDetail data={item} />
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

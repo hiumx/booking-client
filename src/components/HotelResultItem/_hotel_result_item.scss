@@ -94,18 +94,25 @@
             flex-direction: column;
             align-items: end;
 
-            .hri__evaluate__comfort {
-                float: right;
-                font-size: 14px;
-                color: var(--text-hover-color);
-                font-weight: 600;
-                margin: 4px 0;
-                cursor: pointer;
-
-                &:hover {
-                    text-decoration: underline;
+            .hri__evaluate__reviews {
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                
+                .hri__evaluate__comfort {
+                    float: right;
+                    font-size: 14px;
+                    color: var(--text-hover-color);
+                    font-weight: 600;
+                    margin: 4px 0;
+                    cursor: pointer;
+    
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 }
             }
+
 
             .hri__evaluate__link {
                 border: none;

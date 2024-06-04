@@ -1,0 +1,17 @@
+.see__more__wrapper {
+    display: flex;
+    align-items: center;
+
+    .see__more__all {
+        font-size: 14px;
+        width: max-content;
+        color: #1568e3;
+        cursor: pointer;
+        margin-right: 2px;
+    
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+}

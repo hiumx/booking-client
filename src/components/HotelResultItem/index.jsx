@@ -72,7 +72,7 @@ const HotelResultItem = ({ data, options = {} }) => {
                                 </p>
                             </div>
                             <div className='hri__evaluate'>
-                                <div onClick={() => navigator(`/search-result/${id}`)}>
+                                <div className='hri__evaluate__reviews' onClick={() => navigator(`/search-result/${id}`)}>
                                     <ReviewFeedback reviews={reviews} />
                                     <h6 className='hri__evaluate__comfort'>Comfort 10</h6>
                                 </div>
