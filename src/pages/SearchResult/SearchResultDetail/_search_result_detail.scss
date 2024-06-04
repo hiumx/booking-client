@@ -1,5 +1,7 @@
 .search__result__detail__wrapper {
 
+    margin-bottom: 50px;
+
     .srd__search__input__wrapper {
         height: 40px;
         width: 100%;
@@ -90,7 +92,7 @@
         }
 
         .srd__feedback__near {
-            margin-top: 16px;
+            margin: 16px 0;
 
             .srd__reviews__wrapper {
                 margin-bottom: 8px;
@@ -151,14 +153,4 @@
         }
     }
 
-    .srd__see__all {
-        font-size: 14px;
-        width: max-content;
-        color: #1568e3;
-        cursor: pointer;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
 }
