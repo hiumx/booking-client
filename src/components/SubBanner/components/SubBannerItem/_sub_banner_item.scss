@@ -1,0 +1,17 @@
+.sub__banner__item__wrapper {
+    background-color: #a1122c;
+    margin: 0 8px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    padding: 36px 8px;
+
+    .sbi__icon__wrapper {
+        padding: 0 24px 0 16px;
+    }
+
+    .sbi__title {
+        font-size: 14px;
+        font-weight: 300;
+    }
+}
