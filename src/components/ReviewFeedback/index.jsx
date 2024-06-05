@@ -3,7 +3,7 @@ import "./_review_feedback.scss";
 import { mapToNameFromScore } from '~/utils';
 import PropTypes from 'prop-types';
 
-const ReviewFeedback = ({ reviews = [] }) => {
+const ReviewFeedback = ({ reviews = [], style = {} }) => {
 
     const point = (reviews.reduce((acc, review) => acc + review.point, 0) / reviews?.length).toFixed(1);
     const totalReviews = reviews?.length;
@@ -11,7 +11,7 @@ const ReviewFeedback = ({ reviews = [] }) => {
     return (
         <div className='review__feedback__wrapper'>
             <div>
-                <p className='review__feedback__evaluate__exceptional'>{mapToNameFromScore(point)}</p>
+                <p className='review__feedback__evaluate__exceptional' style={{...style}}>{mapToNameFromScore(point)}</p>
                 {totalReviews !== 0 &&
                     <p className='review__feedback__evaluate__num__review'>
                         {totalReviews === 1
@@ -36,7 +36,8 @@ const ReviewFeedback = ({ reviews = [] }) => {
 }
 
 ReviewFeedback.propTypes = {
-    reviews: PropTypes.array.isRequired
+    reviews: PropTypes.array.isRequired,
+    style: PropTypes.object
 }
 
 export default ReviewFeedback

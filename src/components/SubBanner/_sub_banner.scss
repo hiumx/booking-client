@@ -1,0 +1,22 @@
+.sub__banner__wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #e61d43;
+    color: var(--white-color);
+    padding: 12px;
+    border-radius: 16px;
+    margin: 32px 0 16px;
+    .sub__banner__primary {
+        width: 33%;
+        padding-left: 24px;
+        .sub__banner__title {
+            font-size: 22px;
+            font-weight: 400;
+        }
+    }
+
+    .sub__banner__secondary {
+        display: flex;
+        align-items: center;
+    }
+}

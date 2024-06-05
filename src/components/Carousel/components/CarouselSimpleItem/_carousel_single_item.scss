@@ -1,0 +1,56 @@
+.csi__wrapper {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    min-height: 260px;
+    position: relative;
+
+    .csi__img__wrapper {
+        position: relative;
+
+        .csi__img {
+            width: 100%;
+            height: 118px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .csi__save {
+            width: 32px;
+            height: 32px;
+            background-color: var(--white-color);
+            border-radius: 50%;
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .csi__info__wrapper {
+        padding: 14px 12px;
+        .csi__info {
+            margin-bottom: 12px;
+            
+            .csi__info__name {
+                font-size: 15px;
+                margin-bottom: 4px;
+                font-weight: 600;
+            }
+    
+    
+            .csi__info__location {
+                font-size: 13px;
+                color: var(--text-description-color);
+            }
+        }
+    }
+
+    .csi__review__wrapper {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+    }
+}
