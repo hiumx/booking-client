@@ -1,0 +1,23 @@
+.home__wrapper {
+    .home__content {
+        padding: 56px 14%;
+
+        .home__recent__searches {
+            .home__recent__searches__title {
+                font-size: 22px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            .home__recent__searches__list {
+                display: flex;
+                align-items: center;
+
+                .home__recent__searches__item {
+                    margin: 0 8px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
