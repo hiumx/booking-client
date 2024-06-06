@@ -3,7 +3,7 @@ import "./_review_feedback.scss";
 import { mapToNameFromScore } from '~/utils';
 import PropTypes from 'prop-types';
 
-const ReviewFeedback = ({ reviews = [], style = {} }) => {
+const ReviewFeedback = ({ reviews = [], style = {}, isBackgroundImage = false }) => {
 
     const point = (reviews.reduce((acc, review) => acc + review.point, 0) / reviews?.length).toFixed(1);
     const totalReviews = reviews?.length;
@@ -11,9 +11,22 @@ const ReviewFeedback = ({ reviews = [], style = {} }) => {
     return (
         <div className='review__feedback__wrapper'>
             <div>
-                <p className='review__feedback__evaluate__exceptional' style={{...style}}>{mapToNameFromScore(point)}</p>
+                <p
+                    className={isBackgroundImage
+                        ? 'review__feedback__evaluate__exceptional title__fb__is__background__image'
+                        : 'review__feedback__evaluate__exceptional'
+                    }
+                    style={{ ...style }}
+                >
+                    {mapToNameFromScore(point)}
+                </p>
+
                 {totalReviews !== 0 &&
-                    <p className='review__feedback__evaluate__num__review'>
+                    <p className={isBackgroundImage
+                        ? 'review__feedback__evaluate__num__review num__fb__is__background__image'
+                        : 'review__feedback__evaluate__num__review'
+                    }
+                    >
                         {totalReviews === 1
                             ? "1 review"
                             : `${totalReviews} reviews`
@@ -21,7 +34,11 @@ const ReviewFeedback = ({ reviews = [], style = {} }) => {
                     </p>
                 }
             </div>
-            <button className='review__feedback__evaluate__point__btn'>
+            <button className={!isBackgroundImage
+                ? 'review__feedback__evaluate__point__btn'
+                : 'review__feedback__evaluate__point__btn review__feedback__evaluate__point__btn__is__background'
+                }
+            >
                 {
                     point % 1 === 0
                         || point % 1 === 1
@@ -37,7 +54,8 @@ const ReviewFeedback = ({ reviews = [], style = {} }) => {
 
 ReviewFeedback.propTypes = {
     reviews: PropTypes.array.isRequired,
-    style: PropTypes.object
+    style: PropTypes.object,
+    isBackgroundImage: PropTypes.bool
 }
 
 export default ReviewFeedback

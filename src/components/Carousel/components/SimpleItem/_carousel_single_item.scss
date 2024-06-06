@@ -54,3 +54,21 @@
         right: 12px;
     }
 }
+
+.csi__background__image {
+    border: 1px solid #7d6969;
+    border-radius: 10px;
+    min-height: 260px;
+    position: relative;
+
+    .csi__info__name__background {
+        font-size: 15px;
+        margin-bottom: 4px;
+        font-weight: 600;
+        color: var(--white-color) !important;
+    }
+
+    .csi__info__location__background {
+        color: #dccccc !important;
+    } 
+}

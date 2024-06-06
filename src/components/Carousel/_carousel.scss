@@ -8,7 +8,17 @@
 
 .slick-prev,
 .slick-next {
-    top: 46% !important;
+    top: 46%;
+}
+
+.custom-arrow {
+    display: none !important;
+}
+
+.slick-slider:hover .custom-arrow {
+    display: flex !important;;
+    align-items: center;
+    justify-content: center;
 }
 
 .slick-prev:before {
@@ -91,6 +101,29 @@
 
 }
 
+.background__image {
+    background-image: url("https://a.travel-assets.com/travel-assets-manager/40346/HCOM-HotelsoftheYear-HP-Carousel-DM-1200x514.jpg?impolicy=fcrop&w=1200&h=514&p=1&q=high");
+    padding: 48px;
+    border-radius: 28px;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .background__image__header {
+        margin: 66px 0 14px !important;
+
+        .background__image__title {
+            color: #fff !important;
+        }
+
+        .carousel__desc {
+            font-size: 13px;
+            color: #505886;
+            margin: 2px 0 14px;
+        }
+    }
+
+}
+
 // CSS Carousel
 .carousel__wrapper {
     // padding: 0 14%;
@@ -108,12 +141,13 @@
         .carousel__desc {
             font-size: 13px;
             color: #505886;
+            margin: 2px 0 14px;
         }
     }
 
     .carousel__item {
         cursor: pointer;
-        
+
         .carousel__item__img {
             border-radius: 12px;
         }
@@ -126,7 +160,7 @@
                 font-weight: 600;
                 padding: 2px 0;
             }
-    
+
             .carousel__item__desc {
                 font-size: 13px;
                 color: var(--text-description-color);
