@@ -4,7 +4,8 @@ import Slider from "react-slick";
 import { SampleNextArrow, SamplePrevArrow } from './components/CustomArrow';
 import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
-import CarouselSimpleItem from './components/CarouselSimpleItem';
+import CarouselSimpleItem from './components/SimpleItem';
+import ImageTextItem from './components/ImageTextItem';
 
 const Carousel = ({ type,
     title = "",
@@ -13,7 +14,9 @@ const Carousel = ({ type,
     autoPlay = false,
     slidesToShow = 4,
     slidesToScroll = 1,
-    arrowStyle = {}
+    arrowStyle = {},
+    titleStyle = {},
+    backgroundImage = false
 }) => {
     const settings = {
         dots: false,
@@ -30,9 +33,16 @@ const Carousel = ({ type,
     };
 
     return (
-        <div className='carousel__wrapper'>
-            <div className='carousel__header'>
-                {title && <h3 className='carousel__title'>{title}</h3>}
+        <div className={backgroundImage ? `carousel__wrapper background__image` : 'carousel__wrapper'}>
+            <div className={backgroundImage ? 'carousel__header background__image__header' : 'carousel__header'}>
+                {title &&
+                    <h3
+                        className={backgroundImage ? 'carousel__title background__image__title' : 'carousel__title'}
+                        style={{ ...titleStyle }}
+                    >
+                        {title}
+                    </h3>
+                }
                 {description && <p className='carousel__desc'>{description}</p>}
             </div>
 
@@ -61,19 +71,28 @@ const Carousel = ({ type,
                 }
                 {type === "image-simple-component" &&
                     items.map((item, idx) => (
-                        <div key={item} className='carousel__item'>
-                            <CarouselSimpleItem 
+                        <div key={idx} className='carousel__item'>
+                            <CarouselSimpleItem
                                 imgSrc={item.imgSrc}
                                 name={item.name}
                                 location={item.location}
                                 isReview={item.isReview}
                                 isSave={item.isSave}
+                                isBackground={backgroundImage}
                             />
                         </div>
                     ))
                 }
-
-
+                {type === "image-text-component" &&
+                    items.map((item, idx) => (
+                        <div key={idx} className='carousel__item'>
+                            <ImageTextItem
+                                imgSrc={item.imgSrc}
+                                text={item?.text}
+                            />
+                        </div>
+                    ))
+                }
             </Slider>
         </div>
     )

@@ -6,19 +6,20 @@ import PropTypes from 'prop-types';
 import { HeartIcon, HeartSolidIcon } from '~/components/Icons';
 
 
-const CarouselSimpleItem = ({
+const SimpleItem = ({
     imgSrc,
     name = "",
     location = "",
     isReview = true,
     isSave = true,
-    isLocation = true
+    isLocation = true,
+    isBackground = false
 }) => {
 
     const [isSaved, setIsSaved] = useState(false);
 
     return (
-        <div className='csi__wrapper'>
+        <div className={isBackground ? 'csi__wrapper csi__background__image' : 'csi__wrapper'}>
             <div className='csi__img__wrapper'>
                 <LazyLoad height="118px">
                     <img className='csi__img' src={imgSrc} alt='ssi-img' />
@@ -31,15 +32,34 @@ const CarouselSimpleItem = ({
             </div>
             <div className='csi__info__wrapper'>
                 <div className='csi__info'>
-                    <h5 className='csi__info__name'>{name}</h5>
+                    <h5
+                        className=
+                        {isBackground
+                            ? 'csi__info__name csi__info__name__background'
+                            : 'csi__info__name'
+                        }
+                    >
+                        {name}
+                    </h5>
                     {isLocation &&
-                        <p className='csi__info__location'>{location}</p>
+                        <p
+                            className={isBackground
+                                ? 'csi__info__location csi__info__location__background'
+                                : 'csi__info__location'
+                            }
+                        >
+                            {location}
+                        </p>
                     }
                 </div>
 
                 {isReview &&
                     <div className='csi__review__wrapper'>
-                        <ReviewFeedback reviews={[{ point: 10 }]} style={{ fontSize: '14px' }} />
+                        <ReviewFeedback
+                            reviews={[{ point: 10 }]}
+                            style={{ fontSize: '14px' }}
+                            isBackgroundImage={isBackground}
+                        />
                     </div>
                 }
             </div>
@@ -47,7 +67,7 @@ const CarouselSimpleItem = ({
     )
 }
 
-CarouselSimpleItem.propTypes = {
+SimpleItem.propTypes = {
     imgSrc: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
@@ -55,4 +75,4 @@ CarouselSimpleItem.propTypes = {
     isSave: PropTypes.bool,
 }
 
-export default CarouselSimpleItem
+export default SimpleItem
