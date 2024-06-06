@@ -1,6 +1,6 @@
 
 import Carousel from '~/components/Carousel';
-import CarouselSimpleItem from '~/components/Carousel/components/CarouselSimpleItem';
+import CarouselSimpleItem from '~/components/Carousel/components/SimpleItem';
 import DefaultLayout from '~/layouts/DefaultLayout';
 import "./_home.scss";
 import HistorySearchItem from '~/components/HistorySearchItem';
@@ -141,11 +141,34 @@ const Home = () => {
                     </div>
                     <SubBanner />
                     <Carousel
+                        type='image-text-component'
+                        title="Go beyond your typical stay"
+                        items={listDataSimpleComponentFake}
+                        slidesToShow={5}
+                        slidesToScroll={2}
+                        autoPlay={false}
+                        titleStyle={{marginBottom: "14px"}}
+                    />
+                    <Carousel
+                        type='image-simple-component'
+                        title="Recommended stays for you"
+                        description='Based on your most recently viewed property'
+                        items={listDataSimpleComponentFake}
+                        autoPlay={true}
+                    />
+                    <Carousel
+                        type='image-simple-component'
+                        title="Recommended stays for you"
+                        items={listDataSimpleComponentFake}
+                        autoPlay={false}
+                        backgroundImage={true}
+                    />
+                    <Carousel
                         type='image-only'
                         title="Go beyond your typical stay"
                         description='Based on your most recently viewed property'
                         items={listCarouselImageFake}
-                        autoPlay={true}
+                        autoPlay={false}
                     />
                     <Carousel
                         type='image-title-desc'
@@ -156,20 +179,6 @@ const Home = () => {
                         slidesToShow={6}
                         arrowStyle={{ transform: "translateY(-30px) !important" }}
                     />
-                    <Carousel
-                        type='image-simple-component'
-                        title="Recommended stays for you"
-                        description='Based on your most recently viewed property'
-                        items={listDataSimpleComponentFake}
-                        autoPlay={false}
-                    />
-                    {/* <Carousel
-                    type='image-only'
-                    title="Go beyond your typical stay"
-                    description='Based on your most recently viewed property'
-                    items={listCarouselImageFake}
-                    autoPlay={false}
-                /> */}
                 </div>
             </DefaultLayout>
         </div>
