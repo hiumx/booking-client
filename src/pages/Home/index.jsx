@@ -123,8 +123,6 @@ const Home = () => {
         },
     ];
 
-    const historySearchFake = [1, 2, 3, 4];
-
     return (
         <div className='home__wrapper'>
             <DefaultLayout>

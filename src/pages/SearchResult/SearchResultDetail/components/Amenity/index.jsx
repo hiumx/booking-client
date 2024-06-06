@@ -18,6 +18,7 @@ const iconMap = {
 };
 
 const Amenity = ({ title, style = { padding: '4px 0' } }) => {
+    
     const items = title.split(" ");
     let IconElement = "";
     items.forEach(item => {
@@ -25,7 +26,7 @@ const Amenity = ({ title, style = { padding: '4px 0' } }) => {
     });
     IconElement += "Icon";
     const IconComponent = iconMap[IconElement];
-    console.log(IconElement);
+
     return (
         <div className='amenity__wrapper' style={style}>
             <div>
