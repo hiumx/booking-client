@@ -2,7 +2,6 @@ import { ChevronLeftIcon, ChevronRightIcon } from "~/components/Icons";
 import "./_custom_arrow.scss";
 
 export const SampleNextArrow = ({ className, style, onClick }) => {
-    console.log(style);
     return (
         <div
             className={`${className} custom-arrow next`}

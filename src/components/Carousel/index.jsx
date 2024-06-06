@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
 import CarouselSimpleItem from './components/SimpleItem';
 import ImageTextItem from './components/ImageTextItem';
+import FeedbackItem from './components/FeedbackItem';
 
 const Carousel = ({ type,
     title = "",
@@ -89,6 +90,17 @@ const Carousel = ({ type,
                             <ImageTextItem
                                 imgSrc={item.imgSrc}
                                 text={item?.text}
+                            />
+                        </div>
+                    ))
+                }
+                {type === "feedback-item-component" &&
+                    items.map((item, idx) => (
+                        <div key={idx} className='carousel__item'>
+                            <FeedbackItem
+                                avatarSrc={item?.user?.image}
+                                name={item?.user?.name || item?.user?.email?.split("@")[0]}
+                                content={item?.content}
                             />
                         </div>
                     ))

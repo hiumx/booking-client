@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, memo } from 'react'
 import "./_filter.scss";
 import PropTypes from 'prop-types';
 import { AngleDownIcon, AngleUpIcon } from '../Icons';
@@ -7,6 +7,7 @@ import 'rc-slider/assets/index.css';
 import { filterByType } from '~/utils/search';
 import { useDispatch, useSelector } from 'react-redux';
 import { getResultFilterHotel, getResultSearchHotel } from '~/store/actions/hotel.action';
+
 
 const Filter = ({ title, items = [], isList = true}) => {
     const [listItems, setListItems] = useState([]);
@@ -38,7 +39,9 @@ const Filter = ({ title, items = [], isList = true}) => {
 
     useEffect(() => {
         setListItems(items.length > 5 ? items.slice(0, 5) : items);
-    }, [])
+    }, []);
+
+    // console.log("Items: ", items);
 
     return (
         <div className='filter__wrapper'>
@@ -115,4 +118,4 @@ Filter.propTypes = {
     isList: PropTypes.bool
 }
 
-export default Filter
+export default memo(Filter);

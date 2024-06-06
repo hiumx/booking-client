@@ -6,13 +6,16 @@ import LazyLoad from 'react-lazyload';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { checkObjEmpty, mapToNameFromScore } from '~/utils';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ReactStars from 'react-stars';
 import ReviewFeedback from '../ReviewFeedback';
+import queryString from "query-string";
 
 const HotelResultItem = ({ data, options = {} }) => {
     const [isSaved, setIsSaved] = useState(false);
     const { id, image, name, location, fromCenter, reviews, room, rate, typeHotel } = data;
+
+    const locationPage = useLocation();
 
     const navigator = useNavigate();
 
@@ -30,7 +33,7 @@ const HotelResultItem = ({ data, options = {} }) => {
                 <div className='row'>
                     <div className='col-lg-4'>
                         <div className='hri__img__wrapper'>
-                            <Link to={`/search-result/${id}`}>
+                            <Link to={`/search-result/${id}/${locationPage.search}`}>
                                 <img
                                     src={image?.url}
                                     alt='hotel-img'
@@ -52,7 +55,7 @@ const HotelResultItem = ({ data, options = {} }) => {
                         <div className='hri__overview'>
                             <div>
                                 <div className='hri__title__star'>
-                                    <Link className='hri__title__wrapper' to={`/search-result/${id}`}>
+                                    <Link className='hri__title__wrapper' to={`/search-result/${id}/${locationPage.search}`}>
                                         <h4 className='hri__title'>{name}</h4>
                                     </Link>
                                     <span>
@@ -72,7 +75,7 @@ const HotelResultItem = ({ data, options = {} }) => {
                                 </p>
                             </div>
                             <div className='hri__evaluate'>
-                                <div className='hri__evaluate__reviews' onClick={() => navigator(`/search-result/${id}`)}>
+                                <div className='hri__evaluate__reviews' onClick={() => navigator(`/search-result/${id}/${locationPage.search}`)}>
                                     <ReviewFeedback reviews={reviews} />
                                     <h6 className='hri__evaluate__comfort'>Comfort 10</h6>
                                 </div>
@@ -101,7 +104,7 @@ const HotelResultItem = ({ data, options = {} }) => {
                                 </p>
                                 <h3 className='hri__value__money'>{`US$${room?.price}`}</h3>
                                 <p className='hri__value__desc'>Includes taxes and charges</p>
-                                <div className='hri__see__availability' onClick={() => navigator(`/search-result/${id}`)}>
+                                <div className='hri__see__availability' onClick={() => navigator(`/search-result/${id}/${locationPage.search}`)}>
                                     <p>See availability</p>
                                     <ChevronRightIcon width='12px' height='12px' fill='#fff' />
                                 </div>

@@ -84,7 +84,7 @@ const SearchInput = ({ style, searchValue = {}, setIsNotFound = () => {} }) => {
     return (
         <div className='banner__search__box' style={style}>
             <div className='search__box__item'>
-                <BedIcon fill='#453030' />
+                <BedIcon fill='#6785c5' />
                 <input
                     type='text'
                     className='search__input__where'
@@ -94,7 +94,7 @@ const SearchInput = ({ style, searchValue = {}, setIsNotFound = () => {} }) => {
                 />
             </div>
             <div className='search__box__item'>
-                <CalendarIcon fill='#453030' />
+                <CalendarIcon fill='#6785c5' />
                 <span className='search__label' onClick={() => setIsOpenDate(!isOpenDate)}>
                     {`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}
                 </span>
@@ -110,7 +110,7 @@ const SearchInput = ({ style, searchValue = {}, setIsNotFound = () => {} }) => {
                 }
             </div>
             <div className='search__box__item'>
-                <UserIcon fill='#453030' />
+                <UserIcon fill='#6785c5' />
 
                 <span className='search__label header__search__text'
                     onClick={() => setIsOpenOptions(!isOpenOptions)}

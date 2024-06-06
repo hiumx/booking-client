@@ -4,8 +4,9 @@ import { ArrowLeftIcon, HeartIcon, HeartSolidIcon, ShareIcon } from '../Icons';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { checkObjEmpty } from '~/utils';
+import PropTypes from 'prop-types';
 
-const SubNav = () => {
+const SubNav = ({ hotelName }) => {
     const [isSaved, setIsSaved] = useState(false);
 
     const navigator = useNavigate();
@@ -24,7 +25,7 @@ const SubNav = () => {
                 <button className='sub__nav__back__btn' onClick={() => navigator("/search-result")}>
                     <ArrowLeftIcon height='14px' width='14px' fill='#0d4eaf' />
                 </button>
-                <h6>ENSO Retreat Hoi An</h6>
+                <h6>{hotelName}</h6>
             </div>
             <div className='sub__nav__share__save'>
                 <div className='sub__nav__share'>
@@ -45,6 +46,10 @@ const SubNav = () => {
             </div>
         </div>
     )
+}
+
+SubNav.propTypes = {
+    hotelName: PropTypes.string.isRequired
 }
 
 export default SubNav

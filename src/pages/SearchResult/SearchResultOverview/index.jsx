@@ -41,7 +41,7 @@ const SearchResultOverview = () => {
 			clearTimeout(timerId);
 		}
 	}, [isNotFound, hotelData]);
-
+	
 	useEffect(() => {
 		dispatch(getTypesHotel());
 		dispatch(getConvenient());
@@ -57,8 +57,6 @@ const SearchResultOverview = () => {
 		}
 		dispatch(getResultSearchHotel(payload));
 	}, []);
-
-	console.log(hotelData);
 
 	return (
 		<div className='search__result__wrapper'>
