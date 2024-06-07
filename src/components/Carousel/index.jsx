@@ -8,7 +8,8 @@ import CarouselSimpleItem from './components/SimpleItem';
 import ImageTextItem from './components/ImageTextItem';
 import FeedbackItem from './components/FeedbackItem';
 
-const Carousel = ({ type,
+const Carousel = ({ 
+    type,
     title = "",
     description = "",
     items = [],

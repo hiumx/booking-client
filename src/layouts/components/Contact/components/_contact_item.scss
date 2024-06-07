@@ -1,0 +1,20 @@
+.contact__item__wrapper {
+    .contact__item__title {
+        margin-bottom: 6px;
+        font-weight: 500;
+    }
+
+    .contact__item__item {
+
+        .contact__item__link {
+            font-size: 14px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 300;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

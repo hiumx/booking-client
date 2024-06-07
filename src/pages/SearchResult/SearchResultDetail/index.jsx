@@ -16,6 +16,9 @@ import Footer from '~/layouts/components/Footer';
 import { getHotelById } from '~/services/hotel.service';
 import Carousel from '~/components/Carousel';
 import queryString from 'query-string';
+import FeedbackItem from '~/components/Carousel/components/FeedbackItem';
+import GroupImageLoader from '~/components/MyLoader/components/GroupImageLoader';
+import FeedbackItemLoader from '~/components/MyLoader/components/FeedbackItemLoader';
 
 const reviewFake = [
     {
@@ -93,14 +96,16 @@ const SearchResultDetail = () => {
     const { id } = useParams();
 
     const location = useLocation();
-	const parsed = queryString.parse(location.search);
+    const parsed = queryString.parse(location.search);
 
 
     useEffect(() => {
         getHotelById(id)
             .then(res => {
                 if (res.code === 1000) {
-                    setHotelData(res.metadata);
+                    setTimeout(() => {
+                        setHotelData(res.metadata);
+                    }, 200);
                 }
             })
             .catch(error => {
@@ -108,16 +113,14 @@ const SearchResultDetail = () => {
             })
     }, []);
 
-    console.log(hotelData?.reviews);
-
     return (
         <div className='search__result__detail__wrapper'>
             <Header style={{ padding: '0 14%' }} />
             <div className='srd__search__input__wrapper'>
-                <SearchInput style={{ top: '10px', padding: '0 14%' }} searchValue={parsed}/>
+                <SearchInput style={{ top: '10px', padding: '0 14%' }} searchValue={parsed} />
             </div>
             <div className='srd__content'>
-                <SubNav hotelName={hotelData?.name} />
+                <SubNav hotelName={hotelData?.name} query={location.search}/>
 
                 <div className='srd__overview'>
                     <div className='srd__overview__title__star'>
@@ -145,36 +148,45 @@ const SearchResultDetail = () => {
                     </div>
                 </div>
 
-                <div className='srd__images'>
-                    <div className='srd__primary__img__wrapper'>
-                        <LazyLoad height="362px">
+                {hotelData?.images
+                    ?
+                    <div className='srd__images'>
+                        <div className='srd__primary__img__wrapper'>
+                            {/* <LazyLoad height="100%"> */}
                             <img
                                 src={hotelData?.images?.[0]?.url}
                                 alt='hotel-img'
                                 className='srd__primary__img'
                             />
-                        </LazyLoad>
-                    </div>
-                    <ul className='srd__secondary__img__wrapper'>
-                        {hotelData?.images?.slice(1).map((image, idx) => (
-                            <div className='srd__img__wrapper'>
-                                <LazyLoad key={idx} height="180px">
+                            {/* </LazyLoad> */}
+                        </div>
+                        <ul className='srd__secondary__img__wrapper'>
+                            {hotelData?.images?.slice(1).map((image, idx) => (
+                                <div className='srd__img__wrapper'>
+                                    {/* <LazyLoad key={idx} height="100%"> */}
                                     <img
                                         src={image?.url}
                                         alt='hotel-img'
                                         className='srd__secondary__img'
                                     />
-                                </LazyLoad>
-                            </div>
-                        ))}
-                    </ul>
-                </div>
+                                    {/* </LazyLoad> */}
+                                </div>
+                            ))}
+                        </ul>
+                    </div>
+                    : <GroupImageLoader />
+                }
+
                 <div className='srd__feedback__near row'>
                     <div className='col-lg-8'>
-                        <div className='srd__reviews__wrapper'>
-                            <ReviewFeedback reviews={hotelData?.reviews} />
-                            <SeeMore text={`See all ${hotelData?.reviews?.length} reviews`} />
-                        </div>
+                        {hotelData?.reviews
+                            ?
+                            <div className='srd__reviews__wrapper'>
+                                <ReviewFeedback reviews={hotelData?.reviews} />
+                                <SeeMore text={`See all ${hotelData?.reviews?.length} reviews`} />
+                            </div>
+                            : <FeedbackItemLoader />
+                        }
                         <div className='srd__amenities'>
                             <h4>Popular amenities</h4>
                             <ul className='srd__amenities__list'>
@@ -229,13 +241,15 @@ const SearchResultDetail = () => {
                     items={listDataSimpleComponentFake}
                     autoPlay={true}
                 />
-                 <Carousel
+                <Carousel
                     type='feedback-item-component'
                     title="See what guests loved the most"
                     items={hotelData?.reviews}
                     slidesToShow={3}
+                    titleStyle={{ marginBottom: "-16px" }}
                 />
             </div>
+
             <Footer />
         </div>
     )

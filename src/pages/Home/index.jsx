@@ -1,6 +1,5 @@
 
 import Carousel from '~/components/Carousel';
-import CarouselSimpleItem from '~/components/Carousel/components/SimpleItem';
 import DefaultLayout from '~/layouts/DefaultLayout';
 import "./_home.scss";
 import HistorySearchItem from '~/components/HistorySearchItem';

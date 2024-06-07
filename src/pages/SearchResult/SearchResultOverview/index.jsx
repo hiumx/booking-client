@@ -12,7 +12,8 @@ import HashLoader from "react-spinners/HashLoader";
 import queryString from 'query-string';
 import { useLocation } from 'react-router-dom';
 import { getResultSearchHotel } from '~/store/actions/hotel.action';
-import { FILTER_ITEMS } from '~/constants';
+import { FILTER_ITEMS, LIST_FAKE_NUMBER } from '~/constants';
+import HotelItemLoader from '~/components/MyLoader/components/HotelItemLoader';
 
 const SearchResultOverview = () => {
 
@@ -41,7 +42,7 @@ const SearchResultOverview = () => {
 			clearTimeout(timerId);
 		}
 	}, [isNotFound, hotelData]);
-	
+
 	useEffect(() => {
 		dispatch(getTypesHotel());
 		dispatch(getConvenient());
@@ -55,14 +56,16 @@ const SearchResultOverview = () => {
 				adult, children, room
 			}
 		}
-		dispatch(getResultSearchHotel(payload));
+		setTimeout(() => {
+			dispatch(getResultSearchHotel(payload));
+		}, 800);
 	}, []);
 
 	return (
 		<div className='search__result__wrapper'>
 			<Header style={{ padding: '0 14%' }} />
 			<div className='sr__search__input__wrapper'>
-				<SearchInput style={{ top: '10px', padding: '0 14%' }} searchValue={parsed} setIsNotFound={setIsNotFound}/>
+				<SearchInput style={{ top: '10px', padding: '0 14%' }} searchValue={parsed} setIsNotFound={setIsNotFound} />
 			</div>
 			<div className='sr__body'>
 				<p className='sr__body__title'>Search results</p>
@@ -90,20 +93,17 @@ const SearchResultOverview = () => {
 						<ul className='sr__list__result'>
 							{hotelData?.length > 0 ? hotelData?.map((hotel, idx) => (
 								<li key={idx}>
-									<HotelResultItem data={hotel} options={{numberOfNights, numberOfAdults}}/>
+									<HotelResultItem data={hotel} options={{ numberOfNights, numberOfAdults }} />
 								</li>
 							))
 								: (isNotFound ?
 									<p className='sr__result__not__found'>{`Not found any result for "${parsed?.location}"`}</p>
 									:
-									<HashLoader
-										color="#e89fe8"
-										loading={true}
-										className='sr__loader'
-										size={40}
-										aria-label="Loading Spinner"
-										data-testid="loader"
-									/>
+									<div className='sr__result__list__loader'>
+										{LIST_FAKE_NUMBER.map(() => (
+											<HotelItemLoader />
+										))}
+									</div>
 								)
 							}
 

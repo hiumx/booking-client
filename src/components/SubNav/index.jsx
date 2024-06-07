@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { checkObjEmpty } from '~/utils';
 import PropTypes from 'prop-types';
 
-const SubNav = ({ hotelName }) => {
+const SubNav = ({ hotelName, query }) => {
     const [isSaved, setIsSaved] = useState(false);
 
     const navigator = useNavigate();
@@ -22,7 +22,7 @@ const SubNav = ({ hotelName }) => {
     return (
         <div className='sub__nav__wrapper'>
             <div className='sub__nav__hotel__name'>
-                <button className='sub__nav__back__btn' onClick={() => navigator("/search-result")}>
+                <button className='sub__nav__back__btn' onClick={() => navigator(`/search-result${query}`)}>
                     <ArrowLeftIcon height='14px' width='14px' fill='#0d4eaf' />
                 </button>
                 <h6>{hotelName}</h6>
@@ -49,7 +49,8 @@ const SubNav = ({ hotelName }) => {
 }
 
 SubNav.propTypes = {
-    hotelName: PropTypes.string.isRequired
+    hotelName: PropTypes.string.isRequired,
+    query: PropTypes.string.isRequired
 }
 
 export default SubNav
