@@ -65,16 +65,19 @@
             cursor: pointer;
 
             .srd__primary__img__wrapper {
+                height: 370px;
                 width: 50%;
                 border-right: 1px solid #ffff;
 
                 .srd__primary__img {
                     width: 100%;
+                    height: 100%;
                 }
             }
 
             .srd__secondary__img__wrapper {
                 width: 50%;
+                height: 372px;
                 display: flex;
                 flex-wrap: wrap;
 

@@ -11,7 +11,7 @@ const FeedbackItem = ({ avatarSrc, name, content }) => {
             <div className='feedback__item__user'>
                 <img className='feedback__item__user__img' src={avatarSrc} alt='avatar-img' />
                 <div className='feedback__item__user__detail'>
-                    <h6 className='feedback__item__user__name'>{name}</h6>
+                    <h6 className='feedback__item__user__name'>{name ? name : "anonymous"}</h6>
                     <div className='feedback__item__desc'>
                         <img src={vnFlag} className='feedback__item__flag' alt='vn-flag-img' />
                         <p className='feedback__item__user__country'>Viet Nam</p>

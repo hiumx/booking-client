@@ -19,6 +19,8 @@ import queryString from 'query-string';
 import FeedbackItem from '~/components/Carousel/components/FeedbackItem';
 import GroupImageLoader from '~/components/MyLoader/components/GroupImageLoader';
 import FeedbackItemLoader from '~/components/MyLoader/components/FeedbackItemLoader';
+import Contact from '~/layouts/components/Contact';
+import { CONTACTS } from '~/constants';
 
 const reviewFake = [
     {
@@ -249,7 +251,8 @@ const SearchResultDetail = () => {
                     titleStyle={{ marginBottom: "-16px" }}
                 />
             </div>
-
+            
+            <Contact contacts={CONTACTS} />
             <Footer />
         </div>
     )
