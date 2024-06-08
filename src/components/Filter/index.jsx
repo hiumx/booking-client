@@ -4,18 +4,11 @@ import PropTypes from 'prop-types';
 import { AngleDownIcon, AngleUpIcon } from '../Icons';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import { filterByType } from '~/utils/search';
-import { useDispatch, useSelector } from 'react-redux';
-import { getResultFilterHotel, getResultSearchHotel } from '~/store/actions/hotel.action';
 
-
-const Filter = ({ title, items = [], isList = true}) => {
+const Filter = ({ title, items = [], typeCheckbox = "", isList = true, handleChangCheckedFilter }) => {
     const [listItems, setListItems] = useState([]);
     const [isShowMore, setIsShowMore] = useState(items.length > 5);
     const [value, setValue] = useState([0, 200]);
-
-    const dispatch = useDispatch();
-    const hotelData = useSelector(state => state.hotel.listSearchHotel);    
 
     const handleClick = () => {
         listItems.length === 5 ? setListItems(items) : setListItems(items.slice(0, 5));
@@ -26,22 +19,9 @@ const Filter = ({ title, items = [], isList = true}) => {
         console.log(data);
     }
 
-    const handleChangCheckbox = ({ type, e }) => {
-        const checked = e.target.checked;
-        if(checked) {
-            if(type === "Hotels") {
-                dispatch(getResultFilterHotel({type: "Hotel", payload: hotelData}));
-            }
-        } else {
-            dispatch(getResultSearchHotel());
-        }
-    }
-
     useEffect(() => {
         setListItems(items.length > 5 ? items.slice(0, 5) : items);
     }, []);
-
-    // console.log("Items: ", items);
 
     return (
         <div className='filter__wrapper'>
@@ -59,9 +39,9 @@ const Filter = ({ title, items = [], isList = true}) => {
                                         className='filter__item__input'
                                         name={`filter-input-${title.slice(0, 2)}-${idx}`}
                                         // checked={isChecked}
-                                        onChange={e => handleChangCheckbox({
-                                            type: item?.name,
-                                            e
+                                        onChange={() => handleChangCheckedFilter({
+                                            idCheck: item?.id,
+                                            typeCheckbox
                                         })}
                                     />
 
@@ -115,7 +95,9 @@ const Filter = ({ title, items = [], isList = true}) => {
 Filter.propTypes = {
     title: PropTypes.string.isRequired,
     items: PropTypes.array,
-    isList: PropTypes.bool
+    typeCheckbox: PropTypes.string,
+    isList: PropTypes.bool,
+    handleChangCheckbox: PropTypes.func
 }
 
 export default memo(Filter);

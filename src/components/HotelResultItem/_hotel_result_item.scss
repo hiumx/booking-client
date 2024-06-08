@@ -2,7 +2,13 @@
     padding: 16px;
     margin: 16px 0;
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: 15px;
+
+    &:hover {
+        border-color: #a3d7fc;
+        box-shadow: 0 0 8px #a3d7fc;
+        background-color: #f0f6ff;
+    }
 
     .hri__img__wrapper {
         position: relative;
@@ -57,6 +63,7 @@
                 
                 .hri__title {
                     font-size: 19px;
+                    font-weight: 600;
                 }
     
                 &:hover {

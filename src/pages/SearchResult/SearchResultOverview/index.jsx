@@ -8,12 +8,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTypesHotel } from '~/store/actions/typeHotel.action';
 import { getConvenient } from '~/store/actions/convenient.action';
 import { ArrowUpDownIcon } from '~/components/Icons';
-import HashLoader from "react-spinners/HashLoader";
 import queryString from 'query-string';
 import { useLocation } from 'react-router-dom';
 import { getResultSearchHotel } from '~/store/actions/hotel.action';
-import { FILTER_ITEMS, LIST_FAKE_NUMBER } from '~/constants';
+import { CONTACTS, FILTER_ITEMS, LIST_FAKE_NUMBER, LIST_RATING } from '~/constants';
 import HotelItemLoader from '~/components/MyLoader/components/HotelItemLoader';
+import Select from 'react-select';
+import Contact from '~/layouts/components/Contact';
+import Footer from '~/layouts/components/Footer';
+import actionTypes from '~/store/actions/action.type';
+import { filterHotelByChecked } from '~/services/search.service';
 
 const SearchResultOverview = () => {
 
@@ -22,14 +26,69 @@ const SearchResultOverview = () => {
 	const convenient = useSelector(state => state.convenient.convenient);
 	const hotelData = useSelector(state => state.hotel.listSearchHotel);
 	const [isNotFound, setIsNotFound] = useState(false);
+	const [listTypeChecked, setListTypeChecked] = useState([]);
+	const [listConvenientChecked, setListConvenientChecked] = useState([]);
+	// const [payloadChecked, setPayloadChecked] = useState({});
 
 	const items = FILTER_ITEMS;
 
-	const location = useLocation();
-	const parsed = queryString.parse(location.search);
+	const currentLocation = useLocation();
+	const parsed = queryString.parse(currentLocation.search);
 
 	const numberOfNights = (new Date(parsed.endDate).getDate()) - (new Date(parsed.startDate).getDate());
 	const numberOfAdults = parsed.adult;
+
+	const options = [
+		{ value: 'price_lowest', label: 'Price (lowest first)' },
+		{ value: 'price_highest', label: 'Price rating (highest first)' },
+		{ value: 'rating_high', label: 'Property rating (high to low)' },
+		{ value: 'rating_low', label: 'Property rating (high to low)' },
+		{ value: 'home_department', label: 'Home & department first' },
+		{ value: 'distance_center', label: 'Distance from center' },
+		{ value: 'top_review', label: 'Top reviews' },
+	];
+
+	const customStyles = {
+		control: (provided, state) => ({
+			...provided,
+			borderRadius: '12px',
+			boxShadow: state.isFocused ? '0 0 0 1px blue' : 'none'
+		})
+	}
+
+	const handleChangCheckedFilter = ({ idCheck, typeCheckbox }) => {
+		if (typeCheckbox === "type_hotel") {
+			if (listTypeChecked.includes(idCheck))
+				setListTypeChecked(listTypeChecked.filter(t => t !== idCheck))
+			else
+				setListTypeChecked(prev => [...prev, idCheck]);
+		} else if (typeCheckbox === "convenient") {
+			if (listConvenientChecked.includes(idCheck))
+				setListConvenientChecked(listConvenientChecked.filter(c => c !== idCheck));
+			else
+				setListConvenientChecked(prev => [...prev, idCheck]);
+		}
+	}
+
+	useEffect(() => {
+		const { startDate, endDate, room, location } = parsed;
+		filterHotelByChecked({
+		    startDate: new Date(startDate),
+		    endDate: new Date(endDate),
+		    location,
+		    numberOfRoom: room,
+		    checksType: listTypeChecked,
+		    checksConvenient: listConvenientChecked
+		}).then(res => {
+		    if (res.code === 1000)
+		        dispatch({
+		            type: actionTypes.GET_LIST_SEARCH_HOTEL_SUCCESS,
+		            listSearchHotel: res.metadata
+		        });
+		}).catch(error => {
+		    console.error(error);
+		})
+	}, [listTypeChecked, listConvenientChecked]);
 
 	useEffect(() => {
 		let timerId = setTimeout(() => {
@@ -64,32 +123,35 @@ const SearchResultOverview = () => {
 	return (
 		<div className='search__result__wrapper'>
 			<Header style={{ padding: '0 14%' }} />
+
 			<div className='sr__search__input__wrapper'>
 				<SearchInput style={{ top: '10px', padding: '0 14%' }} searchValue={parsed} setIsNotFound={setIsNotFound} />
 			</div>
+
 			<div className='sr__body'>
 				<p className='sr__body__title'>Search results</p>
 				<div className='row sr__body__desc'>
 					<div className='col-lg-3'>
 						<div className='sr__body__filter__wrapper'>
 							<h3 className='sr__body__filter__by'>Filter by:</h3>
-							<Filter title='Your previous filters' items={items.previousFilter} />
-							<Filter title='Your budget' isList={false} />
-							<Filter title='Popular filters' items={items.popularFilter} />
-							<Filter title='Property type' items={typesHotel} />
-							<Filter title='Convenient filters' items={convenient} />
+							<Filter title='Your previous filters' items={items.previousFilter} handleChangCheckedFilter={handleChangCheckedFilter} />
+							<Filter title='Your budget' isList={false} handleChangCheckedFilter={handleChangCheckedFilter} />
+							<Filter title='Popular filters' items={items.popularFilter} handleChangCheckedFilter={handleChangCheckedFilter} />
+							<Filter title='Property type' typeCheckbox="type_hotel" items={typesHotel} handleChangCheckedFilter={handleChangCheckedFilter} />
+							<Filter title='Property rating' typeCheckbox="rating" items={LIST_RATING} handleChangCheckedFilter={handleChangCheckedFilter} />
+							<Filter title='Convenient filters' typeCheckbox="convenient" items={convenient} handleChangCheckedFilter={handleChangCheckedFilter} />
 						</div>
 					</div>
 					<div className='col-lg-9'>
+
 						<h5 className='sr__body__num__found'>{`${parsed.location}: ${hotelData.length} properties found`}</h5>
-						<div className='sr__body__sort'>
-							<ArrowUpDownIcon width='14px' height='14px' fill='#1a1a1a' />
-							<select className='sr__body__sort__select'>
-								<option>Our top picks</option>
-								<option>Price (lowest first)</option>
-								<option>Property rating (high to low)</option>
-							</select>
-						</div>
+						<Select
+							options={options}
+							className='sr__body__sort'
+							styles={customStyles}
+						// defaultValue={"home_department"}
+						/>
+
 						<ul className='sr__list__result'>
 							{hotelData?.length > 0 ? hotelData?.map((hotel, idx) => (
 								<li key={idx}>
@@ -100,17 +162,19 @@ const SearchResultOverview = () => {
 									<p className='sr__result__not__found'>{`Not found any result for "${parsed?.location}"`}</p>
 									:
 									<div className='sr__result__list__loader'>
-										{LIST_FAKE_NUMBER.map(() => (
-											<HotelItemLoader />
+										{LIST_FAKE_NUMBER.map((item, idx) => (
+											<HotelItemLoader key={idx} />
 										))}
 									</div>
 								)
 							}
-
 						</ul>
 					</div>
 				</div>
 			</div>
+
+			<Contact contacts={CONTACTS} />
+			<Footer />
 		</div>
 	)
 }
