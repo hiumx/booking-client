@@ -10,7 +10,7 @@ const ReviewFeedback = ({ reviews = [], style = {}, isBackgroundImage = false })
 
     return (
         <div className='review__feedback__wrapper'>
-            <div>
+            <div className='review__feedback__detail'>
                 <p
                     className={isBackgroundImage
                         ? 'review__feedback__evaluate__exceptional title__fb__is__background__image'

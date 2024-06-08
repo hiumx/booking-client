@@ -7,7 +7,7 @@ const Contact = ({contacts = []}) => {
     return (
         <div className='contact__wrapper'>
             {contacts?.map((contact, idx) => (
-                <ContactItem title={contact.title} items={contact.items} />
+                <ContactItem key={idx} title={contact.title} items={contact.items} />
             ))}
         </div>
     )

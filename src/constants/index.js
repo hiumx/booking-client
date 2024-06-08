@@ -86,3 +86,22 @@ export const CONTACTS = [
 ];
 
 export const LIST_FAKE_NUMBER = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+export const LIST_RATING = [
+    {
+        id: 1,
+        name: "3 stars"
+    },
+    {
+        id: 2,
+        name: "4 stars"
+    },
+    {
+        id: 3,
+        name: "5 stars"
+    },
+    {
+        id: 4,
+        name: "Unrated"
+    },
+];

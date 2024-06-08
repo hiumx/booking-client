@@ -20,6 +20,7 @@
             .sr__body__filter__wrapper {
                 border: 1px solid var(--border-color);
                 border-radius: 7px;
+                margin-bottom: 24px;
 
                 .sr__body__filter__by {
                     font-size: 16px;
@@ -38,19 +39,11 @@
             }
 
             .sr__body__sort {
-                border: 1px solid var(--border-color);
-                padding: 4xp 8px;
-                padding: 4px 8px;
-                border-radius: 20px;
-                display: inline-block;
+                width: 33%;
+                font-size: 14px;
 
-                .sr__body__sort__select {
-                    border: none;
-                    outline: none;
-                    font-size: 14px;
-                    color: var(--text-color);
-                    font-weight: 500;
-                    margin-left: 4px;
+                .css-58tlqw-control {
+                    border-radius: 12px;
                 }
             }
 

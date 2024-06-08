@@ -3,6 +3,9 @@ import "./_room_booking_detail.scss";
 import Amenity from '../Amenity';
 import { ArrowLeftIcon, ChevronRightIcon, ExclamationIcon } from '~/components/Icons';
 import SeeMore from '~/components/SeeMore';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { checkObjEmpty } from '~/utils';
 
 const amenities = ["Pool", "Spa", "Air conditioning", "Wifi", "Bar", "Free parking", "Airport transfer"];
 
@@ -11,6 +14,8 @@ const RoomBookingDetail = ({ data }) => {
     const roomId = data?.id;
 
     const [totalPrice, setTotalPrice] = useState(data?.price || 0);
+    const user = useSelector(state => state.user.userMyInfo);
+    const navigator = useNavigate();
 
     const handleChangeExtra = ({ type = "", value = 0 }) => {
         let price = totalPrice;
@@ -22,6 +27,16 @@ const RoomBookingDetail = ({ data }) => {
             setTotalPrice(price);
         }
     }
+
+    const handleClickReserve = () => {
+        if(checkObjEmpty(user)) {
+            navigator("/auth/sign-in");
+        } else {
+            navigator("/book")
+        }
+    }
+
+    console.log(user);
 
     return (
         <div className='room__booking__detail__wrapper'>
@@ -95,7 +110,12 @@ const RoomBookingDetail = ({ data }) => {
                         </div>
                         <div className='rdb__checkout__reserve'>
                             <p>We had 5 left</p>
-                            <button className='btn btn-primary rdb__checkout__reserve__btn'>Reserve</button>
+                            <button
+                                className='btn btn-primary rdb__checkout__reserve__btn'
+                                onClick={handleClickReserve}
+                            >
+                                Reserve
+                            </button>
                         </div>
                     </div>
                 </div>
