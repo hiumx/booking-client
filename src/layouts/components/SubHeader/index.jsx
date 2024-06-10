@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { checkObjEmpty } from '~/utils';
 
-const HeaderSub = () => {
+const SubHeader = () => {
     
     const navigator = useNavigate();
 
@@ -27,4 +27,4 @@ const HeaderSub = () => {
     )
 }
 
-export default HeaderSub
+export default SubHeader
