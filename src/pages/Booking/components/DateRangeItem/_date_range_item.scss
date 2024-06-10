@@ -1,0 +1,28 @@
+.date__range__item__wrapper {
+    padding-right: 16px;
+    .date__range__item__title {
+        font-size: 14px;
+        color: var(--text-color);
+        margin-bottom: 4px;
+        font-weight: 500;
+    }
+    .date__range__item__time {
+
+        .date__range__item__date {
+            font-size: 15px;
+            color: var(--text-color);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .date__range__item__hour {
+            font-size: 14px;
+            color: var(--sub-text-color);
+        }
+    }
+
+}
+
+.dri__separate__wrapper {
+    padding-left: 16px;
+    border-left: 1px solid var(--border-color);
+}

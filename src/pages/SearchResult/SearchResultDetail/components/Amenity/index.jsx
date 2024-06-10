@@ -17,8 +17,13 @@ const iconMap = {
     BreakfastIcon
 };
 
-const Amenity = ({ title, style = { padding: '4px 0' } }) => {
-    
+const Amenity = ({
+    title,
+    style = { padding: '4px 0' },
+    iconWidth = "16px",
+    titleStyle = {}
+}) => {
+
     const items = title.split(" ");
     let IconElement = "";
     items.forEach(item => {
@@ -32,18 +37,20 @@ const Amenity = ({ title, style = { padding: '4px 0' } }) => {
             <div>
                 {
                     IconComponent
-                        ? <IconComponent fill="#008235" width="16px" height="16px" />
+                        ? <IconComponent fill="#008235" width={iconWidth} height={iconWidth} />
                         : null
                 }
             </div>
-            <p>{title}</p>
+            <p style={{...titleStyle}}>{title}</p>
         </div>
     )
 }
 
 Amenity.propTypes = {
     title: PropTypes.string.isRequired,
-    style: PropTypes.object
+    style: PropTypes.object,
+    titleStyle: PropTypes.object,
+    iconWidth: PropTypes.string
 }
 
 export default Amenity

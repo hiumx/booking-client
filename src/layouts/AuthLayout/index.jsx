@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderSub from "~/layouts/components/HeaderSub";
+import HeaderSub from "~/layouts/components/SubHeader";
 import PropTypes from 'prop-types';
 
 const AuthLayout = ({ children }) => {

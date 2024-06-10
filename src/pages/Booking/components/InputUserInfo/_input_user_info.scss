@@ -1,0 +1,31 @@
+.input__user__info__wrapper {
+    margin: 16px 8px 0 0;
+    label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 2px;
+    }
+
+    span {
+        color: #a30000;
+    }
+
+    .iui__input__wrapper {
+        input {
+            padding: 6px 8px;
+            font-size: 14px;
+            outline: none;
+            border-radius: 6px;
+            border: 1px solid #aaa;
+            width: 100%;
+        }
+    }
+
+
+    p {
+        color: var(--sub-text-color);
+        font-size: 13px;
+        margin-top: 2px;
+    }
+}

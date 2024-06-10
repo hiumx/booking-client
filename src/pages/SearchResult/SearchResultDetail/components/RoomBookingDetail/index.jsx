@@ -29,11 +29,11 @@ const RoomBookingDetail = ({ data }) => {
     }
 
     const handleClickReserve = () => {
-        if(checkObjEmpty(user)) {
-            navigator("/auth/sign-in");
-        } else {
+        // if(checkObjEmpty(user)) {
+        //     navigator("/auth/sign-in");
+        // } else {
             navigator("/book")
-        }
+        // }
     }
 
     console.log(user);

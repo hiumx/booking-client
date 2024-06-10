@@ -1,5 +1,153 @@
 .booking__wrapper {
     .booking__content {
         padding: 0 14%;
+
+        .booking__left__content {
+
+            .booking__hotel__info {
+                .booking__hotel__info__type__star {
+                    display: flex;
+                    gap: 8px;
+
+                    .booking__hotel__info__type {
+                        font-size: 12px;
+                    }
+                }
+
+                .booking__hotel__info__name {
+                    font-size: 15px;
+                    color: var(--text-color);
+                    font-weight: 600;
+                    margin: 8px 0;
+                }
+
+                .booking__hotel__info__location {
+                    font-size: 13px;
+                    color: var(--text-color);
+                }
+
+                .booking__hotel__info__amenities {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                }
+            }
+
+            .booking__hotel__details {
+                .booking__hotel__details__title {
+                    font-size: 15px;
+                    color: var(--text-color);
+                    font-weight: 600;
+                    margin-bottom: 16px;
+                }
+
+                .bhd__date__range {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 16px;
+                }
+
+                .bhd__time__stay {
+                    padding-bottom: 12px;
+                    border-bottom: 1px solid var(--border-color);
+                }
+
+                .bhd__title {
+                    font-size: 14px;
+                    color: var(--text-color);
+                    margin-bottom: 2px;
+                    font-weight: 500;
+                }
+
+                .bhd__value {
+                    font-size: 15px;
+                    color: var(--text-color);
+                    font-weight: 600;
+                    margin-bottom: 2px;
+                }
+
+                .bhd__your__select {
+                    .bhd__your__select__desc {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 4px;
+
+                        .bhd__your__select__detail {
+                            padding-top: 16px;
+                        }
+
+                        .bhd__your__select__icon__wrapper {
+                            cursor: pointer;
+                        }
+                    }
+
+                    a {
+                        font-size: 14px;
+                        text-decoration: none;
+                        font-weight: 500;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .booking__right__content {
+            .booking__rc__auth {
+                display: flex;
+                align-items: center;
+
+                p {
+                    font-size: 14px;
+                    margin-left: 10px;
+
+                    a {
+                        text-decoration: none;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+
+            .booking__rc__user__info {
+                .booking__user__info__title {
+                    font-size: 18px;
+                    font-weight: 700;
+                    margin-bottom: 16px;
+                }
+
+                .booking__user__info__warning {
+                    display: flex;
+                    align-items: center;
+
+                    p {
+                        font-size: 14px;
+                        color: var(--text-color);
+                        margin-left: 12px;
+
+                        span {
+                            color: #d4111e;
+                            font-weight: 600;
+                        }
+                    }
+                }
+
+                .booking__user__info__input {
+                    display: flex;
+                    gap: 16px;
+
+                    .booking__user__info__input__item {
+                        flex: 1;
+                    }
+                }
+            }
+        }
     }
 }

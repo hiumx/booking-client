@@ -1,6 +1,6 @@
 import React from 'react'
 import "./_my_setting_detail.scss";
-import HeaderSub from '~/layouts/components/HeaderSub';
+import HeaderSub from '~/layouts/components/SubHeader';
 import { Link, useParams } from 'react-router-dom';
 import IconRadius from '~/components/IconRadius';
 import { PlaneDepartureIcon, SecurityIcon, UserIcon, WalletIcon } from '~/components/Icons';
