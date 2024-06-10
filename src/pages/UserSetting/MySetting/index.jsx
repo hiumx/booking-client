@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import "./_my_setting.scss";
-import HeaderSub from '~/layouts/components/HeaderSub';
+import HeaderSub from '~/layouts/components/SubHeader';
 import SettingItem from '~/components/SettingItem';
 import { PlaneDepartureIcon, SecurityIcon, UserIcon, WalletIcon } from '~/components/Icons';
 import IconRadius from '~/components/IconRadius';
