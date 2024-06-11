@@ -8,7 +8,7 @@ import Header from '~/layouts/components/Header'
 import MyStep from '~/components/MyStep';
 import HeaderSub from '~/layouts/components/SubHeader';
 import ReactStars from 'react-stars';
-import { ChevronDownIcon, ExclamationIcon, UserIcon } from '~/components/Icons';
+import { ChevronDownIcon, CupIcon, ExclamationIcon, GroupUserIcon, UserIcon } from '~/components/Icons';
 import { Link } from 'react-router-dom';
 import Amenity from '../SearchResult/SearchResultDetail/components/Amenity';
 import SubReviewFeedback from '~/components/SubReviewFeedback';
@@ -17,6 +17,7 @@ import ItemLayout from './components/ItemLayout';
 import InputUserInfo from './components/InputUserInfo';
 import CheckboxBookingItem from './components/CheckboxBookingItem';
 import CheckoutLayout from '~/layouts/CheckoutLayout';
+import RadioItem from './components/RadioItem';
 
 const amenities = ["Pool", "Spa", "Air conditioning", "Wifi", "Bar", "Free parking"];
 
@@ -135,6 +136,45 @@ const Booking = () => {
                                     <CheckboxBookingItem
                                         title="Yes, I'd like free paperless confirmation (recommended)"
                                         description="We'll text you a link to download our app"
+                                    />
+                                </div>
+                                <div>
+                                    <RadioItem
+                                        title="Who are you booking for?"
+                                        listRadios={[
+                                            "I am the main guest",
+                                            "Booking is for someone else"
+                                        ]}
+                                        isBorder
+                                    />
+                                    <RadioItem
+                                        title="Are you travelling for work?"
+                                        listRadios={[
+                                            "Yes",
+                                            "No"
+                                        ]}
+                                        listStyle={{ display: "flex", gap: "16px" }}
+                                    />
+                                </div>
+                            </ItemLayout>
+                            <ItemLayout>
+                                <div className='booking__rc__room__info'>
+                                    <h5 className='booking__room__info__title'>King Room with Sofa Bed</h5>
+                                    <div className='bri__breakfast'>
+                                        <CupIcon fill='#1a1a1a' />
+                                        <div>
+                                            <h6>Breakfast included in the price</h6>
+                                            <p>8.2 Very good · <span>98 review</span>s</p>
+                                        </div>
+                                    </div>
+                                    <div className='bri__guest__users'>
+                                        <GroupUserIcon fill='#1a1a1a' />
+                                        <p>Guest: <span>2 adults</span></p>
+                                    </div>
+                                    <InputUserInfo
+                                        label='Full guest name'
+                                        placeholder='First name, Last name'
+                                        style={{ width: "50%" }}
                                     />
                                 </div>
                             </ItemLayout>
