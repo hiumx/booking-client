@@ -16,6 +16,10 @@
                 .home__recent__searches__item {
                     margin: 0 8px;
                     cursor: pointer;
+
+                    &:first-child {
+                            margin-left: 0;
+                    }
                 }
             }
         }

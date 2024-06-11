@@ -65,7 +65,7 @@ const Carousel = ({
                                 <img src={item.img} className='carousel__item__img' alt={`img-${idx}`} loading='lazy' />
                                 <div className='carousel__item__detail'>
                                     <h6 className='carousel__item__name'>{item.name}</h6>
-                                    <p className='carousel__item__desc'>{item.properties}</p>
+                                    <p className='carousel__item__desc'>{`${item.properties} properties`}</p>
                                 </div>
                             </LazyLoad>
                         </div>

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React from 'react'
 
 import {
     Route,
@@ -19,17 +19,12 @@ import HotelManagement from "~/pages/HotelManager/HotelManagement";
 import SearchResultOverview from '~/pages/SearchResult/SearchResultOverview';
 import SearchResultDetail from '~/pages/SearchResult/SearchResultDetail';
 import Booking from '~/pages/Booking';
+import GoToTop from '~/components/GoToTop';
 
 const Routers = () => {
-
-    const { pathname } = useLocation();
-
-    useLayoutEffect(() => {
-        window.scrollTo(0, 0);
-    }, [pathname])
-
     return (
         <div>
+            <GoToTop />
             <Routes>
                 <Route path="/auth/sign-in" element={<Login />} />
                 <Route path="/auth/sign-up" element={<Register />} />

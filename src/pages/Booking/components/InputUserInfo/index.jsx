@@ -29,12 +29,13 @@ const InputUserInfo = ({
     description,
     placeholder = "",
     type = "text",
-    selects = []
+    selects = [],
+    style = {}
 }) => {
     const text = label.split(" ").join("").toLowerCase();
-    
+
     return (
-        <div className='input__user__info__wrapper'>
+        <div className='input__user__info__wrapper' style={{ ...style }}>
             <label htmlFor={text}>{label} {isObligatory && <span>*</span>}</label>
             <div className='iui__input__wrapper'>
                 {
@@ -57,7 +58,8 @@ InputUserInfo.propTypes = {
     label: PropTypes.string.isRequired,
     isObligatory: PropTypes.bool,
     description: PropTypes.string,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
+    style: PropTypes.object
 }
 
 export default InputUserInfo

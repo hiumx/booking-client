@@ -148,6 +148,51 @@
                     }
                 }
             }
+
+            .booking__rc__room__info {
+                .booking__room__info__title {
+                    font-size: 18px;
+                    font-weight: 700;
+                    margin-bottom: 16px;
+                }
+
+                .bri__breakfast {
+                    display: flex;
+                    gap: 8px;
+                    margin-bottom: 8px;
+
+                    h6 {
+                        font-size: 14px;
+                        font-weight: 600;
+                        margin-bottom: 6px;
+                    }
+
+                    p {
+                        font-size: 12px;
+                        color: var(--sub-text-color);
+                        font-weight: 500;
+
+                        span {
+                            font-weight: 400;
+                        }
+                    }
+                }
+
+                .bri__guest__users {
+                    display: flex;
+                    gap: 8px;
+                    align-items: center;
+
+                    p {
+                        font-size: 14px;
+                        font-weight: 600;
+
+                        span {
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
         }
     }
 }
