@@ -1,0 +1,30 @@
+.radio__item__wrapper {
+    padding-top: 16px;
+
+    .radio__item__title {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    .radio__item__list__radio {
+        .radio__item__details {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+            .radio__item__input {
+                width: 20px;
+                height: 20px;
+            }
+    
+            .radio__item__label {
+                font-size: 14px;
+                margin-left: 8px;
+            }
+        }
+    }
+}
+
+.radio__item__border {
+    border-top: 1px solid var(--border-color);
+}
