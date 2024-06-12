@@ -30,14 +30,15 @@ const InputUserInfo = ({
     placeholder = "",
     type = "text",
     selects = [],
-    style = {}
+    style = {},
+    children
 }) => {
     const text = label.split(" ").join("").toLowerCase();
 
     return (
         <div className='input__user__info__wrapper' style={{ ...style }}>
             <label htmlFor={text}>{label} {isObligatory && <span>*</span>}</label>
-            <div className='iui__input__wrapper'>
+            <div className='iui__input__options'>
                 {
                     selects.length > 0
                         ?
@@ -46,7 +47,15 @@ const InputUserInfo = ({
                             styles={customStyles}
                         />
                         :
-                        <input type={type} id={text} placeholder={placeholder} />
+                        <div className='iui__input__wrapper'>
+                            {children}
+                            <input
+                                type={type}
+                                id={text}
+                                placeholder={placeholder}
+                                className='iui__input'
+                            />
+                        </div>
                 }
             </div>
             <p>{description}</p>
@@ -59,7 +68,8 @@ InputUserInfo.propTypes = {
     isObligatory: PropTypes.bool,
     description: PropTypes.string,
     placeholder: PropTypes.string,
-    style: PropTypes.object
+    style: PropTypes.object,
+    children: PropTypes.node,
 }
 
 export default InputUserInfo

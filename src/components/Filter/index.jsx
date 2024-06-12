@@ -8,15 +8,11 @@ import 'rc-slider/assets/index.css';
 const Filter = ({ title, items = [], typeCheckbox = "", isList = true, handleChangCheckedFilter }) => {
     const [listItems, setListItems] = useState([]);
     const [isShowMore, setIsShowMore] = useState(items.length > 5);
-    const [value, setValue] = useState([0, 200]);
+    const [value, setValue] = useState([0, 1000]);
 
     const handleClick = () => {
         listItems.length === 5 ? setListItems(items) : setListItems(items.slice(0, 5));
         setIsShowMore(!isShowMore);
-    }
-
-    const handleChangeCompleteSlider = (data) => {
-        console.log(data);
     }
 
     useEffect(() => {
@@ -38,10 +34,10 @@ const Filter = ({ title, items = [], typeCheckbox = "", isList = true, handleCha
                                         id={`filter-checkbox-${title.slice(0, 2)}-${idx}`}
                                         className='filter__item__input'
                                         name={`filter-input-${title.slice(0, 2)}-${idx}`}
-                                        // checked={isChecked}
                                         onChange={() => handleChangCheckedFilter({
                                             idCheck: item?.id,
-                                            typeCheckbox
+                                            typeCheckbox,
+                                            rangePrice: [] 
                                         })}
                                     />
 
@@ -79,12 +75,15 @@ const Filter = ({ title, items = [], typeCheckbox = "", isList = true, handleCha
                     <Slider
                         range
                         min={0}
-                        max={200}
+                        max={1000}
                         value={value}
-                        defaultValue={[0, 200]}
+                        defaultValue={[0, 1000]}
                         className='filter__slider'
                         onChange={(data) => setValue(data)}
-                        onChangeComplete={handleChangeCompleteSlider}
+                        onChangeComplete={(data) => handleChangCheckedFilter({
+                            typeCheckbox,
+                            rangePrice: data
+                        })}
                     />
                 </div>
             }

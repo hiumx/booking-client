@@ -1,0 +1,38 @@
+.method__payment__item__wrapper {
+
+
+    .method__payment__item__content {
+        width: 144px;
+        height: 96px;
+        box-shadow: 0px 2px 8px 0px #1a1a1a29;
+        padding: 10px;
+        border-radius: 8px;
+
+        &:hover {
+            background-color: #E7E7E7;
+            scale: 0.99;
+        }
+
+        .method__payment__item__checkbox {
+            width: 20px;
+            height: 20px;
+        }
+
+        .method__payment__item__icon__wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-6px);
+        }
+    }
+
+    .method__payment__item__desc {
+        font-size: 14px;
+        margin-top: 6px;
+        text-align: center;
+    }
+
+    .method__payment__item__active {
+        border: 2px solid #006CE4;
+    }
+}

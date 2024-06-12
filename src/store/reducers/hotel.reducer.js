@@ -1,7 +1,8 @@
 import actionTypes from "../actions/action.type";
 
 const initState = {
-    listSearchHotel: []
+    listSearchHotel: [],
+    topHotels: []
 }
 
 const hotelReducer = (state = initState, action) => {
@@ -13,6 +14,16 @@ const hotelReducer = (state = initState, action) => {
             }
         case actionTypes.GET_LIST_SEARCH_HOTEL_FAIL:
             state.listSearchHotel = [];
+            return {
+                ...state
+            }
+        case actionTypes.GET_TOP_HOTEL_SUCCESS:
+            state.topHotels = action.topHotels
+            return {
+                ...state
+            }
+        case actionTypes.GET_TOP_HOTEL_FAIL:
+            state.topHotels = [];
             return {
                 ...state
             }
