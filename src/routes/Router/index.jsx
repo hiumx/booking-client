@@ -20,6 +20,7 @@ import SearchResultOverview from '~/pages/SearchResult/SearchResultOverview';
 import SearchResultDetail from '~/pages/SearchResult/SearchResultDetail';
 import Booking from '~/pages/Booking';
 import GoToTop from '~/components/GoToTop';
+import MyStep from '~/components/MyStep';
 
 const Routers = () => {
     return (
@@ -36,7 +37,7 @@ const Routers = () => {
                 <Route path="/my-settings/:slug/:id" element={<MySettingDetail />} />
                 <Route path="/search-result" element={<SearchResultOverview />} />
                 <Route path="/search-result/:id" element={<SearchResultDetail />} />
-                <Route path="/book" element={<Booking />} />
+                <Route path="/book" element={<MyStep />} />
 
                 <Route path="/system" element={<UserManagement />} />
 

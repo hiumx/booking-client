@@ -79,6 +79,7 @@ const Carousel = ({
                                 name={item.name}
                                 location={item.location}
                                 isReview={item.isReview}
+                                reviews={item.reviews}
                                 isSave={item.isSave}
                                 isBackground={backgroundImage}
                             />
@@ -90,7 +91,7 @@ const Carousel = ({
                         <div key={idx} className='carousel__item'>
                             <ImageTextItem
                                 imgSrc={item.imgSrc}
-                                text={item?.text}
+                                type={item?.type}
                             />
                         </div>
                     ))

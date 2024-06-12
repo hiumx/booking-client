@@ -1,0 +1,32 @@
+.radio__item__payment__wrapper {
+    margin-bottom: 24px;
+
+    .rip__details {
+        display: flex;
+        gap: 12px;
+
+        .rip__input {
+            width: 20px;
+            height: 20px;
+            margin-top: 6px;
+        }
+
+        .rip__label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .rip__desc {
+            font-size: 14px;
+            color: var(--text-color);
+
+        }
+    }
+}
+
+.payment__info__card__icon, 
+.payment__info__gg__pay__icon, 
+.payment__info__apple_pay__icon {
+    margin-right: 8px;
+}

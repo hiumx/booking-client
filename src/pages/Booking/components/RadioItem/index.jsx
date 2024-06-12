@@ -36,7 +36,7 @@ const RadioItem = ({
 }
 
 RadioItem.propTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     listRadios: PropTypes.array.isRequired,
     listRadios: PropTypes.object
 }

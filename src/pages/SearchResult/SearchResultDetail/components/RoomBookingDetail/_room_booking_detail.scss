@@ -3,6 +3,13 @@
     border: 1px solid var(--border-color);
     margin: 8px 0;
 
+    &:hover {
+        border-color: #a3d7fc;
+        box-shadow: 0 0 8px #a3d7fc;
+        background-color: #f0f6ff;
+        scale: 1.003;
+    }
+
     .rbd__img__wrapper {
         .rbd__img {
             width: 100%;
