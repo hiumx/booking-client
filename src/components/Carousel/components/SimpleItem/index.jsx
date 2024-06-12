@@ -11,6 +11,7 @@ const SimpleItem = ({
     name = "",
     location = "",
     isReview = true,
+    reviews = [],
     isSave = true,
     isLocation = true,
     isBackground = false
@@ -56,7 +57,7 @@ const SimpleItem = ({
                 {isReview &&
                     <div className='csi__review__wrapper'>
                         <ReviewFeedback
-                            reviews={[{ point: 10 }]}
+                            reviews={reviews.length > 0 ? reviews : [{ point: 10 }]}
                             style={{ fontSize: '14px' }}
                             isBackgroundImage={isBackground}
                         />
@@ -72,6 +73,7 @@ SimpleItem.propTypes = {
     name: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
     isReview: PropTypes.bool,
+    reviews: PropTypes.array,
     isSave: PropTypes.bool,
 }
 

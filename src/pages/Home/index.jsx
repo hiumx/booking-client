@@ -12,26 +12,35 @@ import ImageTitleDescCarouselLoader from '~/components/MyLoader/components/Image
 import SimpleItemCarouselBackgroundLoader from '~/components/MyLoader/components/SimpleItemCarouselBackgroundLoader';
 import HistorySearchLoader from '~/components/MyLoader/components/HistorySearchLoader';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTypesHotel } from '~/store/actions/typeHotel.action';
+import { getTopHotels } from '~/store/actions/hotel.action';
 
 const Home = () => {
 
     const [histories, setHistories] = useState([]);
-    const [typicalStay, setTypicalStay] = useState([]);
-    const [recommendStay, setRecommendStay] = useState([]);
+    // const [recommendStay, setRecommendStay] = useState([]);
     const [perfectWhere, setPerfectWhere] = useState([]);
     const [listTrending, setListTrending] = useState([]);
     const [exploreVietNam, setExploreVietNam] = useState([]);
 
+    const dispatch = useDispatch();
+    const typicalStay = useSelector(state => state.typeHotel.typesHotel);
+    const recommendStay = useSelector(state => state.hotel.topHotels);
+
     useEffect(() => {
         setTimeout(() => {
             setHistories([1, 2, 3, 4]);
-            setTypicalStay(LIST_DATA_SIMPLE_COMPONENT_FAKE);
-            setRecommendStay(LIST_DATA_SIMPLE_COMPONENT_FAKE);
+            // setRecommendStay(LIST_DATA_SIMPLE_COMPONENT_FAKE);
             setPerfectWhere(LIST_DATA_SIMPLE_COMPONENT_FAKE);
             setListTrending(LIST_CAROUSEL_IMAGE_FAKE);
             setExploreVietNam(LIST_VIET_NAM_TRAVEL_FAKE);
         }, 500);
-    }, [])
+
+        dispatch(getTypesHotel());
+        dispatch(getTopHotels())
+
+    }, []);
 
     return (
         <div className='home__wrapper'>
@@ -58,7 +67,10 @@ const Home = () => {
                         <Carousel
                             type='image-text-component'
                             title="Go beyond your typical stay"
-                            items={LIST_DATA_SIMPLE_COMPONENT_FAKE}
+                            items={typicalStay?.map(t => ({
+                                imgSrc: t.image,
+                                type: t.name
+                            }))}
                             slidesToShow={5}
                             slidesToScroll={2}
                             autoPlay={false}
@@ -73,8 +85,15 @@ const Home = () => {
                             type='image-simple-component'
                             title="Recommended stays for you"
                             description='Based on your most recently viewed property'
-                            items={LIST_DATA_SIMPLE_COMPONENT_FAKE}
-                            autoPlay={true}
+                            items={recommendStay?.map(h => ({
+                                imgSrc: h?.image?.url,
+                                name: h?.name,
+                                location: h?.location,
+                                isReview: true,
+                                reviews: h?.reviews,
+                                isSave: true
+                            }))}
+                            autoPlay={false}
                         />
                         :
                         <SimpleItemCarouselLoader />

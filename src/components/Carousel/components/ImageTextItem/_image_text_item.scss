@@ -1,5 +1,6 @@
 .image__text__item__wrapper {
     position: relative;
+
     .iti__img {
         width: 100%;
         border-radius: 12px;
@@ -11,7 +12,8 @@
         position: absolute;
         bottom: 8px;
         left: 8px;
-        font-weight: 600;
+        font-weight: 500;
+        font-size: 15px;
         text-shadow: 1px 1px #907a7a;
     }
 }

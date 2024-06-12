@@ -1,3 +1,33 @@
 .my__step__wrapper {
-    margin: 26px 0;
+    padding: 28px 14% 22px;
+
+    .my__step__btn {
+        .my__step__next__btn,
+        .my__step__prev__btn {
+            display: flex;
+            padding: 8px 10px;
+            border: none;
+            outline: none;
+            align-items: center;
+            gap: 8px;
+            background-color: #3f4e9d;
+            color: var(--white-color);
+            font-size: 15px;
+            border-radius: 5px;
+            margin-top: 8px;
+
+            &:hover {
+                background-color: #2e3d8d;
+            }
+        }
+
+        .my__step__next__btn {
+            float: right;
+        }
+
+        .my__step__prev__btn {
+            float: left;
+        }
+    }
+    
 }

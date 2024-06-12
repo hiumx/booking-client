@@ -28,7 +28,8 @@ const SearchResultOverview = () => {
 	const [isNotFound, setIsNotFound] = useState(false);
 	const [listTypeChecked, setListTypeChecked] = useState([]);
 	const [listConvenientChecked, setListConvenientChecked] = useState([]);
-	// const [payloadChecked, setPayloadChecked] = useState({});
+	const [rangePrice, setRangePrice] = useState([0, 1000]);
+	const [listRating, setListRating] = useState([]);
 
 	const items = FILTER_ITEMS;
 
@@ -56,17 +57,31 @@ const SearchResultOverview = () => {
 		})
 	}
 
-	const handleChangCheckedFilter = ({ idCheck, typeCheckbox }) => {
-		if (typeCheckbox === "type_hotel") {
-			if (listTypeChecked.includes(idCheck))
-				setListTypeChecked(listTypeChecked.filter(t => t !== idCheck))
-			else
-				setListTypeChecked(prev => [...prev, idCheck]);
-		} else if (typeCheckbox === "convenient") {
-			if (listConvenientChecked.includes(idCheck))
-				setListConvenientChecked(listConvenientChecked.filter(c => c !== idCheck));
-			else
-				setListConvenientChecked(prev => [...prev, idCheck]);
+	const handleChangCheckedFilter = ({ idCheck = 0, typeCheckbox, rangePrice = [] }) => {
+		switch(typeCheckbox) {
+			case "type_hotel":
+				if (listTypeChecked.includes(idCheck))
+					setListTypeChecked(listTypeChecked.filter(t => t !== idCheck))
+				else
+					setListTypeChecked(prev => [...prev, idCheck]);
+				break;
+			case "convenient":
+				if (listConvenientChecked.includes(idCheck))
+					setListConvenientChecked(listConvenientChecked.filter(c => c !== idCheck));
+				else
+					setListConvenientChecked(prev => [...prev, idCheck]);
+				break;
+			case "price_range":
+				setRangePrice(rangePrice);
+				break;
+			case "rating":
+				if(listRating.includes(idCheck))
+					setListRating(listRating.filter(rate => rate !== idCheck))
+				else 
+					setListRating(prev => [...prev, idCheck]);
+				break;
+			default:
+				throw new Error("Type of check filter invalid!");
 		}
 	}
 
@@ -78,7 +93,10 @@ const SearchResultOverview = () => {
 		    location,
 		    numberOfRoom: room,
 		    checksType: listTypeChecked,
-		    checksConvenient: listConvenientChecked
+		    checksConvenient: listConvenientChecked,
+			lowestPrice: rangePrice[0],
+			highestPrice: rangePrice[1],
+			checkRating: listRating,
 		}).then(res => {
 		    if (res.code === 1000)
 		        dispatch({
@@ -88,7 +106,7 @@ const SearchResultOverview = () => {
 		}).catch(error => {
 		    console.error(error);
 		})
-	}, [listTypeChecked, listConvenientChecked]);
+	}, [listTypeChecked, listConvenientChecked, rangePrice]);
 
 	useEffect(() => {
 		let timerId = setTimeout(() => {
@@ -135,7 +153,7 @@ const SearchResultOverview = () => {
 						<div className='sr__body__filter__wrapper'>
 							<h3 className='sr__body__filter__by'>Filter by:</h3>
 							<Filter title='Your previous filters' items={items.previousFilter} handleChangCheckedFilter={handleChangCheckedFilter} />
-							<Filter title='Your budget' isList={false} handleChangCheckedFilter={handleChangCheckedFilter} />
+							<Filter title='Your budget' isList={false} typeCheckbox='price_range' handleChangCheckedFilter={handleChangCheckedFilter} />
 							<Filter title='Popular filters' items={items.popularFilter} handleChangCheckedFilter={handleChangCheckedFilter} />
 							<Filter title='Property type' typeCheckbox="type_hotel" items={typesHotel} handleChangCheckedFilter={handleChangCheckedFilter} />
 							<Filter title='Property rating' typeCheckbox="rating" items={LIST_RATING} handleChangCheckedFilter={handleChangCheckedFilter} />

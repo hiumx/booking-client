@@ -1,5 +1,6 @@
 .input__user__info__wrapper {
     margin: 16px 8px 0 0;
+
     label {
         display: block;
         font-size: 14px;
@@ -11,14 +12,24 @@
         color: #a30000;
     }
 
-    .iui__input__wrapper {
-        input {
+    .iui__input__options {
+
+        .iui__input__wrapper {
             padding: 6px 8px;
             font-size: 14px;
             outline: none;
             border-radius: 6px;
             border: 1px solid #aaa;
             width: 100%;
+            display: flex;
+            align-items: center;
+
+            .iui__input {
+                margin-left: 4px;
+                border: none;
+                outline: none;
+                width: 100%;
+            }
         }
     }
 
