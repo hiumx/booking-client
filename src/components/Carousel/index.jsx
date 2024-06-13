@@ -7,8 +7,9 @@ import LazyLoad from 'react-lazyload';
 import CarouselSimpleItem from './components/SimpleItem';
 import ImageTextItem from './components/ImageTextItem';
 import FeedbackItem from './components/FeedbackItem';
+import ImagePrimaryItem from './components/ImagePrimaryItem';
 
-const Carousel = ({ 
+const Carousel = ({
     type,
     title = "",
     description = "",
@@ -61,13 +62,12 @@ const Carousel = ({
                 {type === "image-title-desc" &&
                     items.map((item, idx) => (
                         <div key={idx} className='carousel__item'>
-                            <LazyLoad height="302px">
-                                <img src={item.img} className='carousel__item__img' alt={`img-${idx}`} loading='lazy' />
-                                <div className='carousel__item__detail'>
-                                    <h6 className='carousel__item__name'>{item.name}</h6>
-                                    <p className='carousel__item__desc'>{`${item.properties} properties`}</p>
-                                </div>
-                            </LazyLoad>
+                            <ImagePrimaryItem
+                                key={idx}
+                                image={item.image}
+                                province={item.provinceName}
+                                properties={100}
+                            />
                         </div>
                     ))
                 }
@@ -92,6 +92,7 @@ const Carousel = ({
                             <ImageTextItem
                                 imgSrc={item.imgSrc}
                                 type={item?.type}
+                                typeId={item?.typeId}
                             />
                         </div>
                     ))

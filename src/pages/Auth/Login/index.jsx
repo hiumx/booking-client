@@ -5,7 +5,7 @@ import './_login.scss';
 import AuthForm from '~/components/AuthForm';
 import Input from '~/components/Input';
 import { checkInputEmpty, checkObjEmpty, isRoleExist, validateTypeInput } from '~/utils';
-import { signIn } from '~/services/access.service';
+import { signIn } from '~/services/auth.service';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMyInfo } from '~/store/actions/user.action';
 

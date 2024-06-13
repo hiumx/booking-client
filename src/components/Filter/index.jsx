@@ -5,7 +5,7 @@ import { AngleDownIcon, AngleUpIcon } from '../Icons';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-const Filter = ({ title, items = [], typeCheckbox = "", isList = true, handleChangCheckedFilter }) => {
+const Filter = ({ title, items = [], listChecked = [], typeCheckbox = "", isList = true, handleChangCheckedFilter }) => {
     const [listItems, setListItems] = useState([]);
     const [isShowMore, setIsShowMore] = useState(items.length > 5);
     const [value, setValue] = useState([0, 1000]);
@@ -34,6 +34,7 @@ const Filter = ({ title, items = [], typeCheckbox = "", isList = true, handleCha
                                         id={`filter-checkbox-${title.slice(0, 2)}-${idx}`}
                                         className='filter__item__input'
                                         name={`filter-input-${title.slice(0, 2)}-${idx}`}
+                                        checked={listChecked.includes(item.id)}
                                         onChange={() => handleChangCheckedFilter({
                                             idCheck: item?.id,
                                             typeCheckbox,

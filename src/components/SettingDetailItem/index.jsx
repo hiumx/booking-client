@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { updateUserByField } from '~/services/user.service';
 import { useDispatch } from 'react-redux';
 import { getMyInfo } from '~/store/actions/user.action';
-import { signOut } from '~/services/access.service';
+import { signOut } from '~/services/auth.service';
 import PropTypes from 'prop-types';
 
 const SettingDetailItem = ({ title, description, items = [], image = false }) => {

@@ -11,7 +11,7 @@ const MethodPaymentItem = ({
 }) => {
 
     return (
-        <div className='method__payment__item__wrapper' onClick={() => handleChecked(idx)}>
+        <div className='method__payment__item__wrapper' onMouseDown={() => handleChecked(idx)}>
             <div
                 className={currentActive === idx
                     ? 'method__payment__item__content method__payment__item__active'
