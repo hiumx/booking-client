@@ -4,6 +4,10 @@ import LazyLoad from 'react-lazyload';
 import ReviewFeedback from '~/components/ReviewFeedback';
 import PropTypes from 'prop-types';
 import { HeartIcon, HeartSolidIcon } from '~/components/Icons';
+import { filterHotelByChecked } from '~/services/search.service';
+import { useDispatch } from 'react-redux';
+import actionTypes from '~/store/actions/action.type';
+import { useNavigate } from 'react-router-dom';
 
 
 const SimpleItem = ({
@@ -19,11 +23,60 @@ const SimpleItem = ({
 
     const [isSaved, setIsSaved] = useState(false);
 
+    const dispatch = useDispatch();
+    const navigator = useNavigate();
+
+    const handleClickItem = () => {
+        const payload = {
+            location: "",
+            startDate: new Date(Date.now()),
+            endDate: new Date(Date.now() + 1000 * 60 * 60 * 24 * 2),
+            options: {
+                adult: 2,
+                children: 0,
+                room: 1,
+            }
+        }
+        const { startDate, endDate, location, options } = payload;
+
+        navigator(
+            `/search-result?name=${name}&location=${location}&startDate=${startDate}&endDate=${endDate}&adult=${options.adult}&children=${options.children}&room=${options.room}`
+        );
+
+        filterHotelByChecked({
+            name,
+            startDate,
+            endDate,
+            location,
+            numberOfRoom: options.room,
+            checksType: [],
+            checksConvenient: [],
+            lowestPrice: 0,
+            highestPrice: 1000,
+            checkRating: [],
+        }).then(res => {
+            if (res.code === 1000)
+                dispatch({
+                    type: actionTypes.GET_LIST_SEARCH_HOTEL_SUCCESS,
+                    listSearchHotel: res.metadata
+                });
+        }).catch(error => {
+            console.error(error);
+        });
+    }
+
     return (
-        <div className={isBackground ? 'csi__wrapper csi__background__image' : 'csi__wrapper'}>
+        <div
+            className={isBackground ? 'csi__wrapper csi__background__image' : 'csi__wrapper'}
+        >
             <div className='csi__img__wrapper'>
                 <LazyLoad height="118px">
-                    <img className='csi__img' src={imgSrc} alt='ssi-img' />
+                    <img
+                        className='csi__img'
+                        src={imgSrc}
+                        alt='ssi-img'
+                        onClick={handleClickItem}
+                    />
                 </LazyLoad>
                 {isSave &&
                     <div className='csi__save' onClick={() => setIsSaved(!isSaved)}>
@@ -31,7 +84,7 @@ const SimpleItem = ({
                     </div>
                 }
             </div>
-            <div className='csi__info__wrapper'>
+            <div className='csi__info__wrapper' onClick={handleClickItem}>
                 <div className='csi__info'>
                     <h5
                         className=

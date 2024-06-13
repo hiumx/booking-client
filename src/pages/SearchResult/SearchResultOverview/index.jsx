@@ -58,7 +58,7 @@ const SearchResultOverview = () => {
 	}
 
 	const handleChangCheckedFilter = ({ idCheck = 0, typeCheckbox, rangePrice = [] }) => {
-		switch(typeCheckbox) {
+		switch (typeCheckbox) {
 			case "type_hotel":
 				if (listTypeChecked.includes(idCheck))
 					setListTypeChecked(listTypeChecked.filter(t => t !== idCheck))
@@ -75,9 +75,9 @@ const SearchResultOverview = () => {
 				setRangePrice(rangePrice);
 				break;
 			case "rating":
-				if(listRating.includes(idCheck))
+				if (listRating.includes(idCheck))
 					setListRating(listRating.filter(rate => rate !== idCheck))
-				else 
+				else
 					setListRating(prev => [...prev, idCheck]);
 				break;
 			default:
@@ -86,25 +86,34 @@ const SearchResultOverview = () => {
 	}
 
 	useEffect(() => {
-		const { startDate, endDate, room, location } = parsed;
+		dispatch(getTypesHotel());
+		dispatch(getConvenient());
+		setListTypeChecked(Number(parsed?.typeChecked) ? [...listTypeChecked, Number(parsed?.typeChecked)] : []);
+	}, []);
+
+	console.log(listTypeChecked);
+
+	useEffect(() => {
+		const { startDate, endDate, room, location, name } = parsed;
 		filterHotelByChecked({
-		    startDate: new Date(startDate),
-		    endDate: new Date(endDate),
-		    location,
-		    numberOfRoom: room,
-		    checksType: listTypeChecked,
-		    checksConvenient: listConvenientChecked,
+			startDate: new Date(startDate),
+			endDate: new Date(endDate),
+			location,
+			name,
+			numberOfRoom: room,
+			checksType: listTypeChecked,
+			checksConvenient: listConvenientChecked,
 			lowestPrice: rangePrice[0],
 			highestPrice: rangePrice[1],
 			checkRating: listRating,
 		}).then(res => {
-		    if (res.code === 1000)
-		        dispatch({
-		            type: actionTypes.GET_LIST_SEARCH_HOTEL_SUCCESS,
-		            listSearchHotel: res.metadata
-		        });
+			if (res.code === 1000)
+				dispatch({
+					type: actionTypes.GET_LIST_SEARCH_HOTEL_SUCCESS,
+					listSearchHotel: res.metadata
+				});
 		}).catch(error => {
-		    console.error(error);
+			console.error(error);
 		})
 	}, [listTypeChecked, listConvenientChecked, rangePrice]);
 
@@ -120,23 +129,22 @@ const SearchResultOverview = () => {
 		}
 	}, [isNotFound, hotelData]);
 
-	useEffect(() => {
-		dispatch(getTypesHotel());
-		dispatch(getConvenient());
+	// useEffect(() => {
 
-		const { location, startDate, endDate, adult, children, room } = parsed;
-		const payload = {
-			location,
-			startDate: new Date(startDate),
-			endDate: new Date(endDate),
-			options: {
-				adult, children, room
-			}
-		}
-		setTimeout(() => {
-			dispatch(getResultSearchHotel(payload));
-		}, 800);
-	}, []);
+
+	// 	const { location, startDate, endDate, adult, children, room } = parsed;
+	// 	const payload = {
+	// 		location,
+	// 		startDate: new Date(startDate),
+	// 		endDate: new Date(endDate),
+	// 		options: {
+	// 			adult, children, room
+	// 		}
+	// 	}
+	// 	setTimeout(() => {
+	// 		dispatch(getResultSearchHotel(payload));
+	// 	}, 800);
+	// }, []);
 
 	return (
 		<div className='search__result__wrapper'>
@@ -152,17 +160,50 @@ const SearchResultOverview = () => {
 					<div className='col-lg-3'>
 						<div className='sr__body__filter__wrapper'>
 							<h3 className='sr__body__filter__by'>Filter by:</h3>
-							<Filter title='Your previous filters' items={items.previousFilter} handleChangCheckedFilter={handleChangCheckedFilter} />
-							<Filter title='Your budget' isList={false} typeCheckbox='price_range' handleChangCheckedFilter={handleChangCheckedFilter} />
-							<Filter title='Popular filters' items={items.popularFilter} handleChangCheckedFilter={handleChangCheckedFilter} />
-							<Filter title='Property type' typeCheckbox="type_hotel" items={typesHotel} handleChangCheckedFilter={handleChangCheckedFilter} />
-							<Filter title='Property rating' typeCheckbox="rating" items={LIST_RATING} handleChangCheckedFilter={handleChangCheckedFilter} />
-							<Filter title='Convenient filters' typeCheckbox="convenient" items={convenient} handleChangCheckedFilter={handleChangCheckedFilter} />
+							<Filter
+								title='Your previous filters'
+								items={items.previousFilter}
+								handleChangCheckedFilter={handleChangCheckedFilter}
+							/>
+							<Filter
+								title='Your budget'
+								isList={false}
+								typeCheckbox='price_range'
+								handleChangCheckedFilter={handleChangCheckedFilter}
+							/>
+							<Filter
+								title='Popular filters'
+								items={items.popularFilter}
+								handleChangCheckedFilter={handleChangCheckedFilter}
+							/>
+							<Filter
+								title='Property type'
+								typeCheckbox="type_hotel"
+								items={typesHotel}
+								listChecked={listTypeChecked}
+								handleChangCheckedFilter={handleChangCheckedFilter}
+							/>
+							<Filter
+								title='Property rating'
+								typeCheckbox="rating"
+								items={LIST_RATING}
+								handleChangCheckedFilter={handleChangCheckedFilter}
+							/>
+							<Filter
+								title='Convenient filters'
+								typeCheckbox="convenient"
+								items={convenient}
+								handleChangCheckedFilter={handleChangCheckedFilter}
+							/>
 						</div>
 					</div>
 					<div className='col-lg-9'>
 
-						<h5 className='sr__body__num__found'>{`${parsed.location}: ${hotelData.length} properties found`}</h5>
+						<h5
+							className='sr__body__num__found'
+						>
+							{`${parsed.location ? parsed.location : parsed.name}: ${hotelData.length} properties found`}
+						</h5>
 						<Select
 							options={options}
 							className='sr__body__sort'

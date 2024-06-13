@@ -7,10 +7,10 @@ import {
     useLocation,
 } from "react-router-dom";
 
-import ForgotPassword from "~/pages/Access/ForgotPassword";
-import Login from "~/pages/Access/Login";
-import Register from "~/pages/Access/Register";
-import ResetPassword from "~/pages/Access/ResetPassword";
+import ForgotPassword from "~/pages/Auth/ForgotPassword";
+import Login from "~/pages/Auth/Login";
+import Register from "~/pages/Auth/Register";
+import ResetPassword from "~/pages/Auth/ResetPassword";
 import Home from "~/pages/Home";
 import MySetting from "~/pages/UserSetting/MySetting";
 import MySettingDetail from "~/pages/UserSetting/MySettingDetail";

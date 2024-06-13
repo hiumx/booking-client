@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import AuthForm from '~/components/AuthForm';
 import Input from '~/components/Input';
-import { signUp } from '~/services/access.service';
+import { signUp } from '~/services/auth.service';
 import { checkConfirmPassword, checkInputEmpty, checkObjEmpty, validateTypeInput } from '~/utils';
 
 const Register = () => {

@@ -66,9 +66,12 @@ const SearchInput = ({ style, searchValue = {}, setIsNotFound = () => {} }) => {
 
     useEffect(() => {
         if (!checkObjEmpty(searchValue)) {
-            const { location, startDate, endDate, adult, children, room } = searchValue;
+            const { location, startDate, endDate, adult, children, room, name} = searchValue;
+            
+            console.log(startDate);
+            console.log(new Date(startDate));
 
-            setLocation(location);
+            setLocation(location ? location : name);
             setDates([{
                 startDate: new Date(startDate),
                 endDate: new Date(endDate),

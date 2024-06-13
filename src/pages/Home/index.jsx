@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTypesHotel } from '~/store/actions/typeHotel.action';
 import { getTopHotels } from '~/store/actions/hotel.action';
+import { getTopProvinces } from '~/store/actions/province.action';
 
 const Home = () => {
 
@@ -22,11 +23,13 @@ const Home = () => {
     // const [recommendStay, setRecommendStay] = useState([]);
     const [perfectWhere, setPerfectWhere] = useState([]);
     const [listTrending, setListTrending] = useState([]);
-    const [exploreVietNam, setExploreVietNam] = useState([]);
 
     const dispatch = useDispatch();
     const typicalStay = useSelector(state => state.typeHotel.typesHotel);
     const recommendStay = useSelector(state => state.hotel.topHotels);
+    const topVNProvinces = useSelector(state => state.province.topProvinces);
+
+    console.log(topVNProvinces);
 
     useEffect(() => {
         setTimeout(() => {
@@ -34,11 +37,12 @@ const Home = () => {
             // setRecommendStay(LIST_DATA_SIMPLE_COMPONENT_FAKE);
             setPerfectWhere(LIST_DATA_SIMPLE_COMPONENT_FAKE);
             setListTrending(LIST_CAROUSEL_IMAGE_FAKE);
-            setExploreVietNam(LIST_VIET_NAM_TRAVEL_FAKE);
+            // setExploreVietNam(LIST_VIET_NAM_TRAVEL_FAKE);
         }, 500);
 
         dispatch(getTypesHotel());
-        dispatch(getTopHotels())
+        dispatch(getTopHotels());
+        dispatch(getTopProvinces());
 
     }, []);
 
@@ -69,7 +73,8 @@ const Home = () => {
                             title="Go beyond your typical stay"
                             items={typicalStay?.map(t => ({
                                 imgSrc: t.image,
-                                type: t.name
+                                type: t.name,
+                                typeId: t.id
                             }))}
                             slidesToShow={5}
                             slidesToScroll={2}
@@ -118,20 +123,22 @@ const Home = () => {
                                 title="Explore stays in trending destinations"
                                 items={LIST_CAROUSEL_IMAGE_FAKE}
                                 autoPlay={false}
+                                slidesToShow={5}
                             />
                             :
                             <OnlyImageCarouselLoader />
                     }
                     {
-                        exploreVietNam.length > 0
+                        topVNProvinces.length > 0
                             ?
                             <Carousel
                                 type='image-title-desc'
                                 title="Explore Vietnam"
                                 description='These popular destinations have a lot to offer'
-                                items={LIST_VIET_NAM_TRAVEL_FAKE}
+                                items={topVNProvinces}
                                 autoPlay={false}
                                 slidesToShow={6}
+                                slidesToScroll={2}
                                 arrowStyle={{ transform: "translateY(-30px) !important" }}
                             />
                             :
