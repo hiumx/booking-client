@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { HeartIcon, SignOutIcon, TripIcon, UserIcon, WalletIcon } from '../Icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMyInfo } from '~/store/actions/user.action';
-import { signOut } from '~/services/access.service';
+import { signOut } from '~/services/auth.service';
 import MenuItem from './components/MenuItem';
 
 const UserInfo = () => {

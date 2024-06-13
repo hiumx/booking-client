@@ -7,6 +7,7 @@ import { persistReducer } from 'redux-persist';
 import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
 import convenientReducer from './convenient.reduce';
 import hotelReducer from './hotel.reducer';
+import provinceReducer from './province.reduce';
 
 const commonConfig = {
     storage,
@@ -31,14 +32,14 @@ const convenientConfig = {
     ...commonConfig,
     key: "convenient",
     whitelist: ["convenient"]
-    
 }
 
 const rootReducer = combineReducers({
     user: persistReducer(userConfig, userReducer),
     typeHotel: persistReducer(typeHotelConfig, typeHotelReducer),
     convenient: persistReducer(convenientConfig, convenientReducer),
-    hotel: hotelReducer
+    hotel: hotelReducer,
+    province: provinceReducer
 });
 
 export default rootReducer;
