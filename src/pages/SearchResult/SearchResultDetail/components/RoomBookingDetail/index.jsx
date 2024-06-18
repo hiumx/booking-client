@@ -3,10 +3,10 @@ import "./_room_booking_detail.scss";
 import Amenity from '../Amenity';
 import { ArrowLeftIcon, ChevronRightIcon, ExclamationIcon } from '~/components/Icons';
 import SeeMore from '~/components/SeeMore';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { checkObjEmpty } from '~/utils';
-
+import queryString from 'query-string';
 const amenities = ["Pool", "Spa", "Air conditioning", "Wifi", "Bar", "Free parking", "Airport transfer"];
 
 const RoomBookingDetail = ({ data }) => {
@@ -14,9 +14,12 @@ const RoomBookingDetail = ({ data }) => {
     const roomId = data?.id;
 
     const [totalPrice, setTotalPrice] = useState(data?.price || 0);
-    const user = useSelector(state => state.user.userMyInfo);
-    const navigator = useNavigate();
 
+    const navigator = useNavigate();
+    const location = useLocation();
+
+    const user = useSelector(state => state.user.userMyInfo);
+    
     const handleChangeExtra = ({ type = "", value = 0 }) => {
         let price = totalPrice;
         if (type === "breakfast") {
@@ -32,7 +35,7 @@ const RoomBookingDetail = ({ data }) => {
         // if(checkObjEmpty(user)) {
         //     navigator("/auth/sign-in");
         // } else {
-            navigator("/book")
+            navigator(`/book?rid=${roomId}&${location.search}`)
         // }
     }
 
