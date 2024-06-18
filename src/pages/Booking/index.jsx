@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./_booking.scss";
 
 import ReactStars from 'react-stars';
 import { ApplePayIcon, CardIcon, ChevronDownIcon, CupIcon, DiscoverIcon, ExclamationIcon, GooglePayIcon, GroupUserIcon, JSBIcon, MasterCardIcon, NoSmokingIcon, StripeCardIcon, UserIcon, VisaIcon } from '~/components/Icons';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Amenity from '../SearchResult/SearchResultDetail/components/Amenity';
 import SubReviewFeedback from '~/components/SubReviewFeedback';
 import DateRangeItem from './components/DateRangeItem';
@@ -16,6 +16,10 @@ import RadioItemPayment from './components/RadioPaymentItem';
 import MethodPaymentItem from './components/MethodPaymentItem';
 import momoLogo from "~/assets/logos/mono_logo.png";
 import vnPayLogo  from "~/assets/logos/vn_pay_logo.png";
+import queryString from 'query-string';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRoomInfo } from '~/store/actions/room.action';
+import { getRoomById } from '~/services/room.service';
 
 const amenities = ["Pool", "Spa", "Air conditioning", "Wifi", "Bar", "Free parking"];
 
@@ -23,9 +27,19 @@ const Booking = ({ currentStep = 1 }) => {
 
     const [activeMethodPayment, setActiveMethodPayment] = useState(0);
 
+    const location = useLocation();
+    const dispatch = useDispatch();
+    const parsed = queryString.parse(location.search);
+
+    const room = useSelector(state => state.room.roomInfo);
+
     const handleCheckMethodPayment = (idx) => {
         setActiveMethodPayment(idx);
     }
+
+    useEffect(() => {
+        dispatch(getRoomInfo(parsed.rid));
+    }, []);
 
     return (
         <div className='booking__wrapper'>
@@ -40,12 +54,12 @@ const Booking = ({ currentStep = 1 }) => {
                                         count={5}
                                         edit={false}
                                         size={13}
-                                        value={5}
+                                        value={room?.hotel?.rate}
                                         color2={'#ffd700'}
                                     />
                                 </div>
-                                <h5 className='booking__hotel__info__name'>Hampton by Hilton Marjan Island</h5>
-                                <p className='booking__hotel__info__location'>Marjan Island Boulevard, Ras al Khaimah, United Arab Emirates</p>
+                                <h5 className='booking__hotel__info__name'>{room?.name}</h5>
+                                <p className='booking__hotel__info__location'>{room?.hotel?.location}</p>
                                 <SubReviewFeedback />
                                 <ul className='booking__hotel__info__amenities'>
                                     {amenities?.map((amenity, idx) => (

@@ -98,7 +98,7 @@ const Home = () => {
                                 reviews: h?.reviews,
                                 isSave: true
                             }))}
-                            autoPlay={false}
+                            autoPlay={true}
                         />
                         :
                         <SimpleItemCarouselLoader />
