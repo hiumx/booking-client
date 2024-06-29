@@ -2,19 +2,35 @@ import React from 'react'
 import "./_amenity.scss";
 import PropTypes from 'prop-types';
 import { capitalizeFirstLetter } from '~/utils';
-import { AirConditioningIcon, AirportTransferIcon, BarIcon, BreakFastIcon, BreakfastIcon, CarIcon, ElevatorIcon, PoolIcon, SpaIcon, SportCenterIcon, WifiIcon } from '~/components/Icons';
+import {
+    AirConditioningIcon, AirportShuttleIcon, AirportTransferIcon,
+    BarIcon, BreakFastIcon, BreakfastIcon, BusinessCenterIcon, CarIcon, ElevatorIcon, FamilyRoomIcon, FanIcon, HandShakeIcon, LaundryIcon, NoSmokingIcon, PetIcon, PoolIcon,
+    ReceptionistIcon,
+    RestaurantIcon, RoomServiceIcon, SpaIcon, SportCenterIcon, SuitCaseRollingIcon, WifiIcon
+} from '~/components/Icons';
 
 const iconMap = {
-    WifiIcon,
-    PoolIcon,
+    FreeWiFiIcon: WifiIcon,
+    SwimmingPoolIcon: PoolIcon,
     SpaIcon,
-    AirConditioningIcon,
+    AirConditioningIcon: FanIcon,
     AirportTransferIcon,
     FreeParkingIcon: CarIcon,
     BarIcon,
-    SportCenterIcon,
+    GymIcon: SportCenterIcon,
     ElevatorIcon,
-    BreakfastIcon
+    BreakfastIncludedIcon: BreakfastIcon,
+    RestaurantIcon,
+    AirportShuttleIcon,
+    RoomServiceIcon,
+    PetFriendlyIcon: PetIcon,
+    LaundryServiceIcon: LaundryIcon,
+    "24-hourFrontDeskIcon": ReceptionistIcon,
+    "Non-smokingRoomsIcon": NoSmokingIcon,
+    FamilyRoomsIcon: FamilyRoomIcon,
+    "MeetingFacilitiesIcon": HandShakeIcon,
+    LuggageStorageIcon: SuitCaseRollingIcon,
+    BusinessCenterIcon
 };
 
 const Amenity = ({
@@ -41,7 +57,7 @@ const Amenity = ({
                         : null
                 }
             </div>
-            <p style={{...titleStyle}}>{title}</p>
+            <p style={{ ...titleStyle }}>{title}</p>
         </div>
     )
 }

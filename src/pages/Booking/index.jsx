@@ -15,7 +15,7 @@ import PropTypes from 'prop-types';
 import RadioItemPayment from './components/RadioPaymentItem';
 import MethodPaymentItem from './components/MethodPaymentItem';
 import momoLogo from "~/assets/logos/mono_logo.png";
-import vnPayLogo  from "~/assets/logos/vn_pay_logo.png";
+import vnPayLogo from "~/assets/logos/vn_pay_logo.png";
 import queryString from 'query-string';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRoomInfo } from '~/store/actions/room.action';
@@ -37,8 +37,10 @@ const Booking = ({ currentStep = 1 }) => {
         setActiveMethodPayment(idx);
     }
 
+    const { startDate, endDate, room: numOfRoom, children, adult, rid } = parsed;
+
     useEffect(() => {
-        dispatch(getRoomInfo(parsed.rid));
+        dispatch(getRoomInfo(rid));
     }, []);
 
     return (
@@ -62,10 +64,10 @@ const Booking = ({ currentStep = 1 }) => {
                                 <p className='booking__hotel__info__location'>{room?.hotel?.location}</p>
                                 <SubReviewFeedback />
                                 <ul className='booking__hotel__info__amenities'>
-                                    {amenities?.map((amenity, idx) => (
+                                    {room?.hotel?.convenients?.map((amenity, idx) => (
                                         <li key={idx}>
                                             <Amenity
-                                                title={amenity}
+                                                title={amenity.name}
                                                 iconWidth='14px'
                                                 titleStyle={{ fontSize: "12px", marginLeft: "6px" }}
                                             />
@@ -79,24 +81,39 @@ const Booking = ({ currentStep = 1 }) => {
                             <div className='booking__hotel__details'>
                                 <h5 className='booking__hotel__details__title'>Your booking details</h5>
                                 <div className='bhd__date__range'>
-                                    <DateRangeItem title='Check-in' date='Sat 22 Jun 2024' fromHour='15:00' />
-                                    <DateRangeItem title='Check-out' date='Sat 30 Jun 2024' untilHour='12:00' isSeparate />
+                                    <DateRangeItem
+                                        title='Check-in'
+                                        date={new Date(startDate).toDateString()}
+                                        fromHour='15:00'
+                                    />
+                                    <DateRangeItem
+                                        title='Check-out'
+                                        date={new Date(endDate).toDateString()}
+                                        untilHour='12:00'
+                                        isSeparate
+                                    />
                                 </div>
                                 <div className='bhd__time__stay'>
                                     <p className='bhd__title'>Total length of stay:</p>
-                                    <p className='bhd__value'>8 nights</p>
+                                    <p className='bhd__value'>
+                                        {`${(new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24)} nights`}
+                                    </p>
                                 </div>
                                 <div className='bhd__your__select'>
                                     <div className='bhd__your__select__desc'>
                                         <div className='bhd__your__select__detail'>
                                             <p className='bhd__title'>You selected</p>
-                                            <p className='bhd__value'>1 room for 2 adults</p>
+                                            <p className='bhd__value'>{`${numOfRoom} room for ${adult} adults`}</p>
                                         </div>
                                         <div className='bhd__your__select__icon__wrapper'>
                                             <ChevronDownIcon width='14px' height='14px' fill='#595959' />
                                         </div>
                                     </div>
-                                    <Link to={"#"}>Change your selection</Link>
+                                    <Link
+                                        to={`/search-result?${location.search}`}
+                                    >
+                                        Change your selection
+                                    </Link>
                                 </div>
                             </div>
                         </ItemLayout>
@@ -107,10 +124,10 @@ const Booking = ({ currentStep = 1 }) => {
                                 <div className='booking__price__content'>
                                     <div className='booking__price__desc'>
                                         <h3>Price</h3>
-                                        <h3>{`US$ ${"2,666.0"}`}</h3>
+                                        <h3>{`US$ ${room.price}`}</h3>
                                     </div>
                                     <div className='booking__price__details'>
-                                        <p>+US$643 taxes and charges</p>
+                                        <p>+US$0 taxes and charges</p>
                                         <p>In property currency: AED 9,779</p>
                                     </div>
                                 </div>
@@ -336,14 +353,14 @@ const Booking = ({ currentStep = 1 }) => {
                                                     isObligatory
                                                     type='text'
                                                 >
-                                                    <CardIcon width='18px' height='18px'/>
+                                                    <CardIcon width='18px' height='18px' />
                                                 </InputUserInfo>
                                             </div>
                                         </div>
                                     </div>
                                 </ItemLayout>
                                 <div>
-                                    <CheckboxBookingItem 
+                                    <CheckboxBookingItem
                                         title="I consent to receiving marketing emails from Booking, including promotions, personalised recommendations, rewards, travel experiences and updates about Booking.com’s products and services."
                                     />
                                 </div>
