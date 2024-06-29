@@ -35,10 +35,6 @@ const imagesFake = [
     "https://d8271hh5ynwda.cloudfront.net/1716947026990-20964731.jpg"
 ];
 
-const amenities = [
-    "Pool", "Spa", "Air conditioning", "Wifi", "Bar", "Free parking",
-    "Airport transfer", "Breakfast", "Elevator", "Sport center"
-];
 
 const listDataSimpleComponentFake = [
     {
@@ -114,7 +110,7 @@ const SearchResultDetail = () => {
                 console.error(error);
             })
     }, []);
-
+    
     return (
         <div className='search__result__detail__wrapper'>
             <Header style={{ padding: '0 14%' }} />
@@ -192,9 +188,9 @@ const SearchResultDetail = () => {
                         <div className='srd__amenities'>
                             <h4>Popular amenities</h4>
                             <ul className='srd__amenities__list'>
-                                {amenities?.map((amenity, idx) => (
+                                {hotelData?.convenients?.map((amenity, idx) => (
                                     <li key={idx} className='srd__amenities__item'>
-                                        <Amenity title={amenity} />
+                                        <Amenity title={amenity.name} />
                                     </li>
                                 ))}
                             </ul>
