@@ -35,7 +35,7 @@ const RoomBookingDetail = ({ data }) => {
         // if(checkObjEmpty(user)) {
         //     navigator("/auth/sign-in");
         // } else {
-            navigator(`/book?rid=${roomId}&${location.search}`)
+            navigator(`/book?rid=${roomId}&${location.search.slice(1)}`)
         // }
     }
 
