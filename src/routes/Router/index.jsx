@@ -14,13 +14,14 @@ import ResetPassword from "~/pages/Auth/ResetPassword";
 import Home from "~/pages/Home";
 import MySetting from "~/pages/UserSetting/MySetting";
 import MySettingDetail from "~/pages/UserSetting/MySettingDetail";
-import UserManagement from "~/pages/System/UserManagement";
-import HotelManagement from "~/pages/HotelManager/HotelManagement";
+import HotelManagement from "~/pages/System/HotelManagement";
 import SearchResultOverview from '~/pages/SearchResult/SearchResultOverview';
 import SearchResultDetail from '~/pages/SearchResult/SearchResultDetail';
 import Booking from '~/pages/Booking';
 import GoToTop from '~/components/GoToTop';
 import MyStep from '~/components/MyStep';
+import AdminManagement from '~/pages/System/AdminManagement';
+import UserManagement from '~/pages/System/AdminManagement/pages/UserManagement';
 
 const Routers = () => {
     return (
@@ -39,9 +40,10 @@ const Routers = () => {
                 <Route path="/search-result/:id" element={<SearchResultDetail />} />
                 <Route path="/book" element={<MyStep />} />
 
-                <Route path="/system" element={<UserManagement />} />
+                <Route path="/system/admin" element={<AdminManagement />} />
 
-                <Route path="/hotel-manager" element={<HotelManagement />} />
+                <Route path="/system/hotel-manager" element={<HotelManagement />} />
+                <Route path="/system/hotel-manager/users" element={<UserManagement />} />
 
                 <Route path="/" element={<Home />} />
             </Routes>
