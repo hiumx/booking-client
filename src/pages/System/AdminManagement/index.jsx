@@ -1,30 +1,17 @@
-import React, { useEffect } from 'react'
-import "./_hotel_management.scss";
+import React from 'react'
 import Sidebar from '../components/Sidebar/Sidebar'
 import NavbarSystem from '../components/NavbarSystem/NavbarSystem'
 import Widget from '../components/widget/Widget'
 import Featured from '../components/Featured/Featured'
 import Chart from '../components/Chart/Chart'
+import "./_admin_management.scss";
 import TableList from '../components/TableList/TableList'
 
-const HotelManagement = () => {
-    // const navigator = useNavigate();
-    // const user = useSelector(state => state.user.userMyInfo);
-
-    // const isAdmin = isRoleExist(user.roles, "Admin");
-    // const isHotelManager = isRoleExist(user.roles, "Hotel manager");
-
-    // useEffect(() => {
-    //     if (!isHotelManager) {
-    //         navigator("/");
-    //     }
-    // }, [])
-
+const AdminManagement = () => {
     return (
-        <div className='home__mana__wrapper'>
-            <div>
+        <div>
             <div className="home">
-                <Sidebar listItem={["Users", "Hotels"]}/>
+                <Sidebar />
                 <div className="homeContainer">
                     <NavbarSystem />
                     <div className="widgets">
@@ -44,8 +31,7 @@ const HotelManagement = () => {
                 </div>
             </div>
         </div>
-        </div>
     )
 }
 
-export default HotelManagement
+export default AdminManagement
