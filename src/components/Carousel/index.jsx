@@ -8,6 +8,7 @@ import CarouselSimpleItem from './components/SimpleItem';
 import ImageTextItem from './components/ImageTextItem';
 import FeedbackItem from './components/FeedbackItem';
 import ImagePrimaryItem from './components/ImagePrimaryItem';
+import PostItem from './components/PostItem';
 
 const Carousel = ({
     type,
@@ -30,7 +31,7 @@ const Carousel = ({
         initialSlide: slidesToShow,
         prevArrow: <SamplePrevArrow style={arrowStyle} />,
         nextArrow: <SampleNextArrow style={arrowStyle} />,
-        autoplay: autoPlay,
+        autoplay: autoPlay,                                                                      
         autoplaySpeed: 3000,
         cssEase: 'linear',
     };
@@ -104,6 +105,15 @@ const Carousel = ({
                                 avatarSrc={item?.user?.image}
                                 name={item?.user?.name || item?.user?.email?.split("@")[0]}
                                 content={item?.content}
+                            />
+                        </div>
+                    ))
+                }
+                {type === "post-item-component" &&
+                    items.map((item, idx) => (
+                        <div key={idx} className='carousel__item'>
+                            <PostItem
+                            
                             />
                         </div>
                     ))

@@ -1,7 +1,7 @@
 import React from 'react'
 import "./_header.scss";
 import ButtonIcon from '~/components/ButtonIcon';
-import { BedIcon, CarIcon, HelpIcon, PlaneIcon, StarIcon, TaxiIcon } from '~/components/Icons';
+import { BedIcon, BlogIcon, CarIcon, HelpIcon, PlaneIcon, StarIcon, TaxiIcon } from '~/components/Icons';
 import vnFlag from "~/assets/images/vn.png";
 import UserInfo from '~/components/UserInfo';
 
@@ -66,6 +66,11 @@ const Header = ({ style }) => {
                             <TaxiIcon className='bed__icon' fill='#fff' />
                         </ButtonIcon>
                     </li>
+                    <li className='header__nav__item'>
+                        <ButtonIcon title="Post" to='/posts'>
+                            <BlogIcon className='bed__icon' fill='#fff' />
+                        </ButtonIcon>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -77,3 +82,4 @@ Header.propTypes = {
 }
 
 export default Header
+
