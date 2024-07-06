@@ -22,6 +22,7 @@ import GoToTop from '~/components/GoToTop';
 import MyStep from '~/components/MyStep';
 import AdminManagement from '~/pages/System/AdminManagement';
 import UserManagement from '~/pages/System/AdminManagement/pages/UserManagement';
+import Post from '~/pages/Post';
 
 const Routers = () => {
     return (
@@ -39,6 +40,7 @@ const Routers = () => {
                 <Route path="/search-result" element={<SearchResultOverview />} />
                 <Route path="/search-result/:id" element={<SearchResultDetail />} />
                 <Route path="/book" element={<MyStep />} />
+                <Route path="/posts" element={<Post />} />
 
                 <Route path="/system/admin" element={<AdminManagement />} />
 
