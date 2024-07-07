@@ -1,0 +1,74 @@
+
+
+.update-form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  
+}
+
+.update-form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  margin-top: 50px;
+  background-color: rgb(247, 247, 247);
+}
+
+.update-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: rgb(100, 57, 255);
+  font-weight: 700;
+}
+
+.update-form-group {
+  margin-bottom: 15px;
+}
+
+.update-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.update-input-field {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.update-input-field:focus {
+  border-color: #888;
+  outline: none;
+}
+
+.update-button-group {
+  display: flex;
+  justify-content: space-between; 
+}
+
+.update-btn {
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.update-btn-save {
+  background-color: #4caf50;
+}
+
+.update-btn-save:hover {
+  background-color: #45a049;
+}

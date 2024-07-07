@@ -22,6 +22,13 @@ import GoToTop from '~/components/GoToTop';
 import MyStep from '~/components/MyStep';
 import AdminManagement from '~/pages/System/AdminManagement';
 import UserManagement from '~/pages/System/AdminManagement/pages/UserManagement';
+import HotelManagementList from '~/pages/System/HotelManagement/pages/HotelManagement';
+import HotelManagement_Update from '~/pages/System/HotelManagement/pages/HotelManagement_Update';
+import UpdateHotel from '~/pages/System/HotelManagement/component/Update_Hotel';
+import RoomManagement from '~/pages/System/HotelManagement/pages/RoomManagement';
+import RoomManagement_Update from '~/pages/System/HotelManagement/pages/RoomManagement_Update';
+import HotelManagement_Create from '~/pages/System/HotelManagement/pages/HotelManagement-Create';
+import RoomManagement_Create from '~/pages/System/HotelManagement/pages/RoomManagement_Create';
 
 const Routers = () => {
     return (
@@ -38,14 +45,21 @@ const Routers = () => {
                 <Route path="/my-settings/:slug/:id" element={<MySettingDetail />} />
                 <Route path="/search-result" element={<SearchResultOverview />} />
                 <Route path="/search-result/:id" element={<SearchResultDetail />} />
-                <Route path="/book" element={<MyStep />} />
+                <Route path="/book" element={<MyStep/>} />
 
                 <Route path="/system/admin" element={<AdminManagement />} />
 
                 <Route path="/system/hotel-manager" element={<HotelManagement />} />
-                <Route path="/system/hotel-manager/users" element={<UserManagement />} />
+                <Route path='/system/hotel-manager/hotels' element={<HotelManagementList/>}/>
+                <Route path='/system/hotel-manager/hotel-update' element={<HotelManagement_Update/>}/>
+                <Route path='/system/hotel-manager/create_hotel' element={<HotelManagement_Create/>}/>
+                <Route path='/system/hotel-manager/hotel' element={<RoomManagement/>}/>
+                <Route path='/system/hotel-manager/room-update' element={<RoomManagement_Update/>}/>
+                <Route path='/system/hotel-manager/create_hotel' element={<HotelManagement_Create/>}/>
+                <Route path='/system/hotel-manager/create_room' element={<RoomManagement_Create/>}/>
 
-                <Route path="/" element={<Home />} />
+
+                <Route path="/" element={<Home/>} />
             </Routes>
         </div>
     )

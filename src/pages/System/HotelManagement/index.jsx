@@ -24,7 +24,7 @@ const HotelManagement = () => {
         <div className='home__mana__wrapper'>
             <div>
             <div className="home">
-                <Sidebar listItem={["Users", "Hotels"]}/>
+                <Sidebar listItem={["Hotels"]}/>
                 <div className="homeContainer">
                     <NavbarSystem />
                     <div className="widgets">

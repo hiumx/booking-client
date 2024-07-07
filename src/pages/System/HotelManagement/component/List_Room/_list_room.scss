@@ -1,0 +1,31 @@
+.wrapper_listRoom {
+    padding: 20px;
+    .rooms_table {
+        width: 100%;
+        border-collapse: collapse;
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .room-image {
+            width: 100px;
+            height: auto;
+        }
+        .update-btn, .delete-btn {
+            margin: 0 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .update-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+        }
+    }
+}
