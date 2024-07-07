@@ -22,13 +22,6 @@ import GoToTop from '~/components/GoToTop';
 import MyStep from '~/components/MyStep';
 import AdminManagement from '~/pages/System/AdminManagement';
 import UserManagement from '~/pages/System/AdminManagement/pages/UserManagement';
-import HotelManagementList from '~/pages/System/HotelManagement/pages/HotelManagement';
-import HotelManagement_Update from '~/pages/System/HotelManagement/pages/HotelManagement_Update';
-import UpdateHotel from '~/pages/System/HotelManagement/component/Update_Hotel';
-import RoomManagement from '~/pages/System/HotelManagement/pages/RoomManagement';
-import RoomManagement_Update from '~/pages/System/HotelManagement/pages/RoomManagement_Update';
-import HotelManagement_Create from '~/pages/System/HotelManagement/pages/HotelManagement-Create';
-import RoomManagement_Create from '~/pages/System/HotelManagement/pages/RoomManagement_Create';
 
 const Routers = () => {
     return (
@@ -45,7 +38,8 @@ const Routers = () => {
                 <Route path="/my-settings/:slug/:id" element={<MySettingDetail />} />
                 <Route path="/search-result" element={<SearchResultOverview />} />
                 <Route path="/search-result/:id" element={<SearchResultDetail />} />
-                <Route path="/book" element={<MyStep/>} />
+                <Route path="/book" element={<MyStep />} />
+                <Route path="/posts" element={<Post />} />
 
                 <Route path="/system/admin" element={<AdminManagement />} />
 
