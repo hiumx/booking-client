@@ -15,7 +15,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { DarkModeContext } from "~/contexts/darkModeContext";
 import { useContext } from "react";
 
-const Sidebar = ({ listItem = ["Users", "Hotels", "Rooms"] }) => {
+const Sidebar = ({ listItem = ["Update", "Hotels", "Rooms", "Create_Hotel", "Create_Room"] }) => {
     // const { dispatch } = useContext(DarkModeContext);
 
     const navigator = useNavigate();
@@ -74,7 +74,7 @@ const Sidebar = ({ listItem = ["Users", "Hotels", "Rooms"] }) => {
                     <li>
                         <SettingsSystemDaydreamOutlinedIcon className="icon" />
                         <span>System Health</span>
-                    </li>
+                    </li>   
                     <li>
                         <PsychologyOutlinedIcon className="icon" />
                         <span>Logs</span>
