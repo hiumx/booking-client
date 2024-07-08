@@ -23,6 +23,11 @@ import MyStep from '~/components/MyStep';
 import AdminManagement from '~/pages/System/AdminManagement';
 import UserManagement from '~/pages/System/AdminManagement/pages/UserManagement';
 import Post from '~/pages/Post';
+import HotelManage from '~/pages/System/HotelManagement/pages/HotelManage';
+import HotelCreate from '~/pages/System/HotelManagement/pages/HotelCreate';
+import RoomManage from '~/pages/System/HotelManagement/pages/RoomManage';
+import BookingManage from '~/pages/System/HotelManagement/pages/BookingManage';
+import PostManage from '~/pages/System/HotelManagement/pages/PostManage';
 
 const Routers = () => {
     return (
