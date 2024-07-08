@@ -53,11 +53,12 @@
           color: #7451f8;
         }
 
-        span{
+        span, a{
             font-size: 13px;
             font-weight: 600;
             color: #888;
             margin-left: 10px;
+            text-decoration: none;
         }
       }
     }

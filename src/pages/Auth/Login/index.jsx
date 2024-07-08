@@ -25,9 +25,9 @@ const Login = () => {
 			const isAdmin = isRoleExist(user?.roles, "Admin");
 			const isHotelManager = isRoleExist(user?.roles, "Hotel manager");
 			if (isAdmin)
-				navigator('/system');
+				navigator('/system/admin');
 			else if (isHotelManager)
-				navigator('/hotel-manager');
+				navigator('/system/hotel-manager');
 			else
 				navigator('/');
 		}

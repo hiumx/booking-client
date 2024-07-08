@@ -11,18 +11,20 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { DarkModeContext } from "~/contexts/darkModeContext";
 import { useContext } from "react";
 
 const Sidebar = ({ listItem = ["Update", "Hotels", "Rooms", "Create_Hotel", "Create_Room"] }) => {
     // const { dispatch } = useContext(DarkModeContext);
 
+    const navigator = useNavigate();
+
     const location = useLocation();
     return (
         <div className="sidebar">
             <div className="top">
-                <Link to="/" style={{ textDecoration: "none" }}>
+                <Link to="/system/hotel-manager" style={{ textDecoration: "none" }}>
                     <span className="logo">lamadmin</span>
                 </Link>
             </div>
@@ -30,7 +32,7 @@ const Sidebar = ({ listItem = ["Update", "Hotels", "Rooms", "Create_Hotel", "Cre
             <div className="center">
                 <ul>
                     <p className="title">MAIN</p>
-                    <li>
+                    <li onClick={() => navigator("/system/hotel-manager")}>
                         <DashboardIcon className="icon" />
                         <span>Dashboard</span>
                     </li>
@@ -43,7 +45,7 @@ const Sidebar = ({ listItem = ["Update", "Hotels", "Rooms", "Create_Hotel", "Cre
                             </li>
                         </Link>
                     )))}
-                    <Link to="/hotels" style={{ textDecoration: "none" }}>
+                    {/* <Link to="/hotels" style={{ textDecoration: "none" }}>
                         <li>
                             <StoreIcon className="icon" />
                             <span>Hotels</span>
@@ -54,12 +56,12 @@ const Sidebar = ({ listItem = ["Update", "Hotels", "Rooms", "Create_Hotel", "Cre
                             <CreditCardIcon className="icon" />
                             <span>Rooms</span>
                         </li>
-                    </Link>
-                    <li>
+                    </Link> */}
+                    {/* <li>
                         <LocalShippingIcon className="icon" />
                         <span>Delivery</span>
-                    </li>
-                    <p className="title">USEFUL</p>
+                    </li> */}
+                    {/* <p className="title">USEFUL</p>
                     <li>
                         <InsertChartIcon className="icon" />
                         <span>Stats</span>
@@ -80,7 +82,7 @@ const Sidebar = ({ listItem = ["Update", "Hotels", "Rooms", "Create_Hotel", "Cre
                     <li>
                         <SettingsApplicationsIcon className="icon" />
                         <span>Settings</span>
-                    </li>
+                    </li> */}
                     <p className="title">USER</p>
                     <li>
                         <AccountCircleOutlinedIcon className="icon" />

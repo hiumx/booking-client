@@ -22,6 +22,7 @@ import GoToTop from '~/components/GoToTop';
 import MyStep from '~/components/MyStep';
 import AdminManagement from '~/pages/System/AdminManagement';
 import UserManagement from '~/pages/System/AdminManagement/pages/UserManagement';
+import Post from '~/pages/Post';
 
 const Routers = () => {
     return (
@@ -42,16 +43,14 @@ const Routers = () => {
                 <Route path="/posts" element={<Post />} />
 
                 <Route path="/system/admin" element={<AdminManagement />} />
+                <Route path="/system/admin/users" element={<UserManagement />} />
 
                 <Route path="/system/hotel-manager" element={<HotelManagement />} />
-                <Route path='/system/hotel-manager/hotels' element={<HotelManagementList/>}/>
-                <Route path='/system/hotel-manager/hotel-update' element={<HotelManagement_Update/>}/>
-                <Route path='/system/hotel-manager/create_hotel' element={<HotelManagement_Create/>}/>
-                <Route path='/system/hotel-manager/hotel' element={<RoomManagement/>}/>
-                <Route path='/system/hotel-manager/room-update' element={<RoomManagement_Update/>}/>
-                <Route path='/system/hotel-manager/create_hotel' element={<HotelManagement_Create/>}/>
-                <Route path='/system/hotel-manager/create_room' element={<RoomManagement_Create/>}/>
-
+                <Route path="/system/hotel-manager/hotels" element={<HotelManage />} />
+                <Route path="/system/hotel-manager/hotels/create" element={<HotelCreate />} />
+                <Route path="/system/hotel-manager/rooms" element={<RoomManage />} />
+                <Route path="/system/hotel-manager/bookings" element={<BookingManage />} />
+                <Route path="/system/hotel-manager/posts" element={<PostManage />} />
 
                 <Route path="/" element={<Home/>} />
             </Routes>
