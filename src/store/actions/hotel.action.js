@@ -2,7 +2,7 @@
 import { getDataSearchHotel } from '~/services/search.service';
 import actionTypes from './action.type'
 import { filterByType } from '~/utils/search';
-import { getTopHotel } from '~/services/hotel.service';
+import { getHotelByManagerId, getTopHotel } from '~/services/hotel.service';
 
 export const getResultSearchHotel = (payload) => async (dispatch) => {
     try {
@@ -41,6 +41,28 @@ export const getTopHotels = () => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: actionTypes.GET_TOP_HOTEL_FAIL
+        })
+        console.error(error);
+    }
+}
+
+export const getHotelsByManagerId = (managerId) => async (dispatch) => {
+    try {
+        const response = await getHotelByManagerId(managerId);
+        console.log(response);
+        if (response && response.code === 1000) {
+            dispatch({
+                type: actionTypes.GET_HOTEL_BY_MANAGER_ID_SUCCESS,
+                hotelsByManager: response.metadata
+            })
+        } else {
+            dispatch({
+                type: actionTypes.GET_HOTEL_BY_MANAGER_ID_SUCCESS_FAIL
+            })
+        }
+    } catch (error) {
+        dispatch({
+            type: actionTypes.GET_HOTEL_BY_MANAGER_ID_SUCCESS_FAIL
         })
         console.error(error);
     }

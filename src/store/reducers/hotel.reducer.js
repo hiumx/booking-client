@@ -2,7 +2,8 @@ import actionTypes from "../actions/action.type";
 
 const initState = {
     listSearchHotel: [],
-    topHotels: []
+    topHotels: [],
+    hotelsByManager: []
 }
 
 const hotelReducer = (state = initState, action) => {
@@ -29,6 +30,21 @@ const hotelReducer = (state = initState, action) => {
             }
         case actionTypes.GET_LIST_FILTER_HOTEL_SUCCESS:
             state.listSearchHotel = action.listSearchHotel;
+            return {
+                ...state
+            }
+        case actionTypes.GET_LIST_FILTER_HOTEL_FAIL:
+            state.listSearchHotel = [];
+            return {
+                ...state
+            }
+        case actionTypes.GET_HOTEL_BY_MANAGER_ID_SUCCESS:
+            state.hotelsByManager = action.hotelsByManager;
+            return {
+                ...state
+            }
+        case actionTypes.GET_HOTEL_BY_MANAGER_ID_SUCCESS_FAIL:
+            state.hotelsByManager = [];
             return {
                 ...state
             }

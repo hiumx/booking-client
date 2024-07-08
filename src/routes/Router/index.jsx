@@ -23,6 +23,11 @@ import MyStep from '~/components/MyStep';
 import AdminManagement from '~/pages/System/AdminManagement';
 import UserManagement from '~/pages/System/AdminManagement/pages/UserManagement';
 import Post from '~/pages/Post';
+import HotelManage from '~/pages/System/HotelManagement/pages/HotelManage';
+import RoomManage from '~/pages/System/HotelManagement/pages/RoomManage';
+import BookingManage from '~/pages/System/HotelManagement/pages/BookingManage';
+import PostManage from '~/pages/System/HotelManagement/pages/PostManage';
+import HotelCreate from '~/pages/System/HotelManagement/pages/HotelCreate';
 
 const Routers = () => {
     return (
@@ -43,9 +48,14 @@ const Routers = () => {
                 <Route path="/posts" element={<Post />} />
 
                 <Route path="/system/admin" element={<AdminManagement />} />
+                <Route path="/system/admin/users" element={<UserManagement />} />
 
                 <Route path="/system/hotel-manager" element={<HotelManagement />} />
-                <Route path="/system/hotel-manager/users" element={<UserManagement />} />
+                <Route path="/system/hotel-manager/hotels" element={<HotelManage />} />
+                <Route path="/system/hotel-manager/hotels/create" element={<HotelCreate />} />
+                <Route path="/system/hotel-manager/rooms" element={<RoomManage />} />
+                <Route path="/system/hotel-manager/bookings" element={<BookingManage />} />
+                <Route path="/system/hotel-manager/posts" element={<PostManage />} />
 
                 <Route path="/" element={<Home />} />
             </Routes>
