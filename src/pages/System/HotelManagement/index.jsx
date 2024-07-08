@@ -7,7 +7,7 @@ import Featured from '../components/Featured/Featured'
 import Chart from '../components/Chart/Chart'
 import TableList from '../components/TableList/TableList'
 import PropTypes from 'prop-types';
-import HotelManagerDefaultLayout from '../layouts/ManagerDefaultLayout';
+import ManagerDefaultLayout from '../layouts/ManagerDefaultLayout';
 
 const HotelManagement = ({ children }) => {
     // const navigator = useNavigate();
@@ -24,7 +24,7 @@ const HotelManagement = ({ children }) => {
 
     return (
         <div className='home__mana__wrapper'>
-            <HotelManagerDefaultLayout>
+            <ManagerDefaultLayout listItem={["Hotels", "Rooms", "Bookings", "Posts"]}>
                 <div className="widgets">
                     <Widget type="user" />
                     <Widget type="order" />
@@ -39,7 +39,7 @@ const HotelManagement = ({ children }) => {
                     <div className="listTitle">Latest Transactions</div>
                     <TableList />
                 </div>
-            </HotelManagerDefaultLayout>
+            </ManagerDefaultLayout>
         </div>
     )
 }
