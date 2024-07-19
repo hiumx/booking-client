@@ -218,3 +218,16 @@ export const LIST_DATA_SIMPLE_COMPONENT_FAKE = [
         isSave: true,
     },
 ];
+
+
+export const COUNTRIES_OPTION = [
+    { value: 'viet_name', label: 'Viet Nam' },
+    { value: 'korea', label: 'Korea' },
+    { value: 'united_state', label: 'United State' },
+    { value: 'united_kingdom', label: 'United Kingdom' },
+    { value: 'australia', label: 'Australia' },
+    { value: 'france', label: 'France' },
+    { value: 'india', label: 'India' },
+];
+
+export const USD_VND = 24000;

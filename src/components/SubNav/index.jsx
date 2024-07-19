@@ -1,23 +1,58 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./_sub_nav.scss";
 import { ArrowLeftIcon, HeartIcon, HeartSolidIcon, ShareIcon } from '../Icons';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { checkObjEmpty } from '~/utils';
 import PropTypes from 'prop-types';
+import { getHotelWishList, takeHotelWishList } from '~/store/actions/user.action';
 
 const SubNav = ({ hotelName, query }) => {
     const [isSaved, setIsSaved] = useState(false);
 
     const navigator = useNavigate();
+    const dispatch = useDispatch();
+    const { id } = useParams();
     const user = useSelector(state => state.user.userMyInfo);
+    const [wishListIds, setWishListIds] = useState([]);
+
+    const { hotelResponses } = useSelector(state => state.user.hotelWishList);
 
     const handleClickSave = (type) => {
         if (type === "slight" && checkObjEmpty(user))
             navigator("/auth/sign-in");
-        else
+        else {
             setIsSaved(!isSaved);
+            dispatch(takeHotelWishList({
+                userId: user?.id,
+                hotelId: Number(id)
+            }));
+
+            if(type === "solid") {
+                setWishListIds([...wishListIds?.filter(h => h !== Number(id))]);
+                console.log("Solid: ", wishListIds);
+            } else if (type === "slight"){
+                setWishListIds([...wishListIds, Number(id)]);
+                console.log(wishListIds);
+                console.log("Slight: ", wishListIds);
+
+            }
+
+        }
     }
+
+    useEffect(() => {
+        dispatch(getHotelWishList(user?.id));
+        
+    }, []);
+
+    useEffect(() => {
+        setWishListIds(hotelResponses?.map(h => h.id));        
+    }, [hotelResponses])
+
+    useEffect(() => {
+        setIsSaved(wishListIds?.includes(Number(id)));
+    }, [wishListIds]);
 
     return (
         <div className='sub__nav__wrapper'>

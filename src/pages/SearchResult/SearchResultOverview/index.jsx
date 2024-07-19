@@ -18,6 +18,7 @@ import Contact from '~/layouts/components/Contact';
 import Footer from '~/layouts/components/Footer';
 import actionTypes from '~/store/actions/action.type';
 import { filterHotelByChecked } from '~/services/search.service';
+import { getHotelWishList } from '~/store/actions/user.action';
 
 const SearchResultOverview = () => {
 
@@ -38,6 +39,10 @@ const SearchResultOverview = () => {
 
 	const numberOfNights = (new Date(parsed.endDate).getDate()) - (new Date(parsed.startDate).getDate());
 	const numberOfAdults = parsed.adult;
+	const { id } = useSelector(state => state.user.userMyInfo);
+	const { hotelResponses } = useSelector(state => state.user.hotelWishList);
+
+	const wishListIds = hotelResponses?.map(h => h.id);
 
 	const options = [
 		{ value: 'price_lowest', label: 'Price (lowest first)' },
@@ -91,8 +96,6 @@ const SearchResultOverview = () => {
 		setListTypeChecked(Number(parsed?.typeChecked) ? [...listTypeChecked, Number(parsed?.typeChecked)] : []);
 	}, []);
 
-	console.log(listTypeChecked);
-
 	useEffect(() => {
 		const { startDate, endDate, room, location, name } = parsed;
 		filterHotelByChecked({
@@ -128,6 +131,10 @@ const SearchResultOverview = () => {
 			clearTimeout(timerId);
 		}
 	}, [isNotFound, hotelData]);
+
+	useEffect(() => {
+		dispatch(getHotelWishList(id));
+	}, [hotelData]);
 
 	// useEffect(() => {
 
@@ -210,11 +217,14 @@ const SearchResultOverview = () => {
 							styles={customStyles}
 						// defaultValue={"home_department"}
 						/>
-
 						<ul className='sr__list__result'>
 							{hotelData?.length > 0 ? hotelData?.map((hotel, idx) => (
 								<li key={idx}>
-									<HotelResultItem data={hotel} options={{ numberOfNights, numberOfAdults }} />
+									<HotelResultItem
+										data={hotel}
+										options={{ numberOfNights, numberOfAdults }}
+										wishListIds={wishListIds}
+									/>
 								</li>
 							))
 								: (isNotFound ?

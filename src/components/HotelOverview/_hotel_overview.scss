@@ -1,0 +1,55 @@
+.hotel__overview__wrapper {
+    width: 348px;
+    box-shadow: 0 2px 8px 0 rgba(26,26,26,0.16);
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+    position: relative;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+
+    .hotel__overview_img {
+        width: 100%;
+        height: 260px;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+    }
+
+    .hotel__overview__content {
+        padding: 10px 8px;
+
+        .hotel__overview__title {
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .hotel__overview__item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            p {
+                font-size: 14px;
+                color: var(--text-color);
+            }
+        }
+    }
+
+    .hotel__overview__remove__btn {
+        width: 36px;
+        height: 36px;
+        background-color: var(--white-color);
+        padding: 10px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1;
+    }
+}

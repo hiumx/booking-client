@@ -1,10 +1,10 @@
 import React from 'react'
 import "./_sub_review_feedback.scss";
 
-const SubReviewFeedback = ({ reviews }) => {
-    const point = 9.4;
+const SubReviewFeedback = ({ reviews = [{ point: 10 }], style = {} }) => {
+    const point = (reviews.reduce((acc, review) => acc + review.point, 0) / reviews?.length).toFixed(1);
     return (
-        <div className='sub__review__feedback__wrapper'>
+        <div className='sub__review__feedback__wrapper' style={style}>
             <button
                 className="srf__evaluate__point__btn"
             >
@@ -20,7 +20,7 @@ const SubReviewFeedback = ({ reviews }) => {
             <div className='srf__desc'>
                 <span className='srf__title'>Very good</span>
                 ·
-                <span className='srf__num__reviews'>3,337 reviews</span>
+                <span className='srf__num__reviews'>{`${reviews.length} reviews`}</span>
             </div>
         </div>
     )

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import "./_radio_item_payment.scss";
 
-const RadioItemPayment = ({ label, name, desc, children }) => {
+const RadioItemPayment = ({ label, name, desc, children, defaultChecked = false }) => {
     return (
         <div className='radio__item__payment__wrapper'>
             <div className='rip__details'>
@@ -11,6 +11,7 @@ const RadioItemPayment = ({ label, name, desc, children }) => {
                     className='rip__input'
                     name={name}
                     id={label.split(" ").join("").toLowerCase()}
+                    defaultChecked={defaultChecked}
                 />
                 <div>
                     <label
