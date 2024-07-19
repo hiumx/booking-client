@@ -1,6 +1,10 @@
 .my__step__wrapper {
     padding: 28px 14% 22px;
 
+    .my__step__content {
+        margin-top: 14px;
+    }
+
     .my__step__btn {
         .my__step__next__btn,
         .my__step__prev__btn {

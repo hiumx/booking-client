@@ -9,13 +9,12 @@ import { Link } from 'react-router-dom';
 const HotelManage = () => {
 
     const hotels = useSelector(state => state.hotel.hotelsByManager);
+    const user = useSelector(state => state.user.userMyInfo);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getHotelsByManagerId(21));
+        dispatch(getHotelsByManagerId(user.id));
     }, []);
-
-    console.log(hotels);
 
     return (
         <div className='hotel__manage__wrapper'>

@@ -21,6 +21,7 @@ import GroupImageLoader from '~/components/MyLoader/components/GroupImageLoader'
 import FeedbackItemLoader from '~/components/MyLoader/components/FeedbackItemLoader';
 import Contact from '~/layouts/components/Contact';
 import { CONTACTS } from '~/constants';
+import { useSelector } from 'react-redux';
 
 const reviewFake = [
     {
@@ -96,6 +97,10 @@ const SearchResultDetail = () => {
     const location = useLocation();
     const parsed = queryString.parse(location.search);
 
+    const listSearchHotel = useSelector(state => state.hotel.listSearchHotel);
+    const [hotel] = listSearchHotel.filter(h => h.id == id);
+
+    const roomsAvailable = hotel?.rooms.map(r => r.id);
 
     useEffect(() => {
         getHotelById(id)
@@ -110,7 +115,7 @@ const SearchResultDetail = () => {
                 console.error(error);
             })
     }, []);
-    
+
     return (
         <div className='search__result__detail__wrapper'>
             <Header style={{ padding: '0 14%' }} />
@@ -118,7 +123,7 @@ const SearchResultDetail = () => {
                 <SearchInput style={{ top: '10px', padding: '0 14%' }} searchValue={parsed} />
             </div>
             <div className='srd__content'>
-                <SubNav hotelName={hotelData?.name} query={location.search}/>
+                <SubNav hotelName={hotelData?.name} query={location.search} />
 
                 <div className='srd__overview'>
                     <div className='srd__overview__title__star'>
@@ -198,7 +203,7 @@ const SearchResultDetail = () => {
                     </div>
                     <div className='srd__near__location col-lg-4'>
                         <h4>What's around</h4>
-                        <SimpleMap />
+                        {/* <SimpleMap /> */}
                         <ul className='srd__near__location__list'>
                             <li className='srd__near__location__item'>
                                 <div className='srd__nl__name'>
@@ -227,9 +232,11 @@ const SearchResultDetail = () => {
                 </div>
                 <div className='row'>
                     {hotelData?.rooms?.map((room, idx) => (
+                        roomsAvailable?.includes(room.id) &&
                         <div key={idx} className='col-lg-4'>
                             <RoomBookingDetail data={room} />
                         </div>
+
                     ))}
                 </div>
                 <Carousel
@@ -247,7 +254,7 @@ const SearchResultDetail = () => {
                     titleStyle={{ marginBottom: "-16px" }}
                 />
             </div>
-            
+
             <Contact contacts={CONTACTS} />
             <Footer />
         </div>

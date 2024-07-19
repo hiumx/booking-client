@@ -2,16 +2,8 @@ import React from 'react'
 import "./_input_user_info.scss";
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+import { COUNTRIES_OPTION } from '~/constants';
 
-const options = [
-    { value: 'price_lowest', label: 'Viet Nam' },
-    { value: 'price_highest', label: 'Korea' },
-    { value: 'rating_high', label: 'United State' },
-    { value: 'rating_low', label: 'United Kingdom' },
-    { value: 'home_department', label: 'Australia' },
-    { value: 'distance_center', label: 'France' },
-    { value: 'top_review', label: 'India' },
-];
 
 const customStyles = {
     control: (provided, state) => ({
@@ -31,7 +23,10 @@ const InputUserInfo = ({
     type = "text",
     selects = [],
     style = {},
-    children
+    children,
+    handleChangeSelect = () => {},
+    handleChangeInput = () => {},
+    value
 }) => {
     const text = label.split(" ").join("").toLowerCase();
 
@@ -43,8 +38,9 @@ const InputUserInfo = ({
                     selects.length > 0
                         ?
                         <Select
-                            options={options}
+                            options={COUNTRIES_OPTION}
                             styles={customStyles}
+                            onChange={handleChangeSelect}
                         />
                         :
                         <div className='iui__input__wrapper'>
@@ -54,6 +50,8 @@ const InputUserInfo = ({
                                 id={text}
                                 placeholder={placeholder}
                                 className='iui__input'
+                                onChange={handleChangeInput}
+                                value={value}
                             />
                         </div>
                 }

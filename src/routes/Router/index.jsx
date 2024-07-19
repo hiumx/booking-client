@@ -28,6 +28,9 @@ import HotelCreate from '~/pages/System/HotelManagement/pages/HotelCreate';
 import RoomManage from '~/pages/System/HotelManagement/pages/RoomManage';
 import BookingManage from '~/pages/System/HotelManagement/pages/BookingManage';
 import PostManage from '~/pages/System/HotelManagement/pages/PostManage';
+import UserBooking from '~/pages/UserSetting/UserBooking';
+import PaymentCallBack from '~/pages/PaymentCallBack';
+import UserSaveHotel from '~/pages/UserSetting/UserSaveHotel';
 
 const Routers = () => {
     return (
@@ -38,14 +41,21 @@ const Routers = () => {
                 <Route path="/auth/sign-up" element={<Register />} />
                 <Route path="/auth/forgot-password" element={<ForgotPassword />} />
                 <Route path="/auth/reset-password" element={<ResetPassword />} />
+
                 <Route path="/my-settings" exact element={<MySetting />} />
                 <Route path="/my-settings/:slug" element={<MySetting />} />
                 <Route path="/my-settings/:slug/:id" element={<MySettingDetail />} />
                 <Route path="/my-settings/:slug/:id" element={<MySettingDetail />} />
+                <Route path="/my-settings/bookings" element={<UserBooking />} />
+
+                <Route path="/my-wish-list" element={<UserSaveHotel />} />
+
                 <Route path="/search-result" element={<SearchResultOverview />} />
                 <Route path="/search-result/:id" element={<SearchResultDetail />} />
-                <Route path="/book" element={<MyStep />} />
+                <Route path="/book" element={<Booking />} />
                 <Route path="/posts" element={<Post />} />
+
+                <Route path="/payment/vn-pay-call-back" element={<PaymentCallBack />} />
 
                 <Route path="/system/admin" element={<AdminManagement />} />
                 <Route path="/system/admin/users" element={<UserManagement />} />

@@ -32,11 +32,11 @@ const RoomBookingDetail = ({ data }) => {
     }
 
     const handleClickReserve = () => {
-        // if(checkObjEmpty(user)) {
-        //     navigator("/auth/sign-in");
-        // } else {
+        if(checkObjEmpty(user)) {
+            navigator("/auth/sign-in");
+        } else {
             navigator(`/book?rid=${roomId}&${location.search.slice(1)}`)
-        // }
+        }
     }
 
     console.log(user);

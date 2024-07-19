@@ -16,10 +16,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTypesHotel } from '~/store/actions/typeHotel.action';
 import { getTopHotels } from '~/store/actions/hotel.action';
 import { getTopProvinces } from '~/store/actions/province.action';
+import { getTopRecentSearch } from '~/services/historySearch.service';
+import { getRecentSearch } from '~/store/actions/user.action';
 
 const Home = () => {
 
-    const [histories, setHistories] = useState([]);
     // const [recommendStay, setRecommendStay] = useState([]);
     const [perfectWhere, setPerfectWhere] = useState([]);
     const [listTrending, setListTrending] = useState([]);
@@ -28,12 +29,11 @@ const Home = () => {
     const typicalStay = useSelector(state => state.typeHotel.typesHotel);
     const recommendStay = useSelector(state => state.hotel.topHotels);
     const topVNProvinces = useSelector(state => state.province.topProvinces);
-
-    console.log(topVNProvinces);
+    const historySearch = useSelector(state => state.user.historySearch);
+    const { id } = useSelector(state => state.user.userMyInfo);
 
     useEffect(() => {
         setTimeout(() => {
-            setHistories([1, 2, 3, 4]);
             // setRecommendStay(LIST_DATA_SIMPLE_COMPONENT_FAKE);
             setPerfectWhere(LIST_DATA_SIMPLE_COMPONENT_FAKE);
             setListTrending(LIST_CAROUSEL_IMAGE_FAKE);
@@ -43,28 +43,42 @@ const Home = () => {
         dispatch(getTypesHotel());
         dispatch(getTopHotels());
         dispatch(getTopProvinces());
-
+        if (id) {
+            dispatch(getRecentSearch(id));
+        }
     }, []);
 
     return (
         <div className='home__wrapper'>
             <DefaultLayout>
                 <div className='home__content'>
-                    <div className='home__recent__searches'>
-                        <h5 className='home__recent__searches__title'>Your recent searches</h5>
-                        {histories.length > 0
-                            ?
-                            <ul className='home__recent__searches__list'>
-                                {histories.map((history, idx) => (
-                                    <li key={idx} className='home__recent__searches__item'>
-                                        <HistorySearchItem />
-                                    </li>
-                                ))}
-                            </ul>
-                            :
-                            <HistorySearchLoader />
-                        }
-                    </div>
+                    {
+                        id &&
+                        <div className='home__recent__searches'>
+                            <h5 className='home__recent__searches__title'>Your recent searches</h5>
+                            {
+                                historySearch.length > 0
+                                    ?
+                                    <ul className='home__recent__searches__list'>
+                                        {historySearch.map((h, idx) => (
+                                            <li key={idx} className='home__recent__searches__item'>
+                                                <HistorySearchItem
+                                                    hotelId={h.hotel?.id}
+                                                    hotelName={h.hotel?.name}
+                                                    startDate={h.startDate}
+                                                    endDate={h.endDate}
+                                                    adult={h.adult}
+                                                    children={h.children}
+                                                    rooms={h.rooms}
+                                                />
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    :
+                                    <HistorySearchLoader />
+                            }
+                        </div>
+                    }
                     <SubBanner />
                     {typicalStay.length > 0
                         ?

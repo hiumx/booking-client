@@ -46,3 +46,15 @@ export const mapToNameFromScore = score => {
 export function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+export function formatDate(date) {
+    // Define options for the toLocaleDateString method
+    const options = {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric'
+    };
+
+    // Use toLocaleDateString with the defined options
+    return date.toLocaleDateString('en-US', options);
+}
