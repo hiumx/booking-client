@@ -21,6 +21,7 @@ const Login = () => {
 	console.log(user);
 
 	useEffect(() => {
+		
 		if (!checkObjEmpty(user)) {
 			const isAdmin = isRoleExist(user?.roles, "Admin");
 			const isHotelManager = isRoleExist(user?.roles, "Hotel manager");

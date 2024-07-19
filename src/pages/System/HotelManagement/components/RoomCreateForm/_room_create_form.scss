@@ -1,0 +1,23 @@
+.room__create__form__wrapper {
+    width: 50%;
+    display: inline-block;
+
+    .room__create__form__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .room__create__form {
+            flex: 1;
+            .room__create__label {
+                font-size: 14px;
+            }
+        }
+
+        .room__create__plus__icon__wrapper {
+            margin: 0 17px 0 10px;
+            padding: 4px;
+            cursor: pointer;
+        }
+    }
+}

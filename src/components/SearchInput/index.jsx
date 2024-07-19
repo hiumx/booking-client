@@ -8,10 +8,11 @@ import { DateRange } from 'react-date-range';
 import { useNavigate } from 'react-router-dom';
 import { format } from "date-fns";
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
+import { newRecentSearch } from '~/services/historySearch.service';
 
-const SearchInput = ({ style, searchValue = {}, setIsNotFound = () => {} }) => {
+const SearchInput = ({ style, searchValue = {}, setIsNotFound = () => { } }) => {
     const [dates, setDates] = useState([
         {
             startDate: new Date(),
@@ -66,7 +67,7 @@ const SearchInput = ({ style, searchValue = {}, setIsNotFound = () => {} }) => {
 
     useEffect(() => {
         if (!checkObjEmpty(searchValue)) {
-            const { location, startDate, endDate, adult, children, room, name} = searchValue;
+            const { location, startDate, endDate, adult, children, room, name } = searchValue;
 
             setLocation(location ? location : name);
             setDates([{
@@ -208,7 +209,7 @@ const SearchInput = ({ style, searchValue = {}, setIsNotFound = () => {} }) => {
                 draggable
                 pauseOnHover
                 theme="colored"
-                style={{fontSize: '14px'}}
+                style={{ fontSize: '14px' }}
             />
         </div>
     )

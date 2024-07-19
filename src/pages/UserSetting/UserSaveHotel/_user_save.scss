@@ -1,0 +1,30 @@
+.user__save__wrapper {
+    padding: 0 14%;
+
+    .user__save__title {
+        margin-top: 28px;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 4px;
+        color: var(--text-color);
+    }
+
+    .user__save__overview {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 28px;
+
+        p {
+            font-size: 15px;
+        }
+    }
+
+    .user__save__list__trip {
+        .user__save__list__empty {
+            text-align: center;
+            min-height: 437px;
+        }
+    }
+
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import "./_header.scss";
 import ButtonIcon from '~/components/ButtonIcon';
 import { BedIcon, BlogIcon, CarIcon, HelpIcon, PlaneIcon, StarIcon, TaxiIcon } from '~/components/Icons';
-import vnFlag from "~/assets/images/vn.png";
+import vnFlag from "~/assets/images/uk.png";
 import UserInfo from '~/components/UserInfo';
 
 import Button from '~/components/Button';

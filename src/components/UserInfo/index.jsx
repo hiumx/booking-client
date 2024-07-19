@@ -50,7 +50,7 @@ const UserInfo = () => {
                         <UserIcon />
                     </MenuItem>
                     <MenuItem
-                        to='#'
+                        to='/my-settings/bookings'
                         title='Bookings & Trips'
                     >
                         <TripIcon />
@@ -62,7 +62,7 @@ const UserInfo = () => {
                         <WalletIcon />
                     </MenuItem>
                     <MenuItem
-                        to='#'
+                        to='/my-wish-list'
                         title="Saved"
                     >
                         <HeartIcon />

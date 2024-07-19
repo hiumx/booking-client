@@ -20,13 +20,13 @@ const RadioItem = ({
                             className='radio__item__input'
                             name={title.split(" ").join("").toLowerCase()}
                             id={radio.split(" ").join("").toLowerCase()}
+                            defaultChecked={idx === 0}
                         />
                         <label
                             className='radio__item__label'
                             htmlFor={radio.split(" ").join("").toLowerCase()}
                         >
                             {radio}
-
                         </label>
                     </div>
                 ))}

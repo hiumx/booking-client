@@ -1,31 +1,67 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./_hotel_result_item.scss";
 import { CheckIcon, ChevronRightIcon, HeartIcon, HeartSolidIcon } from '../Icons';
 import MoreDetailButton from '../MoreDetailButton';
 import LazyLoad from 'react-lazyload';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { checkObjEmpty, mapToNameFromScore } from '~/utils';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ReactStars from 'react-stars';
 import ReviewFeedback from '../ReviewFeedback';
 import queryString from "query-string";
+import { newRecentSearch } from '~/services/historySearch.service';
+import RoomOverviewInfo from '../RoomOverviewInfo';
+import { takeHotelWishList } from '~/store/actions/user.action';
 
-const HotelResultItem = ({ data, options = {} }) => {
+const HotelResultItem = ({ data, options = {}, wishListIds = [] }) => {
     const [isSaved, setIsSaved] = useState(false);
     const { id, image, name, location, fromCenter, reviews, room, rate, typeHotel } = data;
 
     const locationPage = useLocation();
 
     const navigator = useNavigate();
+    const dispatch = useDispatch();
 
     const user = useSelector(state => state.user.userMyInfo);
 
     const handleClinkSave = (type) => {
-        setIsSaved(!isSaved);
         if (type === "slight" && checkObjEmpty(user))
             navigator("/auth/sign-in");
+        else {
+            setIsSaved(!isSaved);
+    
+            dispatch(takeHotelWishList({
+                userId: user?.id,
+                hotelId: id
+            }));
+        }
     }
+
+    useEffect(() => {
+        setIsSaved(wishListIds.includes(id));
+    }, []);
+
+    const handleClickViewDetail = () => {
+        navigator(`/search-result/${id}/${locationPage.search}`);
+        const { startDate, endDate, adult, children, room } = queryString.parse(locationPage.search);
+        newRecentSearch({
+            userId: user?.id,
+            hotelId: id,
+            startDate: new Date(startDate),
+            endDate: new Date(endDate),
+            adult,
+            children,
+            rooms: room
+        })
+            .then(res => {
+                console.log(res);
+            }).catch(err => {
+                console.error(err);
+            })
+    }
+
+
 
     return (
         <LazyLoad height={242}>
@@ -33,13 +69,13 @@ const HotelResultItem = ({ data, options = {} }) => {
                 <div className='row'>
                     <div className='col-lg-4'>
                         <div className='hri__img__wrapper'>
-                            <Link to={`/search-result/${id}/${locationPage.search}`}>
+                            <div onClick={handleClickViewDetail}>
                                 <img
                                     src={image?.url}
                                     alt='hotel-img'
                                     className='hri__img'
                                 />
-                            </Link>
+                            </div>
                             {isSaved ?
                                 <div className='hri__img__icon' onClick={() => handleClinkSave("solid")}>
                                     <HeartSolidIcon className='hri__heart__icon' width='17px' height='17px' fill='#e55050' />
@@ -55,7 +91,10 @@ const HotelResultItem = ({ data, options = {} }) => {
                         <div className='hri__overview'>
                             <div>
                                 <div className='hri__title__star'>
-                                    <Link className='hri__title__wrapper' to={`/search-result/${id}/${locationPage.search}`}>
+                                    <Link className='hri__title__wrapper'
+                                        to={`/search-result/${id}/${locationPage.search}`}
+                                        onClick={handleClickViewDetail}
+                                    >
                                         <h4 className='hri__title'>{name}</h4>
                                     </Link>
                                     <span>
@@ -75,7 +114,9 @@ const HotelResultItem = ({ data, options = {} }) => {
                                 </p>
                             </div>
                             <div className='hri__evaluate'>
-                                <div className='hri__evaluate__reviews' onClick={() => navigator(`/search-result/${id}/${locationPage.search}`)}>
+                                <div className='hri__evaluate__reviews'
+                                    onClick={handleClickViewDetail}
+                                >
                                     <ReviewFeedback reviews={reviews} />
                                     <h6 className='hri__evaluate__comfort'>Comfort 10</h6>
                                 </div>
@@ -99,12 +140,12 @@ const HotelResultItem = ({ data, options = {} }) => {
                             </div>
 
                             <div className='hri__value'>
-                                <p className='hri__value__desc'>
-                                    {`${options?.numberOfNights} nights, ${options?.numberOfAdults} adults`}
-                                </p>
-                                <h3 className='hri__value__money'>{`US$${room?.price}`}</h3>
-                                <p className='hri__value__desc'>Includes taxes and charges</p>
-                                <div className='hri__see__availability' onClick={() => navigator(`/search-result/${id}/${locationPage.search}`)}>
+                                <RoomOverviewInfo 
+                                    nights={options?.numberOfNights}
+                                    adults={options?.numberOfAdults}
+                                    price={room?.price}
+                                />
+                                <div className='hri__see__availability' onClick={handleClickViewDetail}>
                                     <p>See availability</p>
                                     <ChevronRightIcon width='12px' height='12px' fill='#fff' />
                                 </div>
@@ -119,7 +160,8 @@ const HotelResultItem = ({ data, options = {} }) => {
 
 HotelResultItem.propTypes = {
     data: PropTypes.object.isRequired,
-    options: PropTypes.object.isRequired
+    options: PropTypes.object.isRequired,
+    wishListIds: PropTypes.array
 }
 
 export default HotelResultItem
