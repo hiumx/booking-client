@@ -45,20 +45,22 @@ const HotelResultItem = ({ data, options = {}, wishListIds = [] }) => {
     const handleClickViewDetail = () => {
         navigator(`/search-result/${id}/${locationPage.search}`);
         const { startDate, endDate, adult, children, room } = queryString.parse(locationPage.search);
-        newRecentSearch({
-            userId: user?.id,
-            hotelId: id,
-            startDate: new Date(startDate),
-            endDate: new Date(endDate),
-            adult,
-            children,
-            rooms: room
-        })
-            .then(res => {
-                console.log(res);
-            }).catch(err => {
-                console.error(err);
+        if(user?.id) {
+            newRecentSearch({
+                userId: user?.id,
+                hotelId: id,
+                startDate: new Date(startDate),
+                endDate: new Date(endDate),
+                adult,
+                children,
+                rooms: room
             })
+                .then(res => {
+                    console.log(res);
+                }).catch(err => {
+                    console.error(err);
+                })
+        }
     }
 
 
