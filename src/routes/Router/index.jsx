@@ -21,7 +21,6 @@ import Booking from '~/pages/Booking';
 import GoToTop from '~/components/GoToTop';
 import MyStep from '~/components/MyStep';
 import AdminManagement from '~/pages/System/AdminManagement';
-import UserManagement from '~/pages/System/AdminManagement/pages/UserManagement';
 import Post from '~/pages/Post';
 import HotelManage from '~/pages/System/HotelManagement/pages/HotelManage';
 import HotelCreate from '~/pages/System/HotelManagement/pages/HotelCreate';
@@ -31,6 +30,7 @@ import PostManage from '~/pages/System/HotelManagement/pages/PostManage';
 import UserBooking from '~/pages/UserSetting/UserBooking';
 import PaymentCallBack from '~/pages/PaymentCallBack';
 import UserSaveHotel from '~/pages/UserSetting/UserSaveHotel';
+import AdminUserManagement from '~/pages/System/AdminManagement/pages/AdminUserManagement';
 
 const Routers = () => {
     return (
@@ -58,7 +58,7 @@ const Routers = () => {
                 <Route path="/payment/vn-pay-call-back" element={<PaymentCallBack />} />
 
                 <Route path="/system/admin" element={<AdminManagement />} />
-                <Route path="/system/admin/users" element={<UserManagement />} />
+                <Route path="/system/admin/users" element={<AdminUserManagement />} />
 
                 <Route path="/system/hotel-manager" element={<HotelManagement />} />
                 <Route path="/system/hotel-manager/hotels" element={<HotelManage />} />
