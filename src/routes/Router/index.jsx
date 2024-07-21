@@ -36,8 +36,6 @@ import RoomCreate from '~/pages/System/HotelManagement/pages/RoomCreate';
 import AdminHotelManagement from '~/pages/System/AdminManagement/pages/AdminHotelManagement';
 import AdminPostManagement from '~/pages/System/AdminManagement/pages/AdminPostManagement';
 import PostCreate from '~/pages/System/HotelManagement/pages/PostCreate';
-import HotelUpdate from '~/pages/System/HotelManagement/pages/HotelUpdate';
-import RoomCreate from '~/pages/System/HotelManagement/pages/RoomCreate';
 
 const Routers = () => {
     return (
