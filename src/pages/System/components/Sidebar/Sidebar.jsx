@@ -15,24 +15,34 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { DarkModeContext } from "~/contexts/darkModeContext";
 import { useContext } from "react";
 
-const Sidebar = ({ listItem = ["Update", "Hotels", "Rooms", "Create_Hotel", "Create_Room"] }) => {
+const Sidebar = ({ listItem = [], logoTitle = "Hotel Manager" }) => {
     // const { dispatch } = useContext(DarkModeContext);
 
     const navigator = useNavigate();
 
     const location = useLocation();
+    
+
+    const handleClickDashboard = () => {
+        logoTitle === "Hotel Manager" 
+            ? navigator("/system/hotel-manager")
+            : navigator("/system/admin");
+    }
     return (
         <div className="sidebar">
             <div className="top">
-                <Link to="/system/hotel-manager" style={{ textDecoration: "none" }}>
-                    <span className="logo">lamadmin</span>
+                <Link
+                    to={logoTitle === "Hotel Manager" ? "/system/hotel-manager": "/system/admin"}
+                    style={{ textDecoration: "none" }}
+                >
+                    <span className="logo">{logoTitle}</span>
                 </Link>
             </div>
             <hr />
             <div className="center">
                 <ul>
                     <p className="title">MAIN</p>
-                    <li onClick={() => navigator("/system/hotel-manager")}>
+                    <li onClick={handleClickDashboard}>
                         <DashboardIcon className="icon" />
                         <span>Dashboard</span>
                     </li>

@@ -49,7 +49,6 @@ export const getTopHotels = () => async (dispatch) => {
 export const getHotelsByManagerId = (managerId) => async (dispatch) => {
     try {
         const response = await getHotelByManagerId(managerId);
-        console.log(response);
         if (response && response.code === 1000) {
             dispatch({
                 type: actionTypes.GET_HOTEL_BY_MANAGER_ID_SUCCESS,

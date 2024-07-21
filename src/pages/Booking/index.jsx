@@ -28,7 +28,9 @@ import { USD_VND } from '~/constants';
 import { makePayment } from '~/services/payment.service';
 import actionTypes from '~/store/actions/action.type';
 import { makeBooking } from '~/services/booking.service';
+import io from 'socket.io-client';
 
+const ENDPOINT = "ws://localhost:9092"; 
 const amenities = ["Pool", "Spa", "Air conditioning", "Wifi", "Bar", "Free parking"];
 
 const Booking = () => {
@@ -61,7 +63,7 @@ const Booking = () => {
         setActiveMethodPayment(idx);
     }
 
-    const { startDate, endDate, room: numOfRoom, children, adult, rid } = parsed;
+    const { startDate, endDate, room: numOfRoom, children, adult, rid, hid } = parsed;
 
     useEffect(() => {
         dispatch(getRoomInfo(rid));
@@ -131,6 +133,7 @@ const Booking = () => {
                             const payload = {
                                 userId: id,
                                 roomsId: [room.id],
+                                hotelId: hid,
                                 numberAdult: adult,
                                 numberChildren: children,
                                 startDate: new Date(startDate),
@@ -155,6 +158,22 @@ const Booking = () => {
             }
         }
     }
+
+    useEffect(() => {
+        const socket = io(ENDPOINT);
+        
+        // Listen for payment response events
+        socket.on('paymentResponse', (data) => {
+          console.log('Payment Response received:', data);
+          // Update the UI or notify the user based on the payment response
+        });
+    
+        // Clean up on component unmount
+        return () => {
+          socket.disconnect();
+        };
+      }, []);
+    
 
     return (
         <CheckoutLayout>

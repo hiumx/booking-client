@@ -133,7 +133,9 @@ const SearchResultOverview = () => {
 	}, [isNotFound, hotelData]);
 
 	useEffect(() => {
-		dispatch(getHotelWishList(id));
+		if(id) {
+			dispatch(getHotelWishList(id));
+		}
 	}, [hotelData]);
 
 	// useEffect(() => {
