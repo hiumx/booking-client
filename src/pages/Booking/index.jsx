@@ -37,7 +37,15 @@ const Booking = () => {
     const {id, email, name, phone} = useSelector(state => state.user.userMyInfo);
     const userBookingInfo = useSelector(state => state.user.userBookingInfo);
 
-    const [firstName, ...lastName] = name?.split(" ");
+    let firstName = "";
+    let lastName = "";
+
+    if(name) {
+        const [fn, ...ln] = name?.split(" ");
+        firstName = fn;
+        lastName = ln;
+    }
+    
 
     const [activeMethodPayment, setActiveMethodPayment] = useState(0);
     const [input, setInput] = useState({
