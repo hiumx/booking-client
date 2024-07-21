@@ -37,6 +37,7 @@ import AdminUserManagement from '~/pages/System/AdminManagement/pages/AdminUserM
 import AdminPostManagement from '~/pages/System/AdminManagement/pages/AdminPostManagement';
 import PostCreate from '~/pages/System/HotelManagement/pages/PostCreate';
 
+
 const Routers = () => {
     return (
         <div>
