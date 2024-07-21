@@ -8,23 +8,26 @@ import Chart from '../components/Chart/Chart'
 import TableList from '../components/TableList/TableList'
 import PropTypes from 'prop-types';
 import ManagerDefaultLayout from '../layouts/ManagerDefaultLayout';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { isRoleExist } from '~/utils';
 
 const HotelManagement = ({ children }) => {
-    // const navigator = useNavigate();
-    // const user = useSelector(state => state.user.userMyInfo);
+    const navigator = useNavigate();
+    const user = useSelector(state => state.user.userMyInfo);
 
-    // const isAdmin = isRoleExist(user.roles, "Admin");
-    // const isHotelManager = isRoleExist(user.roles, "Hotel manager");
+    const isAdmin = isRoleExist(user.roles, "Admin");
+    const isHotelManager = isRoleExist(user.roles, "Hotel manager");
 
-    // useEffect(() => {
-    //     if (!isHotelManager) {
-    //       s  navigator("/");
-    //     }
-    // }, [])
+    useEffect(() => {
+        if (!isHotelManager) {
+            navigator("/");
+        }
+    }, [])
 
     return (
         <div className='home__mana__wrapper'>
-            <ManagerDefaultLayout listItem={["Hotels", "Rooms", "Bookings", "Posts"]}>
+            <ManagerDefaultLayout listItem={["Hotels"]}>
                 <div className="widgets">
                     <Widget type="user" />
                     <Widget type="order" />

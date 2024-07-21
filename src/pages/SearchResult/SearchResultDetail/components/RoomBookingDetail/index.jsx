@@ -17,10 +17,10 @@ const RoomBookingDetail = ({ data }) => {
 
     const navigator = useNavigate();
     const location = useLocation();
-    const {id} = useParams();
+    const { id } = useParams();
 
     const user = useSelector(state => state.user.userMyInfo);
-    
+
     const handleChangeExtra = ({ type = "", value = 0 }) => {
         let price = totalPrice;
         if (type === "breakfast") {
@@ -33,7 +33,7 @@ const RoomBookingDetail = ({ data }) => {
     }
 
     const handleClickReserve = () => {
-        if(checkObjEmpty(user)) {
+        if (checkObjEmpty(user)) {
             navigator("/auth/sign-in");
         } else {
             navigator(`/book?hid=${id}&rid=${roomId}&${location.search.slice(1)}`)

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import "./_hotel_create.scss";
+import "./_hotel_update.scss";
 import ManagerDefaultLayout from '~/pages/System/layouts/ManagerDefaultLayout';
 import { useDispatch, useSelector } from 'react-redux';
 import { getConvenient } from '~/store/actions/convenient.action';
@@ -10,7 +10,7 @@ import { createHotel } from '~/services/hotel.service';
 import { uploadHotelImages } from '~/services/upload.service';
 import { ToastContainer, toast } from 'react-toastify';
 
-const HotelCreate = () => {
+const HotelUpdate = () => {
 
     const dispatch = useDispatch();
     const convenient = useSelector(state => state.convenient.convenient);
@@ -111,15 +111,11 @@ const HotelCreate = () => {
         setImages(e.target.files);
     }
 
-    console.log(images);
-
-
-
     return (
         <div className='hotel__create__wrapper'>
             <ManagerDefaultLayout listItem={["Hotels"]}>
                 <div className='hotel__create__content'>
-                    <h4 className='hotel__create__title'>Create new hotel</h4>
+                    <h4 className='hotel__create__title'>Update hotel</h4>
                     <form className='hotel__create__form row'>
                         <div className='col-lg-6'>
                             <div className="mb-3">
@@ -190,7 +186,7 @@ const HotelCreate = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='hotel__create__new__room'>
+                        {/* <div className='hotel__create__new__room'>
                             <label htmlFor="name" className="form-label d-block">Rooms:</label>
                             {
                                 numOfRoom.map((r, idx) => (
@@ -202,7 +198,7 @@ const HotelCreate = () => {
                                     />
                                 ))
                             }
-                        </div>
+                        </div> */}
                         <button
                             type="button"
                             className="btn btn-primary"
@@ -230,4 +226,4 @@ const HotelCreate = () => {
     )
 }
 
-export default HotelCreate
+export default HotelUpdate
