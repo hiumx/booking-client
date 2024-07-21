@@ -3,7 +3,7 @@ import "./_room_booking_detail.scss";
 import Amenity from '../Amenity';
 import { ArrowLeftIcon, ChevronRightIcon, ExclamationIcon } from '~/components/Icons';
 import SeeMore from '~/components/SeeMore';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { checkObjEmpty } from '~/utils';
 import queryString from 'query-string';
@@ -17,9 +17,10 @@ const RoomBookingDetail = ({ data }) => {
 
     const navigator = useNavigate();
     const location = useLocation();
+    const { id } = useParams();
 
     const user = useSelector(state => state.user.userMyInfo);
-    
+
     const handleChangeExtra = ({ type = "", value = 0 }) => {
         let price = totalPrice;
         if (type === "breakfast") {
@@ -32,10 +33,10 @@ const RoomBookingDetail = ({ data }) => {
     }
 
     const handleClickReserve = () => {
-        if(checkObjEmpty(user)) {
+        if (checkObjEmpty(user)) {
             navigator("/auth/sign-in");
         } else {
-            navigator(`/book?rid=${roomId}&${location.search.slice(1)}`)
+            navigator(`/book?hid=${id}&rid=${roomId}&${location.search.slice(1)}`)
         }
     }
 

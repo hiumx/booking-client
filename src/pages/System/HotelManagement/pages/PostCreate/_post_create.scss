@@ -1,0 +1,19 @@
+.post__create__wrapper {
+
+    padding: 0 40px;
+    .post__create__title {
+        text-align: center;
+        margin: 16px 0;
+        font-weight: 700;
+        font-size: 26px;
+    }
+
+    .post__create__type__select {
+        padding: 4px 0;
+        width: 30%;
+    }
+
+    .post__create__markdown {
+        padding: 20px 0;
+    }
+}

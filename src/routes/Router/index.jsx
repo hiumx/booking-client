@@ -21,7 +21,6 @@ import Booking from '~/pages/Booking';
 import GoToTop from '~/components/GoToTop';
 import MyStep from '~/components/MyStep';
 import AdminManagement from '~/pages/System/AdminManagement';
-import UserManagement from '~/pages/System/AdminManagement/pages/UserManagement';
 import Post from '~/pages/Post';
 import HotelManage from '~/pages/System/HotelManagement/pages/HotelManage';
 import HotelCreate from '~/pages/System/HotelManagement/pages/HotelCreate';
@@ -31,6 +30,12 @@ import PostManage from '~/pages/System/HotelManagement/pages/PostManage';
 import UserBooking from '~/pages/UserSetting/UserBooking';
 import PaymentCallBack from '~/pages/PaymentCallBack';
 import UserSaveHotel from '~/pages/UserSetting/UserSaveHotel';
+import HotelUpdate from '~/pages/System/HotelManagement/pages/HotelUpdate';
+import RoomCreate from '~/pages/System/HotelManagement/pages/RoomCreate';
+import AdminHotelManagement from '~/pages/System/AdminManagement/pages/AdminHotelManagement';
+import AdminUserManagement from '~/pages/System/AdminManagement/pages/AdminUserManagement';
+import AdminPostManagement from '~/pages/System/AdminManagement/pages/AdminPostManagement';
+import PostCreate from '~/pages/System/HotelManagement/pages/PostCreate';
 
 const Routers = () => {
     return (
@@ -58,13 +63,19 @@ const Routers = () => {
                 <Route path="/payment/vn-pay-call-back" element={<PaymentCallBack />} />
 
                 <Route path="/system/admin" element={<AdminManagement />} />
-                <Route path="/system/admin/users" element={<UserManagement />} />
+                <Route path="/system/admin/users" element={<AdminUserManagement />} />
+                <Route path="/system/admin/hotels" element={<AdminHotelManagement />} />
+                <Route path="/system/admin/posts" element={<AdminPostManagement />} />
 
                 <Route path="/system/hotel-manager" element={<HotelManagement />} />
                 <Route path="/system/hotel-manager/hotels" element={<HotelManage />} />
                 <Route path="/system/hotel-manager/hotels/create" element={<HotelCreate />} />
-                <Route path="/system/hotel-manager/rooms" element={<RoomManage />} />
-                <Route path="/system/hotel-manager/bookings" element={<BookingManage />} />
+                <Route path="/system/hotel-manager/hotels/:id/rooms" element={<RoomManage />} />
+                <Route path="/system/hotel-manager/hotels/:id/rooms/create" element={<RoomCreate />} />
+                <Route path="/system/hotel-manager/hotels/:id/bookings" element={<BookingManage />} />
+                <Route path="/system/hotel-manager/hotels/:id/posts" element={<PostManage />} />
+                <Route path="/system/hotel-manager/hotels/:id/posts/create" element={<PostCreate />} />
+                <Route path="/system/hotel-manager/hotels/:id/update" element={<HotelUpdate />} />
                 <Route path="/system/hotel-manager/posts" element={<PostManage />} />
 
                 <Route path="/" element={<Home/>} />
