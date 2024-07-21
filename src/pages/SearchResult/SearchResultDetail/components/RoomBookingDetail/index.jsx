@@ -17,6 +17,7 @@ const RoomBookingDetail = ({ data }) => {
 
     const navigator = useNavigate();
     const location = useLocation();
+
     const { id } = useParams();
 
     const user = useSelector(state => state.user.userMyInfo);

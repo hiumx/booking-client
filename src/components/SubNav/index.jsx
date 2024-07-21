@@ -42,8 +42,9 @@ const SubNav = ({ hotelName, query }) => {
     }
 
     useEffect(() => {
-        if(user?.id) 
+        if(user?.id) {
             dispatch(getHotelWishList(user?.id));
+        }
     }, []);
 
     useEffect(() => {

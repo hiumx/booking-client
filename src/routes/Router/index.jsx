@@ -30,12 +30,12 @@ import PostManage from '~/pages/System/HotelManagement/pages/PostManage';
 import UserBooking from '~/pages/UserSetting/UserBooking';
 import PaymentCallBack from '~/pages/PaymentCallBack';
 import UserSaveHotel from '~/pages/UserSetting/UserSaveHotel';
-import HotelUpdate from '~/pages/System/HotelManagement/pages/HotelUpdate';
-import RoomCreate from '~/pages/System/HotelManagement/pages/RoomCreate';
-import AdminHotelManagement from '~/pages/System/AdminManagement/pages/AdminHotelManagement';
 import AdminUserManagement from '~/pages/System/AdminManagement/pages/AdminUserManagement';
+import AdminHotelManagement from '~/pages/System/AdminManagement/pages/AdminHotelManagement';
 import AdminPostManagement from '~/pages/System/AdminManagement/pages/AdminPostManagement';
 import PostCreate from '~/pages/System/HotelManagement/pages/PostCreate';
+import HotelUpdate from '~/pages/System/HotelManagement/pages/HotelUpdate';
+import RoomCreate from '~/pages/System/HotelManagement/pages/RoomCreate';
 
 const Routers = () => {
     return (
