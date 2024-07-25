@@ -21,7 +21,7 @@ import GroupImageLoader from '~/components/MyLoader/components/GroupImageLoader'
 import FeedbackItemLoader from '~/components/MyLoader/components/FeedbackItemLoader';
 import Contact from '~/layouts/components/Contact';
 import { CONTACTS } from '~/constants';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getResultSearchHotel } from '~/store/actions/hotel.action';
 import { toast, ToastContainer } from 'react-toastify';
 import { checkObjEmpty } from '~/utils';
@@ -104,6 +104,7 @@ const SearchResultDetail = () => {
 
     const location = useLocation();
     const parsed = queryString.parse(location.search);
+    const dispatch = useDispatch();
 
     const listSearchHotel = useSelector(state => state.hotel.listSearchHotel);
     const user = useSelector(state => state.user.userMyInfo);
@@ -275,6 +276,12 @@ const SearchResultDetail = () => {
                     slidesToShow={3}
                     titleStyle={{ marginBottom: "-16px" }}
                 />
+                <div className='srd__review'>
+                    <h5 className='srd__review__title'>Add new review...</h5>
+                    <input type='text' className='srd__review__input' placeholder='Enter review title...' />
+                    <input type='text' className='srd__review__input' placeholder='Enter review content...' />
+                    <input type='text' className='srd__review__input' placeholder='Enter review point...' />
+                </div>
             </div>
 
             <Contact contacts={CONTACTS} />

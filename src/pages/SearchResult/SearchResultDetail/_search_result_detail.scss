@@ -156,6 +156,25 @@
                 }
             }
         }
+
+        .srd__review {
+            margin-top: -20px;
+            margin-bottom: 24px;
+
+            .srd__review__title {
+                margin-top: -20px;
+                margin-bottom: 10px;
+            }
+
+            .srd__review__input {
+                width: 100%;
+                margin: 4px 0;
+                border: none;
+                outline: none;
+                border-bottom: 1px solid #E5E5E5;
+                font-size: 14px;
+            }
+        }
     }
 
 }

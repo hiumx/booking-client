@@ -2,7 +2,7 @@ import axios from "~/configs/init.axios";
 
 export const newPost = payload => axios.post("/posts", payload);
 
-export const ge s");
+export const getAllPosts = () => axios.get("/posts");
 
 export const getPostsConfirmed = () => axios.get("/posts/confirmed");
 
