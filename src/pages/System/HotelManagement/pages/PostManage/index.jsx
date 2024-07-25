@@ -41,26 +41,20 @@ const PostManage = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {
-                                    posts?.map((p, idx) => (
-                                        <tr>
-                                            <td>{idx + 1}</td>
-                                            <td>{p?.title}</td>
-                                            <td>{p?.hotel?.manager?.email}</td>
-                                            <td>{p?.hotel?.name}</td>
-                                            <td>{p?.typePost?.name}</td>
-                                            {!p?.confirm
-                                                ?
-                                                <td><button className='btn btn-info'>Confirm</button></td>
-                                                :
-                                                <td><button className='btn btn-warning'>Block</button></td>
-                                            }
-                                            <td><button className='btn btn-danger'>Delete</button></td>
-                                        </tr>
-                                    ))
+                                { posts?.map((p, idx) => (
+                                            <tr>
+                                                <td>{idx + 1}</td>
+                                                <td>{p?.title}</td>
+                                                <td>{p?.hotel?.manager?.email}</td>
+                                                <td>{p?.hotel?.name}</td>
+                                                <td>{p?.typePost?.name}</td>
+                                                <td><button className='btn btn-danger'>Delete</button></td>
+                                            </tr>
+                                        ))
                                 }
                             </tbody>
                         </table>
+                        {posts.length === 0 && <p className='post__manage__not__have__post'>Not have nay post.</p>}
                     </div>
                 </div>
             </ManagerDefaultLayout>

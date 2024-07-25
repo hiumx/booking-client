@@ -36,14 +36,14 @@ const MySettingDetail = () => {
                                     <p className="setting__detail__item__text">Security</p>
                                 </Link>
                             </li>
-                            <li className={slug === "payment-details" ? "setting__detail__item setting__detail__item__active" : "setting__detail__item"}>
+                            {/* <li className={slug === "payment-details" ? "setting__detail__item setting__detail__item__active" : "setting__detail__item"}>
                                 <Link to={`/my-settings/payment-details/${id}`} className='setting__detail__item__link'>
                                     <IconRadius width="50px" height="50px">
                                         <WalletIcon width='20px' height='20px' fill="#57c1cd" />
                                     </IconRadius>
                                     <p className="setting__detail__item__text">Payment details</p>
                                 </Link>
-                            </li>
+                            </li> */}
                             <li className={slug ==="other-travellers" ? "setting__detail__item setting__detail__item__active" : "setting__detail__item"}>
                                 <Link to={`/my-settings/other-travellers/${id}`} className='setting__detail__item__link'>
                                     <IconRadius width="50px" height="50px">
@@ -123,7 +123,7 @@ const MySettingDetail = () => {
                             />
                         }
 
-                        {
+                        {/* {
                             slug === "payment-details"
                             && <SettingDetailItem
                                 title="Payment details"
@@ -136,7 +136,7 @@ const MySettingDetail = () => {
                                     }
                                 ]}
                             />
-                        }
+                        } */}
 
                         {
                             slug === "other-travellers"

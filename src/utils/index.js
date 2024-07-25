@@ -58,3 +58,14 @@ export function formatDate(date) {
     // Use toLocaleDateString with the defined options
     return date.toLocaleDateString('en-US', options);
 }
+
+export function convertToDate(dateString) {
+    const year = dateString.substring(0, 4);
+    const month = dateString.substring(4, 6) - 1; // Months are 0-based in JavaScript
+    const day = dateString.substring(6, 8);
+    const hour = dateString.substring(8, 10);
+    const minute = dateString.substring(10, 12);
+    const second = dateString.substring(12, 14);
+
+    return new Date(year, month, day, hour, minute, second);
+}

@@ -18,18 +18,23 @@ import { getTopHotels } from '~/store/actions/hotel.action';
 import { getTopProvinces } from '~/store/actions/province.action';
 import { getTopRecentSearch } from '~/services/historySearch.service';
 import { getRecentSearch } from '~/store/actions/user.action';
+import { countHotelByProvince } from '~/services/hotel.service';
 
 const Home = () => {
 
     // const [recommendStay, setRecommendStay] = useState([]);
     const [perfectWhere, setPerfectWhere] = useState([]);
     const [listTrending, setListTrending] = useState([]);
+    const [historySearch, setHistorySearch] = useState([]);
+    const [historySearchStatus, setHistorySearchStatus] = useState(false);
+    const [countHotel, setCountHotel] = useState([]);
 
     const dispatch = useDispatch();
     const typicalStay = useSelector(state => state.typeHotel.typesHotel);
     const recommendStay = useSelector(state => state.hotel.topHotels);
     const topVNProvinces = useSelector(state => state.province.topProvinces);
-    const historySearch = useSelector(state => state.user.historySearch);
+    // const historySearch = useSelector(state => state.user.historySearch);
+
     const { id } = useSelector(state => state.user.userMyInfo);
 
     useEffect(() => {
@@ -44,8 +49,26 @@ const Home = () => {
         dispatch(getTopHotels());
         dispatch(getTopProvinces());
         if (id) {
-            dispatch(getRecentSearch(id));
+            // dispatch(getRecentSearch(id));
+            getTopRecentSearch(id)
+                .then(res => {
+                    if (res.code === 1000) {
+                        setHistorySearch(res.metadata);
+                        setHistorySearchStatus(true);
+                    }
+                })
         }
+    }, []);
+
+    useEffect(() => {
+        countHotelByProvince()
+            .then(res => {
+                if (res.code === 1000) {
+                    setCountHotel(res.metadata);
+                }
+            }).catch(err => {
+                console.error(err);
+            })
     }, []);
 
     return (
@@ -55,10 +78,10 @@ const Home = () => {
                     {
                         id &&
                         <div className='home__recent__searches'>
-                            <h5 className='home__recent__searches__title'>Your recent searches</h5>
                             {
-                                historySearch.length > 0
-                                    ?
+                                historySearch.length > 0 && historySearchStatus &&
+                                <>
+                                    <h5 className='home__recent__searches__title'>Your recent searches</h5>
                                     <ul className='home__recent__searches__list'>
                                         {historySearch.map((h, idx) => (
                                             <li key={idx} className='home__recent__searches__item'>
@@ -74,9 +97,9 @@ const Home = () => {
                                             </li>
                                         ))}
                                     </ul>
-                                    :
-                                    <HistorySearchLoader />
+                                </>
                             }
+                            {!historySearchStatus && <HistorySearchLoader />}
                         </div>
                     }
                     <SubBanner />

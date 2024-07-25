@@ -6,7 +6,7 @@ import { getResultSearchHotel } from '~/store/actions/hotel.action';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-const ImagePrimaryItem = ({image, province, properties}) => {
+const ImagePrimaryItem = ({image, province, properties = 100 }) => {
 
     const dispatch = useDispatch();
     const navigator = useNavigate();

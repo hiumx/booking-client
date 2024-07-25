@@ -25,7 +25,7 @@ const SearchResultOverview = () => {
 	const dispatch = useDispatch();
 	const typesHotel = useSelector(state => state.typeHotel.typesHotel);
 	const convenient = useSelector(state => state.convenient.convenient);
-	const hotelData = useSelector(state => state.hotel.listSearchHotel);
+	const hotelData = useSelector(state => state.hotel.listSearchHotel); //
 	const [isNotFound, setIsNotFound] = useState(false);
 	const [listTypeChecked, setListTypeChecked] = useState([]);
 	const [listConvenientChecked, setListConvenientChecked] = useState([]);
@@ -108,7 +108,12 @@ const SearchResultOverview = () => {
 			checksConvenient: listConvenientChecked,
 			lowestPrice: rangePrice[0],
 			highestPrice: rangePrice[1],
-			checkRating: listRating,
+			checksRating: listRating,
+			options: {
+                numberOfAdult: numberOfAdults,
+                numberOfChild: parsed.children,
+                numberOfRoom: parsed.adult
+            }
 		}).then(res => {
 			if (res.code === 1000)
 				dispatch({
@@ -169,22 +174,22 @@ const SearchResultOverview = () => {
 					<div className='col-lg-3'>
 						<div className='sr__body__filter__wrapper'>
 							<h3 className='sr__body__filter__by'>Filter by:</h3>
-							<Filter
+							{/* <Filter
 								title='Your previous filters'
 								items={items.previousFilter}
 								handleChangCheckedFilter={handleChangCheckedFilter}
-							/>
+							/> */}
 							<Filter
 								title='Your budget'
 								isList={false}
 								typeCheckbox='price_range'
 								handleChangCheckedFilter={handleChangCheckedFilter}
 							/>
-							<Filter
+							{/* <Filter
 								title='Popular filters'
 								items={items.popularFilter}
 								handleChangCheckedFilter={handleChangCheckedFilter}
-							/>
+							/> */}
 							<Filter
 								title='Property type'
 								typeCheckbox="type_hotel"
@@ -192,15 +197,17 @@ const SearchResultOverview = () => {
 								listChecked={listTypeChecked}
 								handleChangCheckedFilter={handleChangCheckedFilter}
 							/>
-							<Filter
+							{/* <Filter
 								title='Property rating'
 								typeCheckbox="rating"
 								items={LIST_RATING}
+								listChecked={listRating}
 								handleChangCheckedFilter={handleChangCheckedFilter}
-							/>
+							/> */}
 							<Filter
 								title='Convenient filters'
 								typeCheckbox="convenient"
+								listChecked={listConvenientChecked}
 								items={convenient}
 								handleChangCheckedFilter={handleChangCheckedFilter}
 							/>
@@ -213,12 +220,12 @@ const SearchResultOverview = () => {
 						>
 							{`${parsed.location ? parsed.location : parsed.name}: ${hotelData.length} properties found`}
 						</h5>
-						<Select
+						{/* <Select
 							options={options}
 							className='sr__body__sort'
 							styles={customStyles}
 						// defaultValue={"home_department"}
-						/>
+						/> */}
 						<ul className='sr__list__result'>
 							{hotelData?.length > 0 ? hotelData?.map((hotel, idx) => (
 								<li key={idx}>

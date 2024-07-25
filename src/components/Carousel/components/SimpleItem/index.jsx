@@ -53,7 +53,12 @@ const SimpleItem = ({
             checksConvenient: [],
             lowestPrice: 0,
             highestPrice: 1000,
-            checkRating: [],
+            checksRating: [],
+            options: {
+                numberOfAdult: options?.adult,
+                numberOfChild: options?.children,
+                numberOfRoom: options?.room
+            }
         }).then(res => {
             if (res.code === 1000)
                 dispatch({

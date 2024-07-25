@@ -130,23 +130,24 @@
                 .srd__near__location__list {
                     margin-top: 16px;
 
+
                     .srd__near__location__item {
                         display: flex;
                         align-items: center;
                         margin: 4px 0;
-    
+
                         .srd__nl__name {
                             display: flex;
                             align-items: center;
                             flex: 1;
-    
+
                             p {
                                 margin-left: 4px;
                                 font-size: 14px;
                                 color: var(--text-color);
                             }
                         }
-    
+
                         .srd__nl__time__drive {
                             font-size: 12px;
                             color: #666;
@@ -155,56 +156,25 @@
                 }
             }
         }
-    }
 
-    .srd__new__review__form {
-        margin: -16px 0 40px;
+        .srd__review {
+            margin-top: -20px;
+            margin-bottom: 24px;
 
-        .srd__new__review__title {
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-    }
-
-    .srd__new__review__item {
-        margin: 6px 0;
-        display: flex;
-        align-items: center;
-
-        .srd__new__review__item__input {
-            margin: 4px 0;
-            width: 100%;
-            border: none;
-            outline: none;
-            border-bottom: 1px solid #909090;
-            font-size: 14px;
-            position: relative;
-
-            &:focus::before {
-                left: 0;
-                right: 0;
-                transform: translateX(0);
+            .srd__review__title {
+                margin-top: -20px;
+                margin-bottom: 10px;
             }
 
-            &:focus {
-                border-bottom: 2px solid #3498db;
-            }
-
-            &::before {
-                content: '';
-                position: absolute;
-                height: 2px;
-                background-color: #3498db;
-                bottom: -1px;
-                /* Position it to overlap the 1px bottom border */
-                left: 50%;
-                right: 50%;
-                transition: left 0.3s ease, right 0.3s ease;
-                transform: translateX(-50%);
-                pointer-events: none;
-                /* Ensure the pseudo-element doesn't interfere with input focus */
-                z-index: 1;
+            .srd__review__input {
+                width: 100%;
+                margin: 4px 0;
+                border: none;
+                outline: none;
+                border-bottom: 1px solid #E5E5E5;
+                font-size: 14px;
             }
         }
     }
+
 }

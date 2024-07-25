@@ -58,6 +58,7 @@ const Booking = () => {
     const [countrySelect, setCountrySelect] = useState("");
     const [currentStep, setCurrentStep] = useState(1);
     const [checkedConfirm, setCheckedConfirm] = useState(false);
+    const [checkConfirmUserInfo, setCheckConfirmUserInfo] = useState(false);
 
     const location = useLocation();
     const dispatch = useDispatch();
@@ -94,10 +95,11 @@ const Booking = () => {
         if (!input["firstName"] || !input["lastName"] || !input["email"] || !input["phone"]) {
             toast.warn("Please fill all fields required!");
             return false;
-        } else if (!country) {
-            toast.warn("Please select your country!");
-            return false;
-        }
+        } 
+        // else if (!country) {
+        //     toast.warn("Please select your country!");
+        //     return false;
+        // }
 
         return true;
     }
@@ -114,7 +116,9 @@ const Booking = () => {
     const handleClickNextStep = () => {
 
         if (currentStep === 1) {
-            if (checkUserInfo(input, countrySelect)) {
+            if(!checkConfirmUserInfo)
+                toast.warn("Please checked confirm your information!");
+            else if (checkUserInfo(input, countrySelect)) {
                 // window.scrollTo(0, 0);
                 dispatch({
                     type: actionTypes.SET_BOOKING_USER_INFO_SUCCESS,
@@ -135,7 +139,7 @@ const Booking = () => {
                 makePayment(amount)
                     .then(res => {
                         if (res.code === 1000) {
-                            window.open(res.metadata, "_blank");
+                            window.open(res.metadata, "_self");
 
                             // check result response from payment
                             const payload = {
@@ -149,7 +153,6 @@ const Booking = () => {
                                 paymentCardId: 3
                             }
 
-                            console.log(payload);
                             makeBooking(payload).then(res => {
                                 if(res.code === 1000) {
                                     console.log(res);
@@ -327,7 +330,7 @@ const Booking = () => {
                                                             })}
                                                             value={input["email"]}
                                                         />
-                                                        <InputUserInfo
+                                                        {/* <InputUserInfo
                                                             label='Country/region'
                                                             isObligatory
                                                             selects={[1]}
@@ -335,7 +338,7 @@ const Booking = () => {
                                                                 setCountrySelect(value);
                                                             }}
                                                             // value={}
-                                                        />
+                                                        /> */}
                                                         <InputUserInfo
                                                             label='Telephone (mobile number preferred)'
                                                             isObligatory
@@ -363,6 +366,7 @@ const Booking = () => {
                                                 <CheckboxBookingItem
                                                     title="Yes, I'd like free paperless confirmation (recommended)"
                                                     description="We'll text you a link to download our app"
+                                                    handleChangeChecked={() => setCheckConfirmUserInfo(true)}
                                                 />
                                             </div>
                                             {/* <div>
@@ -494,7 +498,7 @@ const Booking = () => {
                                                         <img src={momoLogo} alt='momo-logo' className='method__payment__item__momo' />
                                                     </MethodPaymentItem> */}
                                                 </div>
-                                                {activeMethodPayment === 0 &&
+                                                {/* {activeMethodPayment === 0 &&
                                                     <>
                                                         <div className='cards__payment'>
                                                             <h6 className='cards__payment__title'>New card</h6>
@@ -561,7 +565,7 @@ const Booking = () => {
                                                             </div>
                                                         </div>
                                                     </>
-                                                }
+                                                } */}
                                             </div>
                                         </ItemLayout>
                                         <div>
