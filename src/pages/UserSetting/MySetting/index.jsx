@@ -53,7 +53,7 @@ const MySetting = () => {
                             </IconRadius>
                         </SettingItem>
                     </li>
-                    <li className='my__setting__item'>
+                    {/* <li className='my__setting__item'>
                         <SettingItem
                             title='Payment details'
                             description="Securely add or remove payment methods to make it easer when you book."
@@ -64,7 +64,7 @@ const MySetting = () => {
                                 <WalletIcon width='20px' height='20px' fill="#b99e9e" className='setting__icon' />
                             </IconRadius>
                         </SettingItem>
-                    </li>
+                    </li> */}
                     <li className='my__setting__item'>
                         <SettingItem
                             title='Other travellers'

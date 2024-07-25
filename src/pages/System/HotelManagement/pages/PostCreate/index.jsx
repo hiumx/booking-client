@@ -9,6 +9,7 @@ import Select from 'react-select';
 import { newPost } from '~/services/post.service';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 const PostCreate = () => {
     const mdParser = new MarkdownIt(/* Markdown-it options */);
     const [title, setTitle] = useState("");
@@ -58,7 +59,14 @@ const PostCreate = () => {
 
         newPost(payload)
             .then(res => {
-                console.log(res);
+                if(res.code === 1000) {
+                    toast.success(res.message);
+                    setTitle("");
+                    setTypeChose({ value: 1, label: 'Luxury Travel' });
+                    setContentHtml("");
+                    setContentMarkdown("");
+                    setImage("");
+                }
             }).catch(err => {
                 console.error(err);
             })
@@ -85,6 +93,7 @@ const PostCreate = () => {
                         id="post-title"
                         placeholder="Enter post title"
                         onChange={e => setTitle(e.target.value)}
+                        value={title}
                     />
                 </div>
                 <div class="mb-3 mt-3">
@@ -93,6 +102,7 @@ const PostCreate = () => {
                         type="file"
                         className="form-control"
                         id="post-image"
+                        value={image}
                     />
                 </div>
                 <div className='post__create__markdown'>
@@ -100,6 +110,7 @@ const PostCreate = () => {
                     <MdEditor
                         style={{ height: '500px' }}
                         renderHTML={text => mdParser.render(text)}
+                        value={contentMarkdown}
                         onChange={handleEditorChange}
                     />
                 </div>
@@ -110,6 +121,19 @@ const PostCreate = () => {
                     Create
                 </button>
             </div>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+                style={{ fontSize: '14px' }}
+            />
         </ManagerDefaultLayout>
     )
 }

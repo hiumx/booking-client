@@ -1,0 +1,37 @@
+.post__detail__wrapper {
+    padding: 16px 14%;
+
+    img {
+        width: 100%;
+        margin: 14px 0;
+        border-radius: 12px;
+    }
+
+    h2, h3 {
+        margin: 20px 0;
+        font-weight: 700;
+    }
+
+    h4 {
+        margin: 12px 0;
+    }
+
+    h5 {
+        margin: 10px 0;
+    }
+
+    h6 {
+        margin: 8px 0;
+        font-weight: 600;
+    }
+
+    p {
+        line-height: 30px;
+        font-size: 16px;
+    }
+
+    li {
+        margin-left: 40px;
+    }
+    
+}

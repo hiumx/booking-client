@@ -1,0 +1,33 @@
+.post__item__wrapper {
+    margin: 40px 0;
+
+    .post__item__title {
+        font-size: 22px;
+        color: #4c2939;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .post__item__post__list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+
+        .post__item__post__item {
+
+            overflow: hidden;
+            border-radius: 10px;
+
+            .post__item__img {
+                width: 100%;
+                height: 188px;
+                transition: transform 0.3s ease;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+}

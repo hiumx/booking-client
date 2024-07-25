@@ -79,7 +79,7 @@ const SettingDetailItem = ({ title, description, items = [], image = false }) =>
                     <h3>{title}</h3>
                     <p>{description}</p>
                 </div>
-                {image && <input type='file' className='setting__detail__item__user__img' />}
+                {/* {image && <input type='file' className='setting__detail__item__user__img' />} */}
             </div>
             <ul className='setting__detail__item__list'>
                 {

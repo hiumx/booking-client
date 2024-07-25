@@ -7,7 +7,7 @@ import { CarIcon, LocationIcon } from '~/components/Icons';
 import SearchInput from '~/components/SearchInput';
 import ReviewFeedback from '~/components/ReviewFeedback';
 import Amenity from './components/Amenity';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import SimpleMap from '~/components/SimpleMap';
 import LazyLoad from 'react-lazyload';
 import RoomBookingDetail from './components/RoomBookingDetail';
@@ -21,7 +21,11 @@ import GroupImageLoader from '~/components/MyLoader/components/GroupImageLoader'
 import FeedbackItemLoader from '~/components/MyLoader/components/FeedbackItemLoader';
 import Contact from '~/layouts/components/Contact';
 import { CONTACTS } from '~/constants';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getResultSearchHotel } from '~/store/actions/hotel.action';
+import { toast, ToastContainer } from 'react-toastify';
+import { checkObjEmpty } from '~/utils';
+import { newReview } from '~/services/review.service';
 
 const reviewFake = [
     {
@@ -92,15 +96,35 @@ const listDataSimpleComponentFake = [
 const SearchResultDetail = () => {
 
     const [hotelData, setHotelData] = useState({});
+    const [reviewTitle, setReviewTitle] = useState("");
+    const [reviewContent, setReviewContent] = useState("");
+    const [reviewPoint, setReviewPoint] = useState('');
+    const [reviewStatus, setReviewStatus] = useState(false);
     const { id } = useParams();
 
     const location = useLocation();
+    const dispatch = useDispatch();
+    const navigator = useNavigate();
     const parsed = queryString.parse(location.search);
 
     const listSearchHotel = useSelector(state => state.hotel.listSearchHotel);
+    const user = useSelector(state => state.user.userMyInfo);
     const [hotel] = listSearchHotel.filter(h => h.id == id);
 
     const roomsAvailable = hotel?.rooms.map(r => r.id);
+
+    useEffect(() => {
+        dispatch(getResultSearchHotel({
+            location: parsed.location,
+            startDate: new Date(parsed.startDate),
+            endDate: new Date(parsed.endDate),
+            options: {
+                adult: parsed.adult,
+                children: parsed.children,
+                room: parsed.room,
+            }
+        }));
+    }, []);
 
     useEffect(() => {
         getHotelById(id)
@@ -114,7 +138,36 @@ const SearchResultDetail = () => {
             .catch(error => {
                 console.error(error);
             })
-    }, []);
+    }, [reviewStatus]);
+
+    const handleClickReview = () => {
+        if (checkObjEmpty(user))
+            navigator("/auth/sign-in");
+        if (!reviewTitle || !reviewContent || !reviewPoint)
+            toast.warn("Please fill all fields require!")
+        else if (Number(reviewPoint) < 0 || Number(reviewPoint) > 10)
+            toast.warn("Point of review must be between 0 and 10!");
+        else {
+            newReview({
+                title: reviewTitle,
+                content: reviewContent,
+                userId: user?.id,
+                hotelId: Number(id),
+                point: Number(reviewPoint)
+            }).then(res => {
+                if (res.code === 1000) {
+                    setReviewStatus(true);
+                    setReviewTitle("");
+                    setReviewContent("");
+                    setReviewPoint("");
+                } else {
+                    toast.warn(res.message);
+                }
+            }).catch(err => {
+                console.error(err);
+            })
+        }
+    }
 
     return (
         <div className='search__result__detail__wrapper'>
@@ -165,7 +218,7 @@ const SearchResultDetail = () => {
                         </div>
                         <ul className='srd__secondary__img__wrapper'>
                             {hotelData?.images?.slice(1).map((image, idx) => (
-                                <div className='srd__img__wrapper'>
+                                <div key={idx} className='srd__img__wrapper'>
                                     {/* <LazyLoad key={idx} height="100%"> */}
                                     <img
                                         src={image?.url}
@@ -253,10 +306,56 @@ const SearchResultDetail = () => {
                     slidesToShow={3}
                     titleStyle={{ marginBottom: "-16px" }}
                 />
+                <div className='srd__new__review__form'>
+                    <h6 className='srd__new__review__title'>Add a review...</h6>
+                    <div>
+                        <div className='srd__new__review__item'>
+                            <input
+                                type='text'
+                                className='srd__new__review__item__input'
+                                placeholder='Title...'
+                                onChange={e => setReviewTitle(e.target.value)}
+                                value={reviewTitle}
+                            />
+                        </div>
+                        <div className='srd__new__review__item'>
+                            <input
+                                type='text'
+                                className='srd__new__review__item__input'
+                                placeholder='Content...'
+                                onChange={e => setReviewContent(e.target.value)}
+                                value={reviewContent}
+                            />
+                        </div>
+                        <div className='srd__new__review__item'>
+                            <input
+                                type='text'
+                                className='srd__new__review__item__input'
+                                placeholder='Point...'
+                                onChange={e => setReviewPoint(e.target.value)}
+                                value={reviewPoint}
+                            />
+                        </div>
+                    </div>
+                    <button className='srd__new__review__btn' onClick={handleClickReview}>Review</button>
+                </div>
             </div>
 
             <Contact contacts={CONTACTS} />
             <Footer />
+            <ToastContainer
+                position="bottom-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+                style={{ fontSize: '14px' }}
+            />
         </div>
     )
 }

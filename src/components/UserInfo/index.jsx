@@ -55,12 +55,12 @@ const UserInfo = () => {
                     >
                         <TripIcon />
                     </MenuItem>
-                    <MenuItem
+                    {/* <MenuItem
                         to='#'
                         title="Rewards & Wallet"
                     >
                         <WalletIcon />
-                    </MenuItem>
+                    </MenuItem> */}
                     <MenuItem
                         to='/my-wish-list'
                         title="Saved"

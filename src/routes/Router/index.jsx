@@ -36,8 +36,7 @@ import RoomCreate from '~/pages/System/HotelManagement/pages/RoomCreate';
 import AdminHotelManagement from '~/pages/System/AdminManagement/pages/AdminHotelManagement';
 import AdminPostManagement from '~/pages/System/AdminManagement/pages/AdminPostManagement';
 import PostCreate from '~/pages/System/HotelManagement/pages/PostCreate';
-import HotelUpdate from '~/pages/System/HotelManagement/pages/HotelUpdate';
-import RoomCreate from '~/pages/System/HotelManagement/pages/RoomCreate';
+import PostDetail from '~/pages/Post/PostDetail';
 
 const Routers = () => {
     return (
@@ -61,6 +60,7 @@ const Routers = () => {
                 <Route path="/search-result/:id" element={<SearchResultDetail />} />
                 <Route path="/book" element={<Booking />} />
                 <Route path="/posts" element={<Post />} />
+                <Route path="/posts/:pid" element={<PostDetail />} />
 
                 <Route path="/payment/vn-pay-call-back" element={<PaymentCallBack />} />
 

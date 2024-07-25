@@ -8,7 +8,7 @@ import RoomOverviewInfo from '../RoomOverviewInfo';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
-const HotelOverview = ({ srcImg, hotelId, hotelName, hotelLocation, fromCenter, reviews, roomPrice, handleClickRemoveSaveHotel }) => {
+const HotelOverview = ({ srcImg, hotelId, hotelName, hotelLocation, rate, fromCenter, reviews, roomPrice, handleClickRemoveSaveHotel }) => {
 
     const navigator = useNavigate();
     const handleClickHotelSave = () => {
@@ -30,7 +30,7 @@ const HotelOverview = ({ srcImg, hotelId, hotelName, hotelLocation, fromCenter, 
                     count={5}
                     edit={false}
                     size={16}
-                    value={5}
+                    value={rate}
                     color2={'#ffd700'}
                 />
                 <h5 className='hotel__overview__title'>{hotelName}</h5>
