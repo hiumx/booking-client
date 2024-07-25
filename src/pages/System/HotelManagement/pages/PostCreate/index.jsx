@@ -59,14 +59,7 @@ const PostCreate = () => {
 
         newPost(payload)
             .then(res => {
-                if (res.code === 1000) {
-                    toast.success(res.message);
-                    setTitle("");
-                    setTypeChose({ value: 1, label: 'Luxury Travel' });
-                    setContentHtml("");
-                    setContentMarkdown("");
-                    setImage("");
-                }
+                console.log(res);
             }).catch(err => {
                 console.error(err);
             })

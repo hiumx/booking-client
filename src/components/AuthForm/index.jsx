@@ -22,14 +22,14 @@ const AuthForm = ({ title, action, children, isSocial = true, onClick, errorMsg 
                                     <span className='auth__title__others'>or use one of these options</span>
                                     <hr className='auth__title__others__hr' />
                                 </div>
-                                <ul className='auth__list__social__media'>
+                                {/* <ul className='auth__list__social__media'>
                                     <li className='auth__item__sm'>
                                         <FacebookIcon className='facebook__icon' width='34px' height='34px' fill='#3a64c4' />
                                     </li>
                                     <li className='auth__item__sm'>
                                         <GoogleIcon className='google__icon' width='32px' height='32px' fill='#b70100' />
                                     </li>
-                                </ul>
+                                </ul> */}
                                 <hr />
                                 <div className='auth__policy'>
                                     <p>By signing in or creating an account, you agree with our

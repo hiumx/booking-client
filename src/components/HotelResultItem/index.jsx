@@ -16,7 +16,7 @@ import { takeHotelWishList } from '~/store/actions/user.action';
 
 const HotelResultItem = ({ data, options = {}, wishListIds = [] }) => {
     const [isSaved, setIsSaved] = useState(false);
-    const { id, image, name, location, fromCenter, reviews, room, rate, typeHotel } = data;
+    const { id, image, name, location, fromCenter, reviews, rooms, rate, typeHotel } = data;
 
     const locationPage = useLocation();
 
@@ -63,6 +63,7 @@ const HotelResultItem = ({ data, options = {}, wishListIds = [] }) => {
         }
     }
 
+    console.log(data);
 
 
     return (
@@ -128,8 +129,8 @@ const HotelResultItem = ({ data, options = {}, wishListIds = [] }) => {
                         <MoreDetailButton />
                         <div className='hri__detail'>
                             <div className='hri__detail__convenient'>
-                                <p className='hri__convenient__room'>{room?.name}</p>
-                                <p className='hri__convenient__beds'>{`${room?.numberBed} double bed`}</p>
+                                <p className='hri__convenient__room'>{rooms?.[0]?.name}</p>
+                                <p className='hri__convenient__beds'>{`${rooms?.[0]?.numberBed} double bed`}</p>
                                 <div className='hri__detail__benefit'>
                                     <CheckIcon fill='#008234' width='12px' height='12px' />
                                     <p><span className='hri__detail__benefit__bold'>Free cancellation</span></p>
@@ -145,7 +146,7 @@ const HotelResultItem = ({ data, options = {}, wishListIds = [] }) => {
                                 <RoomOverviewInfo 
                                     nights={options?.numberOfNights}
                                     adults={options?.numberOfAdults}
-                                    price={room?.price}
+                                    price={rooms?.[0]?.price}
                                 />
                                 <div className='hri__see__availability' onClick={handleClickViewDetail}>
                                     <p>See availability</p>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./_carousel.scss";
 import Slider from "react-slick";
 import { SampleNextArrow, SamplePrevArrow } from './components/CustomArrow';
@@ -9,6 +9,7 @@ import ImageTextItem from './components/ImageTextItem';
 import FeedbackItem from './components/FeedbackItem';
 import ImagePrimaryItem from './components/ImagePrimaryItem';
 import PostItem from './components/PostItem';
+import { countHotelByProvince } from '~/services/hotel.service';
 
 const Carousel = ({
     type,
@@ -31,7 +32,7 @@ const Carousel = ({
         initialSlide: slidesToShow,
         prevArrow: <SamplePrevArrow style={arrowStyle} />,
         nextArrow: <SampleNextArrow style={arrowStyle} />,
-        autoplay: autoPlay,                                                                      
+        autoplay: autoPlay,
         autoplaySpeed: 3000,
         cssEase: 'linear',
     };
@@ -113,7 +114,7 @@ const Carousel = ({
                     items.map((item, idx) => (
                         <div key={idx} className='carousel__item'>
                             <PostItem
-                            
+
                             />
                         </div>
                     ))

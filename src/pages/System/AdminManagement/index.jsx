@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Sidebar from '../components/Sidebar/Sidebar'
 import NavbarSystem from '../components/NavbarSystem/NavbarSystem'
 import Widget from '../components/widget/Widget'
@@ -7,8 +7,23 @@ import Chart from '../components/Chart/Chart'
 import "./_admin_management.scss";
 import TableList from '../components/TableList/TableList'
 import ManagerDefaultLayout from '../layouts/ManagerDefaultLayout'
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { isRoleExist } from '~/utils'
 
 const AdminManagement = () => {
+    const navigator = useNavigate();
+    const user = useSelector(state => state.user.userMyInfo);
+
+    const isAdmin = isRoleExist(user.roles, "Admin");
+    const isHotelManager = isRoleExist(user.roles, "Hotel manager");
+
+    useEffect(() => {
+        if (!isAdmin) {
+            navigator("/");
+        }
+    }, []);
+    
     return (
         <div>
             <ManagerDefaultLayout

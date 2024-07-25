@@ -57,6 +57,7 @@ const UserSaveHotel = () => {
                                             hotelName={hotel?.name}
                                             hotelLocation={hotel?.location}
                                             srcImg={hotel?.image?.url}
+                                            rate={hotel?.rate}
                                             fromCenter={hotel?.fromCenter}
                                             reviews={hotel?.reviews}
                                             roomPrice={hotel?.rooms?.[0]?.price}
