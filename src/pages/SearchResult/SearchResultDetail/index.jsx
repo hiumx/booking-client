@@ -103,8 +103,6 @@ const SearchResultDetail = () => {
     const { id } = useParams();
 
     const location = useLocation();
-    const dispatch = useDispatch();
-    const navigator = useNavigate();
     const parsed = queryString.parse(location.search);
 
     const listSearchHotel = useSelector(state => state.hotel.listSearchHotel);
@@ -138,36 +136,7 @@ const SearchResultDetail = () => {
             .catch(error => {
                 console.error(error);
             })
-    }, [reviewStatus]);
-
-    const handleClickReview = () => {
-        if (checkObjEmpty(user))
-            navigator("/auth/sign-in");
-        if (!reviewTitle || !reviewContent || !reviewPoint)
-            toast.warn("Please fill all fields require!")
-        else if (Number(reviewPoint) < 0 || Number(reviewPoint) > 10)
-            toast.warn("Point of review must be between 0 and 10!");
-        else {
-            newReview({
-                title: reviewTitle,
-                content: reviewContent,
-                userId: user?.id,
-                hotelId: Number(id),
-                point: Number(reviewPoint)
-            }).then(res => {
-                if (res.code === 1000) {
-                    setReviewStatus(true);
-                    setReviewTitle("");
-                    setReviewContent("");
-                    setReviewPoint("");
-                } else {
-                    toast.warn(res.message);
-                }
-            }).catch(err => {
-                console.error(err);
-            })
-        }
-    }
+    }, []);
 
     return (
         <div className='search__result__detail__wrapper'>
@@ -306,39 +275,6 @@ const SearchResultDetail = () => {
                     slidesToShow={3}
                     titleStyle={{ marginBottom: "-16px" }}
                 />
-                <div className='srd__new__review__form'>
-                    <h6 className='srd__new__review__title'>Add a review...</h6>
-                    <div>
-                        <div className='srd__new__review__item'>
-                            <input
-                                type='text'
-                                className='srd__new__review__item__input'
-                                placeholder='Title...'
-                                onChange={e => setReviewTitle(e.target.value)}
-                                value={reviewTitle}
-                            />
-                        </div>
-                        <div className='srd__new__review__item'>
-                            <input
-                                type='text'
-                                className='srd__new__review__item__input'
-                                placeholder='Content...'
-                                onChange={e => setReviewContent(e.target.value)}
-                                value={reviewContent}
-                            />
-                        </div>
-                        <div className='srd__new__review__item'>
-                            <input
-                                type='text'
-                                className='srd__new__review__item__input'
-                                placeholder='Point...'
-                                onChange={e => setReviewPoint(e.target.value)}
-                                value={reviewPoint}
-                            />
-                        </div>
-                    </div>
-                    <button className='srd__new__review__btn' onClick={handleClickReview}>Review</button>
-                </div>
             </div>
 
             <Contact contacts={CONTACTS} />

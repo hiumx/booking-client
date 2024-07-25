@@ -36,6 +36,7 @@ const amenities = ["Pool", "Spa", "Air conditioning", "Wifi", "Bar", "Free parki
 const Booking = () => {
     const {id, email, name, phone} = useSelector(state => state.user.userMyInfo);
     const userBookingInfo = useSelector(state => state.user.userBookingInfo);
+
     let firstName = "";
     let lastName = "";
 
@@ -44,7 +45,7 @@ const Booking = () => {
         firstName = fn;
         lastName = ln;
     }
-
+    
 
     const [activeMethodPayment, setActiveMethodPayment] = useState(0);
     const [input, setInput] = useState({
