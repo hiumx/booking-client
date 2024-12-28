@@ -1,0 +1,25 @@
+# Node.js dependencies
+node_modules
+npm-debug.log
+
+# Local environment files
+.env
+.env.local
+
+# Logs
+logs
+*.log
+
+# Build outputs (if they exist locally)
+build
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+
+# Miscellaneous
+.DS_Store
+*.test.*
+coverage/
+
